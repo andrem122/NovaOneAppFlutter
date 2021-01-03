@@ -41,6 +41,9 @@ class HomeBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: GreetingContainer(user: currentUser),
         ),
+        SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+            sliver: SliverToBoxAdapter(child: InfoCards())),
       ],
     );
   }
