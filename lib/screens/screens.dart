@@ -1,1 +1,1 @@
-export 'home/homeScreen.dart';
+export 'main/mainScreen.dart';

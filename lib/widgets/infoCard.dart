@@ -6,59 +6,99 @@ class InfoCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
-      child: ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-          scrollDirection: Axis.horizontal,
-          itemCount: 3,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: _InfoCard(title: 'Leads', iconData: Icons.person),
-            );
-          }),
-    );
+        height: 240,
+        child: Row(
+          children: <Widget>[
+            _InfoCard(
+              iconData: Icons.person,
+              number: 100000,
+              title: 'Leads',
+            ),
+            _InfoCard(
+              iconData: Icons.person,
+              number: 200,
+              title: 'Appointments',
+            ),
+            _InfoCard(
+              iconData: Icons.person,
+              number: 300,
+              title: 'Companies',
+            )
+          ],
+        ));
   }
 }
 
 class _InfoCard extends StatelessWidget {
   final String title;
   final IconData iconData;
+  final int number;
 
-  const _InfoCard({Key key, @required this.title, @required this.iconData})
+  const _InfoCard(
+      {Key key,
+      @required this.title,
+      @required this.iconData,
+      @required this.number})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: <Widget>[
-        Container(
-          width: (MediaQuery.of(context).size.width / 3) -
-              12, // subtract horizontal padding
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                  blurRadius: 50,
-                  color: Palette.primaryColor.withOpacity(0.23),
-                  offset: Offset(0, 10)),
-            ],
+    return Expanded(
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.white,
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    blurRadius: 50,
+                    color: Palette.primaryColor.withOpacity(0.23),
+                    offset: Offset(0, 10)),
+              ],
+            ),
+            height: double.infinity,
           ),
-          height: double.infinity,
-        ),
-        Positioned(
-          top: 8,
-          left: 8,
-          child: CircleButton(
-            iconData: Icons.add,
-            onPressed: () => print('Adding'),
-            backgroundColor: Palette.primaryColor,
-            iconColor: Colors.white,
+          Positioned(
+            top: 8,
+            left: 8,
+            child: CircleButton(
+              iconData: Icons.add,
+              onPressed: () => print('Adding'),
+              backgroundColor: Palette.primaryColor,
+              iconColor: Colors.white,
+            ),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  iconData,
+                  size: 35,
+                ),
+                Text(
+                  '$number',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      color: Palette.primaryColor,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  title,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
