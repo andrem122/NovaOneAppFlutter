@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:novaone/constants.dart';
 import 'package:novaone/models/user.dart';
+import 'package:novaone/palette.dart';
+import 'package:novaone/widgets/whiteButton.dart';
 
 class GreetingContainer extends StatelessWidget {
   const GreetingContainer({Key key, @required this.user}) : super(key: key);
@@ -19,10 +21,37 @@ class GreetingContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
-      color: Colors.white,
-      child: Text(
-        greetingMessage,
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+      decoration: BoxDecoration(
+        gradient: Palette.greetingContainerGradient,
+      ),
+      height: MediaQuery.of(context).size.height *
+          0.30, // 30% percent height of the device
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              CircleAvatar(
+                backgroundColor: Palette.secondaryColor,
+                child: Text(
+                  'A',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              WhiteButton(
+                buttonText: 'Get Help',
+              )
+            ],
+          ),
+          const SizedBox(height: 40),
+          Text(
+            greetingMessage,
+            style: TextStyle(
+                fontSize: 24, fontWeight: FontWeight.w500, color: Colors.white),
+          )
+        ],
       ),
     );
   }

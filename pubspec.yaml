@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
+  device_preview: ^0.5.5
   intl: ^0.16.1
 
 dev_dependencies:
