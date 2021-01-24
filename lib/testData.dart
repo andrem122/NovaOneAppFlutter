@@ -1,4 +1,3 @@
-import 'package:novaone/models/user.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 import 'models/models.dart';
@@ -42,4 +41,72 @@ final List<charts.Series<LeadsPerMonth, String>> seriesList = [
     measureFn: (LeadsPerMonth leadsPerMonth, _) => leadsPerMonth.numberOfleads,
     data: leadsPerMonthChartData,
   ),
+];
+
+final List<Lead> recentLeads = [
+  Lead(
+      id: 1,
+      name: 'John Wilkin',
+      phoneNumber: '561-346-5571',
+      email: 'andre.mashraghi@gmail.com',
+      dateOfInquiry: '2020-08-30 15:32:23 +00',
+      renterBrand: 'Zillow',
+      companyId: 2,
+      sentTextDate: '2020-08-30 15:32:23 +00',
+      sentEmailDate: '2020-08-30 15:32:23 +00',
+      filledOutForm: false,
+      madeAppointment: false,
+      companyName: 'NovaOne'),
+  Lead(
+      id: 1,
+      name: 'Jakob Brown',
+      phoneNumber: '561-346-5571',
+      email: 'andre.mashraghi@gmail.com',
+      dateOfInquiry: '2020-08-30 15:32:23 +00',
+      renterBrand: 'Zillow',
+      companyId: 2,
+      sentTextDate: '2020-08-30 15:32:23 +00',
+      sentEmailDate: '2020-08-30 15:32:23 +00',
+      filledOutForm: false,
+      madeAppointment: false,
+      companyName: 'NovaOne'),
+  Lead(
+      id: 1,
+      name: 'Bob Diller',
+      phoneNumber: '561-346-5571',
+      email: 'andre.mashraghi@gmail.com',
+      dateOfInquiry: '2020-08-30 15:32:23 +00',
+      renterBrand: 'Zillow',
+      companyId: 2,
+      sentTextDate: '2020-08-30 15:32:23 +00',
+      sentEmailDate: '2020-08-30 15:32:23 +00',
+      filledOutForm: false,
+      madeAppointment: false,
+      companyName: 'NovaOne'),
+  Lead(
+      id: 1,
+      name: 'Tommy Johns',
+      phoneNumber: '561-346-5571',
+      email: 'andre.mashraghi@gmail.com',
+      dateOfInquiry: '2020-08-30 15:32:23 +00',
+      renterBrand: 'Zillow',
+      companyId: 2,
+      sentTextDate: '2020-08-30 15:32:23 +00',
+      sentEmailDate: '2020-08-30 15:32:23 +00',
+      filledOutForm: false,
+      madeAppointment: false,
+      companyName: 'NovaOne'),
+  Lead(
+      id: 1,
+      name: 'Bobby Johns',
+      phoneNumber: '561-346-5571',
+      email: 'andre.mashraghi@gmail.com',
+      dateOfInquiry: '2020-08-30 15:32:23 +00',
+      renterBrand: 'Zillow',
+      companyId: 2,
+      sentTextDate: '2020-08-30 15:32:23 +00',
+      sentEmailDate: '2020-08-30 15:32:23 +00',
+      filledOutForm: false,
+      madeAppointment: false,
+      companyName: 'NovaOne'),
 ];

@@ -20,13 +20,13 @@ class InfoCardsTablet extends StatelessWidget {
             ),
             _InfoCardTablet(
               iconData: Icons.person,
-              number: 200,
+              number: 2000,
               title: 'Appointments',
               marginRight: 5,
             ),
             _InfoCardTablet(
               iconData: Icons.person,
-              number: 300,
+              number: 3000,
               title: 'Companies',
             )
           ],

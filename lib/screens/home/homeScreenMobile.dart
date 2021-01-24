@@ -19,6 +19,7 @@ class HomeMobilePortrait extends StatelessWidget {
               child: TitleSeperator(
                 title: 'An Overview',
                 subtitle: 'View all',
+                showSubtitle: true,
               ),
             )),
         SliverPadding(
@@ -40,6 +41,44 @@ class HomeMobilePortrait extends StatelessWidget {
             animate: true,
           )),
         ),
+        SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+            sliver: SliverToBoxAdapter(
+              child: TitleSeperator(
+                title: 'Recent Leads',
+                subtitle: 'View all',
+                showSubtitle: true,
+              ),
+            )),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+          sliver: SliverToBoxAdapter(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(12)),
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: recentLeads.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: 80,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(width: 2, color: Colors.grey[200]),
+                        ),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          CircleAvatar(
+                            child: Text(recentLeads[index].name[0]),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+            ),
+          ),
+        )
       ],
     );
   }
