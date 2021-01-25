@@ -13,18 +13,24 @@ class InfoCardsTablet extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             _InfoCardTablet(
+              onAdd: () => print('Adding'),
+              onTap: () => print('Adding'),
               iconData: Icons.person,
               number: 100000,
               title: 'Leads',
               marginRight: 5,
             ),
             _InfoCardTablet(
+              onAdd: () => print('Adding'),
+              onTap: () => print('Adding'),
               iconData: Icons.person,
               number: 2000,
               title: 'Appointments',
               marginRight: 5,
             ),
             _InfoCardTablet(
+              onAdd: () => print('Adding'),
+              onTap: () => print('Adding'),
               iconData: Icons.person,
               number: 3000,
               title: 'Companies',
@@ -38,6 +44,8 @@ class _InfoCardTablet extends StatelessWidget {
   final String title;
   final IconData iconData;
   final int number;
+  final Function() onTap;
+  final Function() onAdd;
   final double marginRight;
 
   const _InfoCardTablet(
@@ -45,68 +53,76 @@ class _InfoCardTablet extends StatelessWidget {
       @required this.title,
       @required this.iconData,
       @required this.number,
-      this.marginRight = 0})
+      this.marginRight = 0,
+      @required this.onTap,
+      @required this.onAdd})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Container(
-            margin: marginRight > 0
-                ? EdgeInsets.only(right: marginRight)
-                : EdgeInsets.only(right: 0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius),
-              color: Colors.white,
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    blurRadius: 50,
-                    color: Palette.primaryColor.withOpacity(0.23),
-                    offset: Offset(0, 10)),
-              ],
-            ),
-            height: double.infinity,
-          ),
-          Positioned(
-            top: 8,
-            left: 8,
-            child: CircleButton(
-              iconData: Icons.add,
-              onPressed: () => print('Adding'),
-              backgroundColor: Palette.primaryColor,
-              iconColor: Colors.white,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+      child: Container(
+        margin: marginRight > 0
+            ? EdgeInsets.only(right: marginRight)
+            : EdgeInsets.only(right: 0),
+        height: double.infinity,
+        decoration: BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                blurRadius: 50,
+                color: Palette.primaryColor.withOpacity(0.23),
+                offset: Offset(0, 10)),
+          ],
+        ),
+        child: Material(
+          borderRadius: BorderRadius.circular(borderRadius),
+          color: Colors.white,
+          child: InkWell(
+            onTap: onTap,
+            child: Stack(
+              alignment: Alignment.center,
               children: <Widget>[
-                Icon(
-                  iconData,
-                  size: 35,
+                Positioned(
+                  top: 8,
+                  left: 8,
+                  child: CircleButton(
+                    iconData: Icons.add,
+                    onPressed: () => onAdd,
+                    backgroundColor: Palette.primaryColor,
+                    iconColor: Colors.white,
+                  ),
                 ),
-                Text(
-                  '$number',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: Palette.primaryColor,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  title,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        iconData,
+                        size: 35,
+                      ),
+                      Text(
+                        '$number',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: Palette.primaryColor,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        title,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

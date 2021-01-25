@@ -11,74 +11,194 @@ class HomeMobilePortrait extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
-          child: GreetingContainer(user: currentUser),
+          child: GreetingContainer(
+            user: currentUser,
+            containerDecimalHeight: 0.30,
+          ),
         ),
         SliverPadding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
             sliver: SliverToBoxAdapter(
-              child: TitleSeperator(
-                title: 'An Overview',
-                subtitle: 'View all',
-                showSubtitle: true,
+              child: SafeArea(
+                bottom: false,
+                top: false,
+                child: TitleSeperator(
+                  title: 'An Overview',
+                  subtitle: 'View all',
+                  showSubtitle: true,
+                ),
               ),
             )),
         SliverPadding(
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-            sliver: SliverToBoxAdapter(child: InfoCards())),
+            sliver: SliverToBoxAdapter(
+                child:
+                    SafeArea(top: false, bottom: false, child: InfoCards()))),
         SliverPadding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
             sliver: SliverToBoxAdapter(
-              child: TitleSeperator(
-                title: 'Leads Per Month',
-                subtitle: 'View all',
+              child: SafeArea(
+                top: false,
+                bottom: false,
+                child: TitleSeperator(
+                  title: 'Leads Per Month',
+                  subtitle: 'View all',
+                ),
               ),
             )),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
           sliver: SliverToBoxAdapter(
-              child: SimpleBarChart(
-            seriesList: seriesList,
-            animate: true,
+              child: SafeArea(
+            top: false,
+            bottom: false,
+            child: SimpleBarChart(
+              seriesList: seriesList,
+              animate: true,
+            ),
           )),
         ),
         SliverPadding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
             sliver: SliverToBoxAdapter(
-              child: TitleSeperator(
-                title: 'Recent Leads',
-                subtitle: 'View all',
-                showSubtitle: true,
+              child: SafeArea(
+                top: false,
+                bottom: false,
+                child: TitleSeperator(
+                  title: 'Recent Leads',
+                  subtitle: 'View all',
+                  showSubtitle: true,
+                ),
               ),
             )),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
           sliver: SliverToBoxAdapter(
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(12)),
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: recentLeads.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 80,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(width: 2, color: Colors.grey[200]),
-                        ),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          CircleAvatar(
-                            child: Text(recentLeads[index].name[0]),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
+            child: SafeArea(
+              top: false,
+              bottom: false,
+              child: RecentLeads(
+                leads: recentLeads,
+              ),
             ),
           ),
-        )
+        ),
+        SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+            sliver: SliverToBoxAdapter(
+              child: SafeArea(
+                top: false,
+                bottom: false,
+                child: TitleSeperator(
+                  title: 'Recent Appointments',
+                  subtitle: 'View all',
+                  showSubtitle: true,
+                ),
+              ),
+            )),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+          sliver: SliverToBoxAdapter(
+            child: SafeArea(
+              top: false,
+              child: RecentAppointments(
+                appointments: recentAppointments,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class HomeMobileLandscape extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverToBoxAdapter(
+          child: GreetingContainer(
+            user: currentUser,
+            containerDecimalHeight: 0.60,
+          ),
+        ),
+        SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            sliver: SliverToBoxAdapter(
+              child: SafeArea(
+                child: TitleSeperator(
+                  title: 'An Overview',
+                  subtitle: 'View all',
+                  showSubtitle: true,
+                ),
+              ),
+            )),
+        SliverPadding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+            sliver: SliverToBoxAdapter(child: SafeArea(child: InfoCards()))),
+        SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+            sliver: SliverToBoxAdapter(
+              child: SafeArea(
+                child: TitleSeperator(
+                  title: 'Leads Per Month',
+                  subtitle: 'View all',
+                ),
+              ),
+            )),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+          sliver: SliverToBoxAdapter(
+              child: SafeArea(
+            child: SimpleBarChart(
+              seriesList: seriesList,
+              animate: true,
+            ),
+          )),
+        ),
+        SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+            sliver: SliverToBoxAdapter(
+              child: SafeArea(
+                child: TitleSeperator(
+                  title: 'Recent Leads',
+                  subtitle: 'View all',
+                  showSubtitle: true,
+                ),
+              ),
+            )),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+          sliver: SliverToBoxAdapter(
+            child: SafeArea(
+              child: RecentLeads(
+                leads: recentLeads,
+              ),
+            ),
+          ),
+        ),
+        SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+            sliver: SliverToBoxAdapter(
+              child: SafeArea(
+                child: TitleSeperator(
+                  title: 'Recent Appointments',
+                  subtitle: 'View all',
+                  showSubtitle: true,
+                ),
+              ),
+            )),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+          sliver: SliverToBoxAdapter(
+            child: SafeArea(
+              child: RecentAppointments(
+                appointments: recentAppointments,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

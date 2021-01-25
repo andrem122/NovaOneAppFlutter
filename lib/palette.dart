@@ -11,6 +11,14 @@ class Palette {
   static const indigoColor = Color(0xff2B4AD0);
   static const boxShadow = Color(0xff0C9869);
 
+  static final List<Color> appColors = [
+    primaryColor,
+    secondaryColor,
+    teritiaryColor,
+    purpleColor,
+    indigoColor,
+  ];
+
   static const LinearGradient greetingContainerGradient = LinearGradient(
       colors: [primaryColor, purpleColor, indigoColor, Color(0xff53B0DB)],
       begin: Alignment.topLeft,

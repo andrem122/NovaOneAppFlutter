@@ -1,1 +1,2 @@
-export 'main/mainScreen.dart';
+export 'nav/navScreen.dart';
+export 'home/homeScreenMobile.dart';

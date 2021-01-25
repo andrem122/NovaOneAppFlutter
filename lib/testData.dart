@@ -110,3 +110,46 @@ final List<Lead> recentLeads = [
       madeAppointment: false,
       companyName: 'NovaOne'),
 ];
+
+final List<Appointment> recentAppointments = [
+  Appointment(
+      id: 1,
+      name: 'John Doe',
+      phoneNumber: '561-346-5571',
+      time: '2020-08-30 15:32:23 +00',
+      timeZone: 'United_States/America',
+      confirmed: false,
+      companyId: 1),
+  Appointment(
+      id: 2,
+      name: 'Thomas Button',
+      phoneNumber: '561-346-5571',
+      time: '2020-08-30 15:32:23 +00',
+      timeZone: 'United_States/America',
+      confirmed: false,
+      companyId: 1),
+  Appointment(
+      id: 3,
+      name: 'Benjamin Button',
+      phoneNumber: '561-346-5571',
+      time: '2020-08-30 15:32:23 +00',
+      timeZone: 'United_States/America',
+      confirmed: false,
+      companyId: 1),
+  Appointment(
+      id: 4,
+      name: 'Johhny Rockets',
+      phoneNumber: '561-346-5571',
+      time: '2020-08-30 15:32:23 +00',
+      timeZone: 'United_States/America',
+      confirmed: false,
+      companyId: 1),
+  Appointment(
+      id: 5,
+      name: 'Sarah Bateman',
+      phoneNumber: '561-346-5571',
+      time: '2020-08-30 15:32:23 +00',
+      timeZone: 'United_States/America',
+      confirmed: false,
+      companyId: 1),
+];
