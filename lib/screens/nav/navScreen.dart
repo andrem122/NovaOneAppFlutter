@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:novaone/responsive/orientationLayout.dart';
 import 'package:novaone/responsive/screenTypeLayout.dart';
-import 'package:novaone/screens/home/homeScreenMobile.dart';
+import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/widgets.dart';
+
+import '../../testData.dart';
 
 class NavScreen extends StatefulWidget {
   @override
@@ -17,7 +19,11 @@ class _NavScreenState extends State<NavScreen> {
         landscape: HomeMobileLandscape(),
       ),
     ),
-    Scaffold(),
+    ScreenTypeLayout(
+      mobile: OrientationLayout(
+        portrait: LeadDetailMobilePortrait(lead: recentLeads[0]),
+      ),
+    ),
     Scaffold(),
     Scaffold(),
     Scaffold(),

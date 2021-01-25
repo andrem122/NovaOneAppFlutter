@@ -4,3 +4,4 @@ export 'infoCard.dart';
 export 'recentLeads.dart';
 export 'recentAppointments.dart';
 export 'customTabBar.dart';
+export 'leadDetailHeader.dart';
