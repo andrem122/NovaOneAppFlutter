@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/palette.dart';
+import 'package:novaone/screens/leadDetail/leadDetailLayout.dart';
 
 class RecentLeads extends StatelessWidget {
   final List<Lead> leads;
@@ -25,10 +26,50 @@ class RecentLeads extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             // Make sure to add no bottom border for the last item in the list
             final bool isLastItem = index == leads.length - 1 ? true : false;
+            final _random = new Random();
+            final Color leadColor =
+                Palette.appColors[_random.nextInt(Palette.appColors.length)];
+            final Lead lead = leads[index];
             return _RecentLeadItem(
-              lead: leads[index],
+              lead: lead,
+              leadColor: leadColor,
               isLastItem: isLastItem,
-              onTap: () => print('Go to lead detail screen'),
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) {
+                final List<DetailTableItem> detailTableItems = [
+                  DetailTableItem(
+                    title: lead.name,
+                    subtitle: 'Dec 25, 2019',
+                    iconData: Icons.person,
+                  ),
+                  DetailTableItem(
+                    title: lead.phoneNumber,
+                    subtitle: 'Dec 25, 2019',
+                    iconData: Icons.phone,
+                  ),
+                  DetailTableItem(
+                    title: lead.email,
+                    subtitle: 'Dec 25, 2019',
+                    iconData: Icons.email,
+                  ),
+                  DetailTableItem(
+                    title: lead.name,
+                    subtitle: 'Dec 25, 2019',
+                    iconData: Icons.person,
+                  ),
+                  DetailTableItem(
+                    title: lead.name,
+                    subtitle: 'Dec 25, 2019',
+                    iconData: Icons.person,
+                  ),
+                ];
+
+                return LeadDetailLayout(
+                  lead: leads[index],
+                  leadColor: leadColor,
+                  detailTableItems: detailTableItems,
+                );
+              })),
             );
           }),
     );
@@ -38,6 +79,7 @@ class RecentLeads extends StatelessWidget {
 class _RecentLeadItem extends StatelessWidget {
   final Lead lead;
   final bool isLastItem;
+  final Color leadColor;
   final Function() onTap;
 
   const _RecentLeadItem({
@@ -45,12 +87,11 @@ class _RecentLeadItem extends StatelessWidget {
     @required this.lead,
     this.isLastItem = false,
     @required this.onTap,
+    @required this.leadColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _random = new Random();
-
     return Material(
       color: Colors.white,
       child: InkWell(
@@ -70,8 +111,7 @@ class _RecentLeadItem extends StatelessWidget {
                 child: Row(
                   children: [
                     CircleAvatar(
-                      backgroundColor: Palette
-                          .appColors[_random.nextInt(Palette.appColors.length)],
+                      backgroundColor: leadColor,
                       foregroundColor: Colors.white,
                       child: Text(lead.name[0]),
                     ),

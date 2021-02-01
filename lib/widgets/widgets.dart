@@ -5,3 +5,5 @@ export 'recentLeads.dart';
 export 'recentAppointments.dart';
 export 'customTabBar.dart';
 export 'leadDetailHeader.dart';
+export 'detailTable.dart';
+export 'titleSeperator.dart';

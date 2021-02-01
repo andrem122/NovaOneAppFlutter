@@ -8,9 +8,13 @@ import '../palette.dart';
 class LeadDetailHeader extends StatelessWidget {
   final double containerDecimalHeight;
   final Lead lead;
+  final Color leadColor; // The color that was used in the recent leads table
 
   const LeadDetailHeader(
-      {Key key, @required this.containerDecimalHeight, @required this.lead})
+      {Key key,
+      @required this.containerDecimalHeight,
+      @required this.lead,
+      @required this.leadColor})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,16 @@ class LeadDetailHeader extends StatelessWidget {
           ),
           height: MediaQuery.of(context).size.height *
               containerDecimalHeight, // 30% percent height of the device
+          width: double.infinity,
+          alignment: Alignment.topLeft,
+          child: IconButton(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            onPressed: () => Navigator.of(context).pop(),
+            icon: Icon(
+              Icons.arrow_back_sharp,
+              color: Colors.white,
+            ),
+          ),
         ),
         Positioned.fill(
           bottom: -80,
@@ -33,7 +47,8 @@ class LeadDetailHeader extends StatelessWidget {
               overflow: Overflow.visible,
               children: [
                 Container(
-                  width: 280,
+                  width: MediaQuery.of(context).size.width * 0.80,
+                  constraints: BoxConstraints(minWidth: 280, maxWidth: 500),
                   height: 140,
                   padding: const EdgeInsets.all(defaultPadding),
                   child: Container(
@@ -65,14 +80,14 @@ class LeadDetailHeader extends StatelessWidget {
                               iconColor: Colors.white,
                             ),
                             const SizedBox(
-                              width: 20,
+                              width: 10,
                             ),
                             CircleButton(
                               iconData: Icons.email,
                               onPressed: () => print('Calling lead'),
                               backgroundColor: Palette.primaryColor,
                               iconColor: Colors.white,
-                            )
+                            ),
                           ],
                         )
                       ],
@@ -87,10 +102,19 @@ class LeadDetailHeader extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Container(
+                        child: Center(
+                          child: Text(
+                            lead.name[0],
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 50),
+                          ),
+                        ),
                         width: 100,
                         height: 130,
                         decoration: BoxDecoration(
-                            color: Colors.black,
+                            color: leadColor,
                             borderRadius: BorderRadius.circular(borderRadius)),
                       ),
                     ))
