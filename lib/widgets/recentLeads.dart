@@ -81,7 +81,7 @@ class RecentLeads extends StatelessWidget {
                   subtitle: 'Company Name',
                   iconData: Icons.business,
                   iconColor: Palette.appColors[4],
-                  popupMenuOptions: popupMenuOptions,
+                  popupMenuOptions: popupMenuOptions, //
                 ),
               ];
 
