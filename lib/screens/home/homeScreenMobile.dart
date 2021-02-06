@@ -101,6 +101,7 @@ class HomeMobilePortrait extends StatelessWidget {
           sliver: SliverToBoxAdapter(
             child: SafeArea(
               top: false,
+              bottom: false,
               child: RecentAppointments(
                 appointments: recentAppointments,
               ),
@@ -161,6 +162,8 @@ class HomeMobileLandscape extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
             sliver: SliverToBoxAdapter(
               child: SafeArea(
+                top: false,
+                bottom: false,
                 child: TitleSeperator(
                   title: 'Recent Leads',
                   subtitle: 'View all',
@@ -172,6 +175,8 @@ class HomeMobileLandscape extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
           sliver: SliverToBoxAdapter(
             child: SafeArea(
+              top: false,
+              bottom: false,
               child: RecentLeads(
                 leads: recentLeads,
               ),
@@ -182,6 +187,8 @@ class HomeMobileLandscape extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
             sliver: SliverToBoxAdapter(
               child: SafeArea(
+                top: false,
+                bottom: false,
                 child: TitleSeperator(
                   title: 'Recent Appointments',
                   subtitle: 'View all',
@@ -193,6 +200,8 @@ class HomeMobileLandscape extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
           sliver: SliverToBoxAdapter(
             child: SafeArea(
+              top: false,
+              bottom: false,
               child: RecentAppointments(
                 appointments: recentAppointments,
               ),

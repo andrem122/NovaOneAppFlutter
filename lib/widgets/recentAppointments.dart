@@ -15,31 +15,37 @@ class RecentAppointments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(12)),
-      child: ListView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(10),
-          itemCount: appointments.length,
-          itemBuilder: (BuildContext context, int index) {
-            // Make sure to add no bottom border for the last item in the list
-            final bool isLastItem =
-                index == appointments.length - 1 ? true : false;
-            return _RecentAppointmentItem(
-              appointment: appointments[index],
-              isLastItem: isLastItem,
-              onTap: () => print('Go to appointment detail screen'),
-            );
-          }),
-    );
+    return ListView.builder(
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: appointments.length,
+        itemBuilder: (BuildContext context, int index) {
+          // Make sure to add no bottom border for the last item in the list
+          // Make sure to add no bottom border for the last item in the list
+          final bool isLastItem =
+              index == appointments.length - 1 ? true : false;
+          final bool isFirstItem = index == 0 ? true : false;
+          final _random = new Random();
+          final Color appointmentColor =
+              Palette.appColors[_random.nextInt(Palette.appColors.length)];
+
+          return _RecentAppointmentItem(
+            appointmentColor: appointmentColor,
+            appointment: appointments[index],
+            isLastItem: isLastItem,
+            isFirstItem: isFirstItem,
+            onTap: () => print('Go to appointment detail screen'),
+          );
+        });
   }
 }
 
 class _RecentAppointmentItem extends StatelessWidget {
   final Appointment appointment;
   final bool isLastItem;
+  final bool isFirstItem;
+  final Color appointmentColor;
   final Function() onTap;
 
   const _RecentAppointmentItem({
@@ -47,17 +53,33 @@ class _RecentAppointmentItem extends StatelessWidget {
     @required this.appointment,
     this.isLastItem = false,
     @required this.onTap,
+    this.isFirstItem = false,
+    @required this.appointmentColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _random = new Random();
+    // Set the border radius for the last and first items to be rounded corners
+    BorderRadius borderRadius;
+    if (isFirstItem) {
+      // Top right and top left for the first item in the list
+      borderRadius = BorderRadius.only(
+          topRight: Radius.circular(15), topLeft: Radius.circular(15));
+    } else if (isLastItem) {
+      borderRadius = BorderRadius.only(
+          bottomRight: Radius.circular(15), bottomLeft: Radius.circular(15));
+    } else {
+      borderRadius = BorderRadius.zero;
+    }
 
     return Material(
       color: Colors.white,
+      borderRadius: borderRadius,
       child: InkWell(
+        borderRadius: borderRadius,
         onTap: onTap,
         child: Container(
+          padding: EdgeInsets.all(10),
           height: 80,
           decoration: BoxDecoration(
             border: Border(
@@ -72,8 +94,7 @@ class _RecentAppointmentItem extends StatelessWidget {
                 child: Row(
                   children: [
                     CircleAvatar(
-                      backgroundColor: Palette
-                          .appColors[_random.nextInt(Palette.appColors.length)],
+                      backgroundColor: appointmentColor,
                       foregroundColor: Colors.white,
                       child: Text(appointment.name[0]),
                     ),

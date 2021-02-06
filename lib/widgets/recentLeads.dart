@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/leadDetail/leadDetailLayout.dart';
@@ -15,70 +16,90 @@ class RecentLeads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(12)),
-      child: ListView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(10),
-          itemCount: leads.length,
-          itemBuilder: (BuildContext context, int index) {
-            // Make sure to add no bottom border for the last item in the list
-            final bool isLastItem = index == leads.length - 1 ? true : false;
-            final _random = new Random();
-            final Color leadColor =
-                Palette.appColors[_random.nextInt(Palette.appColors.length)];
-            final Lead lead = leads[index];
-            return _RecentLeadItem(
-              lead: lead,
-              leadColor: leadColor,
-              isLastItem: isLastItem,
-              onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) {
-                final List<DetailTableItem> detailTableItems = [
-                  DetailTableItem(
-                    title: lead.name,
-                    subtitle: 'Dec 25, 2019',
-                    iconData: Icons.person,
-                  ),
-                  DetailTableItem(
-                    title: lead.phoneNumber,
-                    subtitle: 'Dec 25, 2019',
-                    iconData: Icons.phone,
-                  ),
-                  DetailTableItem(
-                    title: lead.email,
-                    subtitle: 'Dec 25, 2019',
-                    iconData: Icons.email,
-                  ),
-                  DetailTableItem(
-                    title: lead.name,
-                    subtitle: 'Dec 25, 2019',
-                    iconData: Icons.person,
-                  ),
-                  DetailTableItem(
-                    title: lead.name,
-                    subtitle: 'Dec 25, 2019',
-                    iconData: Icons.person,
-                  ),
-                ];
+    return ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        itemCount: leads.length,
+        itemBuilder: (BuildContext context, int index) {
+          // Make sure to add no bottom border for the last item in the list
+          final bool isLastItem = index == leads.length - 1 ? true : false;
+          final bool isFirstItem = index == 0 ? true : false;
+          final _random = new Random();
+          final Color leadColor =
+              Palette.appColors[_random.nextInt(Palette.appColors.length)];
+          final Lead lead = leads[index];
 
-                return LeadDetailLayout(
-                  lead: leads[index],
-                  leadColor: leadColor,
-                  detailTableItems: detailTableItems,
-                );
-              })),
-            );
-          }),
-    );
+          return _RecentLeadItem(
+            lead: lead,
+            leadColor: leadColor,
+            isLastItem: isLastItem,
+            isFirstItem: isFirstItem,
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) {
+              final List<PopupMenuEntry> popupMenuOptions = [
+                PopupMenuItem(
+                  value: LeadDetailMenuOptions.Edit,
+                  child: Text('Edit'),
+                ),
+                PopupMenuItem(
+                  value: LeadDetailMenuOptions.Copy,
+                  child: Text('Copy'),
+                ),
+              ];
+              final List<DetailTableItem> detailTableItems = [
+                DetailTableItem(
+                  title: lead.name,
+                  subtitle: 'Name',
+                  iconData: Icons.person,
+                  iconColor: Palette.appColors[0],
+                  popupMenuOptions: popupMenuOptions,
+                ),
+                DetailTableItem(
+                  title: lead.phoneNumber,
+                  subtitle: 'Phone Number',
+                  iconData: Icons.phone,
+                  iconColor: Palette.appColors[1],
+                  popupMenuOptions: popupMenuOptions,
+                ),
+                DetailTableItem(
+                  title: lead.email,
+                  subtitle: 'Email',
+                  iconData: Icons.email,
+                  iconColor: Palette.appColors[2],
+                  popupMenuOptions: popupMenuOptions,
+                ),
+                DetailTableItem(
+                  title: lead.madeAppointment ? 'Yes' : 'No',
+                  subtitle: 'Made Appointment',
+                  iconData: Icons.calendar_today,
+                  iconColor: Palette.appColors[3],
+                  popupMenuOptions: popupMenuOptions,
+                ),
+                DetailTableItem(
+                  title: lead.companyName,
+                  subtitle: 'Company Name',
+                  iconData: Icons.business,
+                  iconColor: Palette.appColors[4],
+                  popupMenuOptions: popupMenuOptions,
+                ),
+              ];
+
+              return LeadDetailLayout(
+                lead: leads[index],
+                leadColor: leadColor,
+                detailTableItems: detailTableItems,
+              );
+            })),
+          );
+        });
   }
 }
 
 class _RecentLeadItem extends StatelessWidget {
   final Lead lead;
   final bool isLastItem;
+  final bool isFirstItem;
   final Color leadColor;
   final Function() onTap;
 
@@ -88,16 +109,33 @@ class _RecentLeadItem extends StatelessWidget {
     this.isLastItem = false,
     @required this.onTap,
     @required this.leadColor,
+    this.isFirstItem = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Set the border radius for the last and first items to be rounded corners
+    BorderRadius borderRadius;
+    if (isFirstItem) {
+      // Top right and top left for the first item in the list
+      borderRadius = BorderRadius.only(
+          topRight: Radius.circular(15), topLeft: Radius.circular(15));
+    } else if (isLastItem) {
+      borderRadius = BorderRadius.only(
+          bottomRight: Radius.circular(15), bottomLeft: Radius.circular(15));
+    } else {
+      borderRadius = BorderRadius.zero;
+    }
+
     return Material(
+      borderRadius: borderRadius,
       color: Colors.white,
       child: InkWell(
+        borderRadius: borderRadius,
         onTap: onTap,
         child: Container(
           height: 80,
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border(
               bottom: isLastItem == false

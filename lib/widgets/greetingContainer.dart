@@ -37,20 +37,23 @@ class GreetingContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundColor: Palette.secondaryColor,
-                  child: Text(
-                    'A',
-                    style: TextStyle(color: Colors.white),
+            Container(
+              constraints: BoxConstraints(maxWidth: 600),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundColor: Palette.secondaryColor,
+                    child: Text(
+                      'A',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
-                ),
-                WhiteButton(
-                  buttonText: 'Get Help',
-                )
-              ],
+                  WhiteButton(
+                    buttonText: 'Get Help',
+                  )
+                ],
+              ),
             ),
             const SizedBox(height: 40),
             Text(
@@ -59,7 +62,7 @@ class GreetingContainer extends StatelessWidget {
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
                   color: Colors.white),
-            )
+            ),
           ],
         ),
       ),

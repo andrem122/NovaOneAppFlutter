@@ -1,53 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:novaone/models/models.dart';
 
-class DetailTable extends StatelessWidget {
+class DetailTable extends StatefulWidget {
   final List<DetailTableItem> detailTableItems;
 
   const DetailTable({Key key, this.detailTableItems}) : super(key: key);
+
+  @override
+  _DetailTableState createState() => _DetailTableState();
+}
+
+class _DetailTableState extends State<DetailTable> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(12)),
-      child: ListView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(10),
-          itemCount: detailTableItems.length,
-          itemBuilder: (BuildContext context, int index) {
-            // Make sure to add no bottom border for the last item in the list
-            final bool isLastItem =
-                index == detailTableItems.length - 1 ? true : false;
-            final DetailTableItem detailTableItem = detailTableItems[index];
-            return _DetailTableItem(
-                detailTableItem: detailTableItem,
-                isLastItem: isLastItem,
-                onTap: () => print('Test'));
-          }),
-    );
+    return ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        itemCount: widget.detailTableItems.length,
+        itemBuilder: (BuildContext context, int index) {
+          // Make sure to add no bottom border for the last item in the list
+          final bool isLastItem =
+              index == widget.detailTableItems.length - 1 ? true : false;
+          final bool isFirstItem = index == 0 ? true : false;
+          final DetailTableItem detailTableItem =
+              widget.detailTableItems[index];
+
+          return _DetailTableItem(
+              detailTableItem: detailTableItem,
+              isLastItem: isLastItem,
+              isFirstItem: isFirstItem,
+              popupMenuOptions: detailTableItem.popupMenuOptions,
+              onTap: () => print('Test'));
+        });
   }
 }
 
 class _DetailTableItem extends StatelessWidget {
   final DetailTableItem detailTableItem;
   final bool isLastItem;
+  final bool isFirstItem;
+  final List<PopupMenuEntry> popupMenuOptions;
   final Function() onTap;
 
   const _DetailTableItem({
     Key key,
     this.isLastItem = false,
+    this.isFirstItem = false,
     @required this.onTap,
     @required this.detailTableItem,
-  }) : super(key: key);
+    @required this.popupMenuOptions,
+  })  : assert(popupMenuOptions != null),
+        assert(onTap != null),
+        assert(detailTableItem != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Set the border radius for the last and first items to be rounded corners
+    BorderRadius borderRadius;
+    if (isFirstItem) {
+      // Top right and top left for the first item in the list
+      borderRadius = BorderRadius.only(
+          topRight: Radius.circular(15), topLeft: Radius.circular(15));
+    } else if (isLastItem) {
+      borderRadius = BorderRadius.only(
+          bottomRight: Radius.circular(15), bottomLeft: Radius.circular(15));
+    } else {
+      borderRadius = BorderRadius.zero;
+    }
+
     return Material(
       color: Colors.white,
+      borderRadius: borderRadius,
       child: InkWell(
         onTap: onTap,
+        borderRadius: borderRadius,
         child: Container(
+          padding: EdgeInsets.all(10),
           height: 80,
           decoration: BoxDecoration(
             border: Border(
@@ -61,7 +91,10 @@ class _DetailTableItem extends StatelessWidget {
               Expanded(
                 child: Row(
                   children: [
-                    Icon(detailTableItem.iconData),
+                    Icon(
+                      detailTableItem.iconData,
+                      color: detailTableItem.iconColor,
+                    ),
                     const SizedBox(
                       width: 20,
                     ),
@@ -91,13 +124,12 @@ class _DetailTableItem extends StatelessWidget {
                   ],
                 ),
               ),
-              IconButton(
-                  icon: Icon(
-                    Icons.more_vert,
-                    size: 18,
-                    color: Colors.black,
-                  ),
-                  onPressed: onTap),
+              PopupMenuButton(
+                itemBuilder: (context) {
+                  return popupMenuOptions;
+                },
+                icon: Icon(Icons.more_vert),
+              ),
             ],
           ),
         ),
