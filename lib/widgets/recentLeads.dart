@@ -54,6 +54,27 @@ class RecentLeads extends StatelessWidget {
                   iconData: Icons.person,
                   iconColor: Palette.appColors[0],
                   popupMenuOptions: popupMenuOptions,
+                  updateTitle: 'Update Name',
+                  updateDescription: 'Update the name of the lead.',
+                ),
+                DetailTableItem(
+                  title: lead.sentEmailDate,
+                  subtitle: 'Email Sent',
+                  iconData: Icons.send,
+                  iconColor: Palette.appColors[1],
+                  popupMenuOptions: popupMenuOptions,
+                  updateTitle: 'Update Email',
+                  updateDescription: 'Update the email of the lead.',
+                ),
+                DetailTableItem(
+                  title: lead.sentTextDate,
+                  subtitle: 'Text Sent',
+                  iconData: Icons.textsms_rounded,
+                  iconColor: Palette.appColors[2],
+                  popupMenuOptions: popupMenuOptions,
+                  updateTitle: 'Update Sent Text Date',
+                  updateDescription:
+                      'Update the date the text message was sent to the lead.',
                 ),
                 DetailTableItem(
                   title: lead.phoneNumber,
@@ -61,6 +82,8 @@ class RecentLeads extends StatelessWidget {
                   iconData: Icons.phone,
                   iconColor: Palette.appColors[1],
                   popupMenuOptions: popupMenuOptions,
+                  updateTitle: 'Update Phone',
+                  updateDescription: 'Update the phone number of the lead.',
                 ),
                 DetailTableItem(
                   title: lead.email,
@@ -68,20 +91,27 @@ class RecentLeads extends StatelessWidget {
                   iconData: Icons.email,
                   iconColor: Palette.appColors[2],
                   popupMenuOptions: popupMenuOptions,
+                  updateTitle: 'Update Email',
+                  updateDescription: 'Update the email of the lead.',
                 ),
                 DetailTableItem(
                   title: lead.madeAppointment ? 'Yes' : 'No',
                   subtitle: 'Made Appointment',
-                  iconData: Icons.calendar_today,
+                  iconData: Icons.calendar_today_rounded,
                   iconColor: Palette.appColors[3],
                   popupMenuOptions: popupMenuOptions,
+                  updateTitle: 'Update Appointment Status',
+                  updateDescription:
+                      'Update the status of the appointment made.',
                 ),
                 DetailTableItem(
                   title: lead.companyName,
                   subtitle: 'Company Name',
                   iconData: Icons.business,
                   iconColor: Palette.appColors[4],
-                  popupMenuOptions: popupMenuOptions, //
+                  popupMenuOptions: popupMenuOptions,
+                  updateTitle: 'Update Company',
+                  updateDescription: 'Update the company of the lead.',
                 ),
               ];
 

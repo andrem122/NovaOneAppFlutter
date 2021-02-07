@@ -7,3 +7,4 @@ export 'customTabBar.dart';
 export 'leadDetailHeader.dart';
 export 'detailTable.dart';
 export 'titleSeperator.dart';
+export 'gradientHeader.dart';

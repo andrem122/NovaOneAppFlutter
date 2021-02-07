@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:novaone/constants.dart';
 import 'package:novaone/models/user.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/widgets/whiteButton.dart';
+import 'package:novaone/widgets/widgets.dart';
 
 class GreetingContainer extends StatelessWidget {
   const GreetingContainer(
@@ -23,13 +23,7 @@ class GreetingContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
-        gradient: Palette.greetingContainerGradient,
-      ),
-      height: MediaQuery.of(context).size.height *
-          containerDecimalHeight, // 30% percent height of the device
+    return GradientHeader(
       child: SafeArea(
         top: false,
         bottom: false,

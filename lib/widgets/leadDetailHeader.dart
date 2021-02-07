@@ -21,15 +21,7 @@ class LeadDetailHeader extends StatelessWidget {
     return Stack(
       overflow: Overflow.visible,
       children: [
-        Container(
-          padding: const EdgeInsets.all(defaultPadding),
-          decoration: BoxDecoration(
-            gradient: Palette.greetingContainerGradient,
-          ),
-          height: MediaQuery.of(context).size.height *
-              containerDecimalHeight, // 30% percent height of the device
-          width: double.infinity,
-          alignment: Alignment.topLeft,
+        GradientHeader(
           child: IconButton(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             onPressed: () => Navigator.of(context).pop(),
@@ -38,6 +30,7 @@ class LeadDetailHeader extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          containerDecimalHeight: 0.20,
         ),
         Positioned.fill(
           bottom: -80,

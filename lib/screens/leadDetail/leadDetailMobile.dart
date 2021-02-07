@@ -21,7 +21,7 @@ class LeadDetailMobilePortrait extends StatelessWidget {
           child: LeadDetailHeader(
             lead: lead,
             leadColor: leadColor,
-            containerDecimalHeight: 0.30,
+            containerDecimalHeight: 0.20,
           ),
         ),
         SliverPadding(

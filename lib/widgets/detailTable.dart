@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
+import 'package:novaone/screens/screens.dart';
 
 class DetailTable extends StatefulWidget {
   final List<DetailTableItem> detailTableItems;
@@ -27,11 +29,23 @@ class _DetailTableState extends State<DetailTable> {
               widget.detailTableItems[index];
 
           return _DetailTableItem(
-              detailTableItem: detailTableItem,
-              isLastItem: isLastItem,
-              isFirstItem: isFirstItem,
-              popupMenuOptions: detailTableItem.popupMenuOptions,
-              onTap: () => print('Test'));
+            detailTableItem: detailTableItem,
+            isLastItem: isLastItem,
+            isFirstItem: isFirstItem,
+            popupMenuOptions: detailTableItem.popupMenuOptions,
+            onTap: () => print('Test'),
+            onPopupMenuItemSelected: (value) {
+              if (value == LeadDetailMenuOptions.Edit) {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => EditScreenLayout(
+                          title: detailTableItem.updateTitle,
+                          description: detailTableItem.updateDescription,
+                        )));
+              } else {
+                print('Copying text from cell');
+              }
+            },
+          );
         });
   }
 }
@@ -41,6 +55,7 @@ class _DetailTableItem extends StatelessWidget {
   final bool isLastItem;
   final bool isFirstItem;
   final List<PopupMenuEntry> popupMenuOptions;
+  final Function(dynamic) onPopupMenuItemSelected;
   final Function() onTap;
 
   const _DetailTableItem({
@@ -50,6 +65,7 @@ class _DetailTableItem extends StatelessWidget {
     @required this.onTap,
     @required this.detailTableItem,
     @required this.popupMenuOptions,
+    @required this.onPopupMenuItemSelected,
   })  : assert(popupMenuOptions != null),
         assert(onTap != null),
         assert(detailTableItem != null),
@@ -129,6 +145,7 @@ class _DetailTableItem extends StatelessWidget {
                   return popupMenuOptions;
                 },
                 icon: Icon(Icons.more_vert),
+                onSelected: onPopupMenuItemSelected,
               ),
             ],
           ),
