@@ -8,11 +8,15 @@ class DetailTableItem {
   final String subtitle;
   final IconData iconData;
   final Color iconColor;
+  final TextInputType keyboardType;
+  final String updateFieldHintText;
   final List<PopupMenuEntry> popupMenuOptions;
 
   DetailTableItem(
       {@required this.title,
       @required this.updateTitle,
+      this.keyboardType = TextInputType.text,
+      this.updateFieldHintText = 'Update Value',
       @required this.updateDescription,
       @required this.popupMenuOptions,
       @required this.subtitle,

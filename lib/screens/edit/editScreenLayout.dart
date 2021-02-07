@@ -5,9 +5,13 @@ import '../screens.dart';
 class EditScreenLayout extends StatelessWidget {
   final String title;
   final String description;
+  final String hintText;
 
   const EditScreenLayout(
-      {Key key, @required this.title, @required this.description})
+      {Key key,
+      @required this.title,
+      @required this.description,
+      this.hintText})
       : assert(title != null),
         assert(description != null),
         super(key: key);
@@ -19,6 +23,7 @@ class EditScreenLayout extends StatelessWidget {
       portrait: EditScreenMobilePortrait(
         title: title,
         description: description,
+        hintText: hintText,
       ),
     ));
   }

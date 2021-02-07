@@ -79,9 +79,10 @@ class _InfoCardMobile extends StatelessWidget {
         ],
       ),
       child: Material(
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(containerBorderRadius),
         color: Colors.white,
         child: InkWell(
+          borderRadius: BorderRadius.circular(containerBorderRadius),
           onTap: onTap,
           child: Stack(
             alignment: Alignment.center,

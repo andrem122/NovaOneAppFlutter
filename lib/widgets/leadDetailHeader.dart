@@ -30,7 +30,7 @@ class LeadDetailHeader extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          containerDecimalHeight: 0.20,
+          containerDecimalHeight: 0.25,
         ),
         Positioned.fill(
           bottom: -80,
@@ -88,7 +88,8 @@ class LeadDetailHeader extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(borderRadius)),
+                      borderRadius:
+                          BorderRadius.circular(containerBorderRadius)),
                 ),
                 Positioned.fill(
                     top: -20,
@@ -108,7 +109,8 @@ class LeadDetailHeader extends StatelessWidget {
                         height: 130,
                         decoration: BoxDecoration(
                             color: leadColor,
-                            borderRadius: BorderRadius.circular(borderRadius)),
+                            borderRadius:
+                                BorderRadius.circular(containerBorderRadius)),
                       ),
                     ))
               ],

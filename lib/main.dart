@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:novaone/palette.dart';
 import 'package:novaone/screens/screens.dart';
 import 'localizations.dart';
 import 'package:flutter/foundation.dart';
@@ -23,6 +24,7 @@ class App extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Colors.grey[200],
+        primaryColor: Palette.primaryColor,
       ),
       home: NavScreen(),
     );

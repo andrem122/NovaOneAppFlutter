@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-
+import 'package:novaone/widgets/widgets.dart';
 import 'package:novaone/palette.dart';
 
 class SimpleBarChart extends StatelessWidget {
@@ -17,10 +17,7 @@ class SimpleBarChart extends StatelessWidget {
             labelStyle: charts.TextStyleSpec(
                 fontSize: 13, color: charts.MaterialPalette.black)));
 
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(12)),
+    return RoundedContainer(
       height: 300,
       width: double.infinity,
       child: ShaderMask(

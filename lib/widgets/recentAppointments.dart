@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:novaone/models/models.dart';
-
+import '../constants.dart';
 import '../palette.dart';
 
 class RecentAppointments extends StatelessWidget {
@@ -64,10 +64,12 @@ class _RecentAppointmentItem extends StatelessWidget {
     if (isFirstItem) {
       // Top right and top left for the first item in the list
       borderRadius = BorderRadius.only(
-          topRight: Radius.circular(15), topLeft: Radius.circular(15));
+          topRight: Radius.circular(containerBorderRadius),
+          topLeft: Radius.circular(containerBorderRadius));
     } else if (isLastItem) {
       borderRadius = BorderRadius.only(
-          bottomRight: Radius.circular(15), bottomLeft: Radius.circular(15));
+          bottomRight: Radius.circular(containerBorderRadius),
+          bottomLeft: Radius.circular(containerBorderRadius));
     } else {
       borderRadius = BorderRadius.zero;
     }

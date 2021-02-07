@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/screens/screens.dart';
+import '../constants.dart';
 
 class DetailTable extends StatefulWidget {
   final List<DetailTableItem> detailTableItems;
@@ -40,6 +41,7 @@ class _DetailTableState extends State<DetailTable> {
                     builder: (_) => EditScreenLayout(
                           title: detailTableItem.updateTitle,
                           description: detailTableItem.updateDescription,
+                          hintText: detailTableItem.updateFieldHintText,
                         )));
               } else {
                 print('Copying text from cell');
@@ -78,10 +80,12 @@ class _DetailTableItem extends StatelessWidget {
     if (isFirstItem) {
       // Top right and top left for the first item in the list
       borderRadius = BorderRadius.only(
-          topRight: Radius.circular(15), topLeft: Radius.circular(15));
+          topRight: Radius.circular(containerBorderRadius),
+          topLeft: Radius.circular(containerBorderRadius));
     } else if (isLastItem) {
       borderRadius = BorderRadius.only(
-          bottomRight: Radius.circular(15), bottomLeft: Radius.circular(15));
+          bottomRight: Radius.circular(containerBorderRadius),
+          bottomLeft: Radius.circular(containerBorderRadius));
     } else {
       borderRadius = BorderRadius.zero;
     }

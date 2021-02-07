@@ -17,7 +17,7 @@ class HomeMobilePortrait extends StatelessWidget {
           ),
         ),
         SliverPadding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            padding: const EdgeInsets.only(top: 10),
             sliver: SliverToBoxAdapter(
               child: SafeArea(
                 bottom: false,

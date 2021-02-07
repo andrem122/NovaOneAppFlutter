@@ -8,6 +8,7 @@ class InfoCards extends StatelessWidget {
     return ScreenTypeLayout(
       mobile: InfoCardsMobile(),
       tablet: InfoCardsTablet(),
+      desktop: InfoCardsTablet(),
     );
   }
 }
