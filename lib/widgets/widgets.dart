@@ -10,3 +10,4 @@ export 'titleSeperator.dart';
 export 'gradientHeader.dart';
 export 'roundedContainer.dart';
 export 'novaOneButton.dart';
+export 'updateWidget.dart';

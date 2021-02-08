@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:novaone/widgets/widgets.dart';
 import 'package:novaone/constants.dart';
 
@@ -18,14 +19,13 @@ class EditScreenMobilePortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Show keyboard on widget load
-    final FocusNode foucusNode = FocusNode();
-    foucusNode.requestFocus();
 
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverToBoxAdapter(
-            child: GradientHeader(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            GradientHeader(
               containerDecimalHeight: 0.30,
               child: Material(
                 color: Colors.transparent,
@@ -72,44 +72,12 @@ class EditScreenMobilePortrait extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          SliverPadding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-              sliver: SliverToBoxAdapter(
-                child: SafeArea(
-                  bottom: false,
-                  top: false,
-                  child: Column(
-                    children: [
-                      RoundedContainer(
-                        width: double.infinity,
-                        child: Column(
-                          children: [
-                            TextField(
-                              onEditingComplete: () => foucusNode.unfocus(),
-                              focusNode: foucusNode,
-                              keyboardType: TextInputType.name,
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                  border: InputBorder.none, hintText: hintText),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      NovaOneButton(
-                        onPressed: () => print(
-                          'Submit value to api and update in local store',
-                        ),
-                        title: 'Update',
-                      ),
-                    ],
-                  ),
-                ),
-              )),
-        ],
+            Container(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                height: 0.60 * MediaQuery.of(context).size.height,
+                child: UpdateWidget(hintText: hintText)),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:novaone/palette.dart';
+import 'package:novaone/constants.dart';
 
 class NovaOneButton extends StatelessWidget {
   final Function() onPressed;
@@ -22,8 +23,9 @@ class NovaOneButton extends StatelessWidget {
         ),
         child: Container(
           constraints: const BoxConstraints(
-              minWidth: 88.0,
-              minHeight: 50.0), // min sizes for Material buttons
+              minWidth: minButtonWidth,
+              minHeight: minButtonHeight,
+              maxWidth: maxButtonWidth), // min sizes for Material buttons
           alignment: Alignment.center,
           child: Text(
             title,
