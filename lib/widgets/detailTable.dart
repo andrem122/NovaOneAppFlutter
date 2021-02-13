@@ -39,6 +39,7 @@ class _DetailTableState extends State<DetailTable> {
               if (value == LeadDetailMenuOptions.Edit) {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => EditScreenLayout(
+                          updateWidget: detailTableItem.updateWidget,
                           title: detailTableItem.updateTitle,
                           description: detailTableItem.updateDescription,
                           hintText: detailTableItem.updateFieldHintText,

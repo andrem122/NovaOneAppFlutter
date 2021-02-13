@@ -27,37 +27,39 @@ class GreetingContainer extends StatelessWidget {
       child: SafeArea(
         top: false,
         bottom: false,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              constraints: BoxConstraints(maxWidth: 600),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  CircleAvatar(
-                    backgroundColor: Palette.secondaryColor,
-                    child: Text(
-                      'A',
-                      style: TextStyle(color: Colors.white),
+        child: Center(
+          child: Container(
+            constraints: BoxConstraints(maxWidth: 600),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundColor: Palette.secondaryColor,
+                      radius: 24,
+                      child: Text(
+                        user.firstName[0],
+                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      ),
                     ),
-                  ),
-                  WhiteButton(
-                    buttonText: 'Get Help',
-                  )
-                ],
-              ),
+                    WhiteButton(
+                      buttonText: 'Get Help',
+                    )
+                  ],
+                ),
+                const SizedBox(height: 40),
+                Text(
+                  greetingMessage,
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ),
+              ],
             ),
-            const SizedBox(height: 40),
-            Text(
-              greetingMessage,
-              style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-            ),
-          ],
+          ),
         ),
       ),
     );

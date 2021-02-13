@@ -42,7 +42,7 @@ class LeadDetailHeader extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.80,
                   constraints: BoxConstraints(minWidth: 280, maxWidth: 500),
-                  height: 140,
+                  height: 147,
                   padding: const EdgeInsets.all(defaultPadding),
                   child: Container(
                     child: Column(

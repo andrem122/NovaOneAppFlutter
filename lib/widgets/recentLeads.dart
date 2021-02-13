@@ -50,6 +50,7 @@ class RecentLeads extends StatelessWidget {
               ];
               final List<DetailTableItem> detailTableItems = [
                 DetailTableItem(
+                  updateWidget: UpdateWidgetType.TextField,
                   title: lead.name,
                   subtitle: 'Name',
                   iconData: Icons.person,
@@ -60,15 +61,18 @@ class RecentLeads extends StatelessWidget {
                   updateFieldHintText: 'Name',
                 ),
                 DetailTableItem(
+                  updateWidget: UpdateWidgetType.CalendarField,
                   title: lead.sentEmailDate,
                   subtitle: 'Email Sent',
                   iconData: Icons.send,
                   iconColor: Palette.appColors[1],
                   popupMenuOptions: popupMenuOptions,
                   updateTitle: 'Update Email',
-                  updateDescription: 'Update the email of the lead.',
+                  updateDescription:
+                      'Update the date the email was sent to the lead.',
                 ),
                 DetailTableItem(
+                  updateWidget: UpdateWidgetType.CalendarField,
                   title: lead.sentTextDate,
                   subtitle: 'Text Sent',
                   iconData: Icons.textsms_rounded,
@@ -79,6 +83,7 @@ class RecentLeads extends StatelessWidget {
                       'Update the date the text message was sent to the lead.',
                 ),
                 DetailTableItem(
+                  updateWidget: UpdateWidgetType.TextField,
                   title: lead.phoneNumber,
                   subtitle: 'Phone Number',
                   iconData: Icons.phone,
@@ -89,6 +94,7 @@ class RecentLeads extends StatelessWidget {
                   updateFieldHintText: 'Phone Number',
                 ),
                 DetailTableItem(
+                  updateWidget: UpdateWidgetType.TextField,
                   title: lead.email,
                   subtitle: 'Email',
                   iconData: Icons.email,
@@ -99,6 +105,7 @@ class RecentLeads extends StatelessWidget {
                   updateFieldHintText: 'Email',
                 ),
                 DetailTableItem(
+                  updateWidget: UpdateWidgetType.BinaryField,
                   title: lead.madeAppointment ? 'Yes' : 'No',
                   subtitle: 'Made Appointment',
                   iconData: Icons.calendar_today_rounded,
@@ -109,6 +116,7 @@ class RecentLeads extends StatelessWidget {
                       'Update the status of the appointment made.',
                 ),
                 DetailTableItem(
+                  updateWidget: UpdateWidgetType.TextField,
                   title: lead.companyName,
                   subtitle: 'Company Name',
                   iconData: Icons.business,

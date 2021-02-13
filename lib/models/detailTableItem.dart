@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:novaone/enums/enums.dart';
 import 'package:novaone/palette.dart';
 
 class DetailTableItem {
@@ -10,11 +11,13 @@ class DetailTableItem {
   final Color iconColor;
   final TextInputType keyboardType;
   final String updateFieldHintText;
+  final UpdateWidgetType updateWidget;
   final List<PopupMenuEntry> popupMenuOptions;
 
   DetailTableItem(
       {@required this.title,
       @required this.updateTitle,
+      @required this.updateWidget,
       this.keyboardType = TextInputType.text,
       this.updateFieldHintText = 'Update Value',
       @required this.updateDescription,
