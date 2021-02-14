@@ -111,9 +111,8 @@ class RecentLeads extends StatelessWidget {
                   iconData: Icons.calendar_today_rounded,
                   iconColor: Palette.appColors[3],
                   popupMenuOptions: popupMenuOptions,
-                  updateTitle: 'Update Appointment Status',
-                  updateDescription:
-                      'Update the status of the appointment made.',
+                  updateTitle: 'Update Status',
+                  updateDescription: 'Has the lead made an appointment?',
                 ),
                 DetailTableItem(
                   updateWidget: UpdateWidgetType.TextField,

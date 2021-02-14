@@ -87,12 +87,15 @@ class EditScreenMobilePortrait extends StatelessWidget {
                 ],
               ),
             ),
-            NovaOneButton(
-              margin: EdgeInsets.only(bottom: 20),
-              onPressed: () => print(
-                'Submit value to api and update in local store',
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: NovaOneButton(
+                margin: EdgeInsets.only(bottom: 20),
+                onPressed: () => print(
+                  'Submit value to api and update in local store',
+                ),
+                title: 'Update',
               ),
-              title: 'Update',
             ),
           ],
         ),

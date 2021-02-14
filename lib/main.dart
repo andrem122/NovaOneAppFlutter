@@ -14,6 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: NovaOneLocalizations.appName,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
