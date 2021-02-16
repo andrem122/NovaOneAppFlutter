@@ -5,13 +5,10 @@ import 'package:novaone/widgets/widgets.dart';
 class LeadDetailMobilePortrait extends StatelessWidget {
   final Lead lead;
   final Color leadColor;
-  final List<DetailTableItem> detailTableItems;
+  final List<NovaOneTableItem> tableItems;
 
   const LeadDetailMobilePortrait(
-      {Key key,
-      this.lead,
-      @required this.leadColor,
-      @required this.detailTableItems})
+      {Key key, this.lead, @required this.leadColor, @required this.tableItems})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -44,8 +41,8 @@ class LeadDetailMobilePortrait extends StatelessWidget {
                 child: SafeArea(
                   bottom: false,
                   top: false,
-                  child: DetailTable(
-                    detailTableItems: detailTableItems,
+                  child: NovaOneTable(
+                    tableItems: tableItems,
                   ),
                 ),
               )),

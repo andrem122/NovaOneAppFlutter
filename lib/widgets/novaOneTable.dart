@@ -4,30 +4,31 @@ import 'package:novaone/models/models.dart';
 import 'package:novaone/screens/screens.dart';
 import '../constants.dart';
 
-class DetailTable extends StatefulWidget {
-  final List<DetailTableItem> detailTableItems;
+class NovaOneTable extends StatefulWidget {
+  final List<NovaOneTableItem> tableItems;
 
-  const DetailTable({Key key, this.detailTableItems}) : super(key: key);
+  const NovaOneTable({Key key, @required this.tableItems})
+      : assert(tableItems != null),
+        super(key: key);
 
   @override
-  _DetailTableState createState() => _DetailTableState();
+  _NovaOneTableState createState() => _NovaOneTableState();
 }
 
-class _DetailTableState extends State<DetailTable> {
+class _NovaOneTableState extends State<NovaOneTable> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
-        itemCount: widget.detailTableItems.length,
+        itemCount: widget.tableItems.length,
         itemBuilder: (BuildContext context, int index) {
           // Make sure to add no bottom border for the last item in the list
           final bool isLastItem =
-              index == widget.detailTableItems.length - 1 ? true : false;
+              index == widget.tableItems.length - 1 ? true : false;
           final bool isFirstItem = index == 0 ? true : false;
-          final DetailTableItem detailTableItem =
-              widget.detailTableItems[index];
+          final NovaOneTableItem detailTableItem = widget.tableItems[index];
 
           return _DetailTableItem(
             detailTableItem: detailTableItem,
@@ -54,7 +55,7 @@ class _DetailTableState extends State<DetailTable> {
 }
 
 class _DetailTableItem extends StatelessWidget {
-  final DetailTableItem detailTableItem;
+  final NovaOneTableItem detailTableItem;
   final bool isLastItem;
   final bool isFirstItem;
   final List<PopupMenuEntry> popupMenuOptions;

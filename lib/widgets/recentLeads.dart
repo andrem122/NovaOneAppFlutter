@@ -48,8 +48,8 @@ class RecentLeads extends StatelessWidget {
                   child: Text('Copy'),
                 ),
               ];
-              final List<DetailTableItem> detailTableItems = [
-                DetailTableItem(
+              final List<NovaOneTableItem> tableItems = [
+                NovaOneTableItem(
                   updateWidget: UpdateWidgetType.TextField,
                   title: lead.name,
                   subtitle: 'Name',
@@ -60,7 +60,7 @@ class RecentLeads extends StatelessWidget {
                   updateDescription: 'Update the name of the lead.',
                   updateFieldHintText: 'Name',
                 ),
-                DetailTableItem(
+                NovaOneTableItem(
                   updateWidget: UpdateWidgetType.CalendarField,
                   title: lead.sentEmailDate,
                   subtitle: 'Email Sent',
@@ -71,7 +71,7 @@ class RecentLeads extends StatelessWidget {
                   updateDescription:
                       'Update the date the email was sent to the lead.',
                 ),
-                DetailTableItem(
+                NovaOneTableItem(
                   updateWidget: UpdateWidgetType.CalendarField,
                   title: lead.sentTextDate,
                   subtitle: 'Text Sent',
@@ -82,7 +82,7 @@ class RecentLeads extends StatelessWidget {
                   updateDescription:
                       'Update the date the text message was sent to the lead.',
                 ),
-                DetailTableItem(
+                NovaOneTableItem(
                   updateWidget: UpdateWidgetType.TextField,
                   title: lead.phoneNumber,
                   subtitle: 'Phone Number',
@@ -93,7 +93,7 @@ class RecentLeads extends StatelessWidget {
                   updateDescription: 'Update the phone number of the lead.',
                   updateFieldHintText: 'Phone Number',
                 ),
-                DetailTableItem(
+                NovaOneTableItem(
                   updateWidget: UpdateWidgetType.TextField,
                   title: lead.email,
                   subtitle: 'Email',
@@ -104,7 +104,7 @@ class RecentLeads extends StatelessWidget {
                   updateDescription: 'Update the email of the lead.',
                   updateFieldHintText: 'Email',
                 ),
-                DetailTableItem(
+                NovaOneTableItem(
                   updateWidget: UpdateWidgetType.BinaryField,
                   title: lead.madeAppointment ? 'Yes' : 'No',
                   subtitle: 'Made Appointment',
@@ -114,7 +114,7 @@ class RecentLeads extends StatelessWidget {
                   updateTitle: 'Update Status',
                   updateDescription: 'Has the lead made an appointment?',
                 ),
-                DetailTableItem(
+                NovaOneTableItem(
                   updateWidget: UpdateWidgetType.TextField,
                   title: lead.companyName,
                   subtitle: 'Company Name',
@@ -129,7 +129,7 @@ class RecentLeads extends StatelessWidget {
               return LeadDetailLayout(
                 lead: leads[index],
                 leadColor: leadColor,
-                detailTableItems: detailTableItems,
+                detailTableItems: tableItems,
               );
             })),
           );

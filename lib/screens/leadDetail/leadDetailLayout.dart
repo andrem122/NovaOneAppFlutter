@@ -6,7 +6,7 @@ import 'package:novaone/screens/screens.dart';
 class LeadDetailLayout extends StatelessWidget {
   final Lead lead;
   final Color leadColor;
-  final List<DetailTableItem> detailTableItems;
+  final List<NovaOneTableItem> detailTableItems;
 
   const LeadDetailLayout(
       {Key key,
@@ -20,9 +20,7 @@ class LeadDetailLayout extends StatelessWidget {
       body: ScreenTypeLayout(
         mobile: OrientationLayout(
           portrait: LeadDetailMobilePortrait(
-              lead: lead,
-              leadColor: leadColor,
-              detailTableItems: detailTableItems),
+              lead: lead, leadColor: leadColor, tableItems: detailTableItems),
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:novaone/enums/enums.dart';
 import 'package:novaone/palette.dart';
 
-class DetailTableItem {
+class NovaOneTableItem {
   final String title;
   final String updateTitle;
   final String updateDescription;
@@ -14,7 +14,7 @@ class DetailTableItem {
   final UpdateWidgetType updateWidget;
   final List<PopupMenuEntry> popupMenuOptions;
 
-  DetailTableItem(
+  NovaOneTableItem(
       {@required this.title,
       @required this.updateTitle,
       @required this.updateWidget,

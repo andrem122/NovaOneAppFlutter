@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:novaone/palette.dart';
+import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/circleButton.dart';
 
 import '../constants.dart';
@@ -14,7 +15,12 @@ class InfoCardsMobile extends StatelessWidget {
         _InfoCardMobile(
           onAdd: () => print('Go to add leads screen'),
           iconData: Icons.people,
-          onTap: () => print('Go to leads screen'),
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (BuildContext context) {
+            return NovaOneListObjectsLayout(
+              tableItems: [],
+            );
+          })),
           number: 100000,
           title: 'Leads',
           marginBottom: 5,
