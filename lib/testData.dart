@@ -1,6 +1,7 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
+import 'enums/enums.dart';
 import 'models/models.dart';
 
 final User currentUser = User(
@@ -153,4 +154,66 @@ final List<Appointment> recentAppointments = [
       timeZone: 'United_States/America',
       confirmed: false,
       companyId: 1),
+];
+
+final List<PopupMenuEntry> listPopupMenuOptions = [
+  PopupMenuItem(
+    value: ListTableItemMenuOptions.Call,
+    child: Text('Call'),
+  ),
+  PopupMenuItem(
+    value: ListTableItemMenuOptions.Text,
+    child: Text('Text'),
+  ),
+  PopupMenuItem(
+    value: ListTableItemMenuOptions.Email,
+    child: Text('Email'),
+  ),
+];
+
+final List<NovaOneListTableItemData> allAppointments = [
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
 ];

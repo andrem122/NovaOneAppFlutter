@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/widgets/widgets.dart';
 
 class LeadDetailMobilePortrait extends StatelessWidget {
   final Lead lead;
   final Color leadColor;
-  final List<NovaOneTableItem> tableItems;
+  final List<NovaOneDetailTableItemData> tableItems;
 
   const LeadDetailMobilePortrait(
       {Key key, this.lead, @required this.leadColor, @required this.tableItems})
@@ -43,6 +44,7 @@ class LeadDetailMobilePortrait extends StatelessWidget {
                   top: false,
                   child: NovaOneTable(
                     tableItems: tableItems,
+                    tableType: NovaOneTableTypes.DetailTable,
                   ),
                 ),
               )),

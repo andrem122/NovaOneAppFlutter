@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/widgets.dart';
 
+import '../../testData.dart';
+
 class NavScreen extends StatefulWidget {
   @override
   _NavScreenState createState() => _NavScreenState();
@@ -10,7 +12,9 @@ class NavScreen extends StatefulWidget {
 class _NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [
     HomeScreenLayout(),
-    Scaffold(),
+    NovaOneListObjectsLayout(
+      tableItems: allAppointments,
+    ),
     Scaffold(),
     Scaffold(),
     Scaffold(),

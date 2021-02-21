@@ -4,7 +4,7 @@ import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/screens.dart';
 
 class NovaOneListObjectsLayout extends StatelessWidget {
-  final List<NovaOneTableItem> tableItems;
+  final List<NovaOneListTableItemData> tableItems;
 
   const NovaOneListObjectsLayout({Key key, @required this.tableItems})
       : assert(tableItems != null),
