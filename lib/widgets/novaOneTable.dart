@@ -26,65 +26,68 @@ class NovaOneTable extends StatefulWidget {
 class _NovaOneTableState extends State<NovaOneTable> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: widget.scrollable == false
-            ? NeverScrollableScrollPhysics()
-            : AlwaysScrollableScrollPhysics(),
-        padding: EdgeInsets.zero,
-        itemCount: widget.tableItems.length,
-        itemBuilder: (BuildContext context, int index) {
-          // Make sure to add no bottom border for the last item in the list
-          final bool isLastItem =
-              index == widget.tableItems.length - 1 ? true : false;
-          final bool isFirstItem = index == 0 ? true : false;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(containerBorderRadius),
+      child: ListView.builder(
+          shrinkWrap: true,
+          physics: widget.scrollable == false
+              ? NeverScrollableScrollPhysics()
+              : AlwaysScrollableScrollPhysics(),
+          padding: EdgeInsets.zero,
+          itemCount: widget.tableItems.length,
+          itemBuilder: (BuildContext context, int index) {
+            // Make sure to add no bottom border for the last item in the list
+            final bool isLastItem =
+                index == widget.tableItems.length - 1 ? true : false;
+            final bool isFirstItem = index == 0 ? true : false;
 
-          Widget tableItemWidget = Container();
-          switch (widget.tableType) {
-            case NovaOneTableTypes.DetailTable:
-              final NovaOneDetailTableItemData tableItem =
-                  widget.tableItems[index];
+            Widget tableItemWidget = Container();
+            switch (widget.tableType) {
+              case NovaOneTableTypes.DetailTable:
+                final NovaOneDetailTableItemData tableItem =
+                    widget.tableItems[index];
 
-              tableItemWidget = _NovaOneDetailTableItem(
-                detailTableItem: tableItem,
-                isLastItem: isLastItem,
-                isFirstItem: isFirstItem,
-                popupMenuOptions: tableItem.popupMenuOptions,
-                onTap: () => print('Test'),
-                onPopupMenuItemSelected: (leadDetailMenuOptions) {
-                  if (leadDetailMenuOptions == LeadDetailMenuOptions.Edit) {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => EditScreenLayout(
-                              updateWidget: tableItem.updateWidget,
-                              title: tableItem.updateTitle,
-                              description: tableItem.updateDescription,
-                              hintText: tableItem.updateFieldHintText,
-                            )));
-                  } else {
-                    print('Copying text from cell');
-                  }
-                },
-              );
-              break;
-            case NovaOneTableTypes.ListTable:
-              final NovaOneListTableItemData tableItem =
-                  widget.tableItems[index];
+                tableItemWidget = _NovaOneDetailTableItem(
+                  detailTableItem: tableItem,
+                  isLastItem: isLastItem,
+                  isFirstItem: isFirstItem,
+                  popupMenuOptions: tableItem.popupMenuOptions,
+                  onTap: () => print('Test'),
+                  onPopupMenuItemSelected: (leadDetailMenuOptions) {
+                    if (leadDetailMenuOptions == LeadDetailMenuOptions.Edit) {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => EditScreenLayout(
+                                updateWidget: tableItem.updateWidget,
+                                title: tableItem.updateTitle,
+                                description: tableItem.updateDescription,
+                                hintText: tableItem.updateFieldHintText,
+                              )));
+                    } else {
+                      print('Copying text from cell');
+                    }
+                  },
+                );
+                break;
+              case NovaOneTableTypes.ListTable:
+                final NovaOneListTableItemData tableItem =
+                    widget.tableItems[index];
 
-              tableItemWidget = _NovaOneListTableItem(
-                isFirstItem: isFirstItem,
-                isLastItem: isLastItem,
-                listTableItem: tableItem,
-                onTap: () {},
-                onPopupMenuItemSelected: (listTableItemMenuOptions) {
-                  if (listTableItemMenuOptions ==
-                      ListTableItemMenuOptions.Call) {}
-                },
-              );
-              break;
-          }
+                tableItemWidget = _NovaOneListTableItem(
+                  isFirstItem: isFirstItem,
+                  isLastItem: isLastItem,
+                  listTableItem: tableItem,
+                  onTap: () {},
+                  onPopupMenuItemSelected: (listTableItemMenuOptions) {
+                    if (listTableItemMenuOptions ==
+                        ListTableItemMenuOptions.Call) {}
+                  },
+                );
+                break;
+            }
 
-          return tableItemWidget;
-        });
+            return tableItemWidget;
+          }),
+    );
   }
 }
 
@@ -244,7 +247,7 @@ class _NovaOneListTableItem extends StatelessWidget {
         onTap: onTap,
         child: Container(
           height: 80,
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(defaultPadding),
           decoration: BoxDecoration(
             border: Border(
               bottom: isLastItem == false

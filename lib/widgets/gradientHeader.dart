@@ -5,11 +5,13 @@ import 'package:novaone/palette.dart';
 class GradientHeader extends StatelessWidget {
   final double containerDecimalHeight;
   final Widget child;
+  final Alignment alignment;
 
   const GradientHeader(
       {Key key,
       this.containerDecimalHeight = 0.30,
-      this.child = const SizedBox.shrink()})
+      this.child = const SizedBox.shrink(),
+      this.alignment})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class GradientHeader extends StatelessWidget {
       height: MediaQuery.of(context).size.height *
           containerDecimalHeight, // 30% percent height of the device by default
       width: double.infinity,
-      alignment: Alignment.topLeft,
+      alignment: alignment,
       child: child,
     );
   }

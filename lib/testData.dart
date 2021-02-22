@@ -217,3 +217,50 @@ final List<NovaOneListTableItemData> allAppointments = [
       subtitle: 'Dec 25',
       title: 'John Berry'),
 ];
+
+final List<NovaOneListTableItemData> allLeads = [
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+  NovaOneListTableItemData(
+      popupMenuOptions: listPopupMenuOptions,
+      subtitle: 'Dec 25',
+      title: 'John Berry'),
+];
