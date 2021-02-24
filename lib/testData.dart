@@ -169,6 +169,10 @@ final List<PopupMenuEntry> listPopupMenuOptions = [
     value: ListTableItemMenuOptions.Email,
     child: Text('Email'),
   ),
+  PopupMenuItem(
+    value: ListTableItemMenuOptions.View,
+    child: Text('View'),
+  ),
 ];
 
 final List<NovaOneListTableItemData> allAppointments = [

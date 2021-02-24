@@ -14,6 +14,7 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () => print('Add Appointment'),
@@ -22,11 +23,11 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
         ),
         body: Column(children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.25,
+            height: size.width > 320 ? size.height * 0.25 : size.height * 0.26,
             child: Stack(
               children: [
                 GradientHeader(
-                  containerDecimalHeight: 0.20,
+                  containerDecimalHeight: size.width > 320 ? 0.20 : 0.17,
                   child: SafeArea(
                       child: Center(
                           child: Text(
@@ -69,7 +70,7 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
-                  defaultPadding, 75, defaultPadding, 5),
+                  defaultPadding, 40, defaultPadding, 5),
               child: NovaOneTable(
                 tableItems: tableItems,
                 tableType: NovaOneTableTypes.ListTable,

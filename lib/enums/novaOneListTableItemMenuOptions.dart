@@ -5,4 +5,5 @@ enum ListTableItemMenuOptions {
   Call,
   Text,
   Email,
+  View,
 }
