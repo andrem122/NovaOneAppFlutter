@@ -12,3 +12,6 @@ export 'roundedContainer.dart';
 export 'novaOneButton.dart';
 export 'updateWidgets.dart';
 export 'maxWidthContainer.dart';
+export 'novaOneTextInput.dart';
+export 'novaOneBinaryInput.dart';
+export 'inputWidget.dart';

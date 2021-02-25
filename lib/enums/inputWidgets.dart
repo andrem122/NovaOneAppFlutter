@@ -2,9 +2,9 @@
 /// Can be a calendar (date and time updates), text field (phone number, name, etc updates)
 /// and a yes or no choice
 
-enum InputWidget {
-  TextField,
-  CalendarField,
-  BinaryField,
-  ListField,
+enum InputWidgetType {
+  TextInput,
+  CalendarInput,
+  BinaryInput,
+  ListInput,
 }
