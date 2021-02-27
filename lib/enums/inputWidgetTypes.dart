@@ -4,6 +4,7 @@
 
 enum InputWidgetType {
   TextInput,
+  EmailInput,
   CalendarInput,
   BinaryInput,
   ListInput,

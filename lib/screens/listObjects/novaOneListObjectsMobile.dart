@@ -3,6 +3,7 @@ import 'package:novaone/constants.dart';
 import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/palette.dart';
+import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/widgets.dart';
 
 class NovaOneListObjectsMobilePortrait extends StatelessWidget {
@@ -17,7 +18,18 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () => print('Add Appointment'),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (BuildContext context) {
+              return InputLayout(
+                description:
+                    'Add the name of the person you have an appointment with.',
+                inputWidgetType: InputWidgetType.TextInput,
+                hintText: 'Full Name',
+                title: 'Full Name',
+              );
+            }));
+          },
           child: Icon(Icons.add),
           backgroundColor: Palette.primaryColor,
         ),

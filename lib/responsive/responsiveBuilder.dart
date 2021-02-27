@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:novaone/responsive/responsive.dart';
-import 'package:novaone/utils/uiUtils.dart';
+import 'package:novaone/utils/utils.dart';
 
 class ResponsiveBuilder extends StatelessWidget {
   final Widget Function(

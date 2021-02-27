@@ -7,23 +7,29 @@ class InputLayout extends StatelessWidget {
   final String title;
   final String description;
   final String hintText;
-  final InputWidget inputWidget;
+  final InputWidgetType inputWidgetType;
 
   const InputLayout({
     Key key,
     @required this.title,
     @required this.description,
-    this.hintText,
-    @required this.inputWidget,
+    @required this.hintText,
+    @required this.inputWidgetType,
   })  : assert(title != null),
         assert(description != null),
+        assert(hintText != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
         mobile: OrientationLayout(
-      portrait: InputMobilePortrait(),
+      portrait: InputMobilePortrait(
+        inputWidgetType: inputWidgetType,
+        description: description,
+        title: title,
+        hintText: hintText,
+      ),
     ));
   }
 }

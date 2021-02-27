@@ -1,98 +1,112 @@
 import 'package:flutter/material.dart';
+import 'package:novaone/enums/enums.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/widgets/widgets.dart';
+import 'package:novaone/utils/utils.dart';
 
 class NovaOneBinaryInput extends StatelessWidget {
   final Function() onPressedYes;
   final Function() onPressedNo;
-  List<Widget> mobileChildren;
-  List<Widget> tabletChildren;
-  List<Widget> desktopChildren;
 
   NovaOneBinaryInput(
       {Key key, @required this.onPressedYes, @required this.onPressedNo})
       : assert(onPressedYes != null),
         assert(onPressedNo != null),
-        super(key: key) {
-    mobileChildren = [
-      NovaOneButton(
-        color: Palette.primaryColor,
-        width: 200,
-        onPressed: onPressedYes,
-        title: 'Yes',
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      NovaOneButton(
-        color: Palette.secondaryColor,
-        width: 200,
-        onPressed: onPressedNo,
-        title: 'No',
-      ),
-    ];
+        super(key: key);
 
-    tabletChildren = [
-      NovaOneButton(
-        color: Palette.primaryColor,
-        width: 250,
-        onPressed: onPressedYes,
-        title: 'Yes',
-      ),
-      const SizedBox(
-        width: 60,
-      ),
-      NovaOneButton(
-        color: Palette.secondaryColor,
-        width: 250,
-        onPressed: onPressedNo,
-        title: 'No',
-      ),
-    ];
+  /// Returns the appropriate list of children based on the type of the device
+  List<Widget> _getChildren({@required DeviceScreenType deviceScreenType}) {
+    List<Widget> children = [];
+    switch (deviceScreenType) {
+      case DeviceScreenType.Mobile:
+        children = [
+          NovaOneButton(
+            color: Palette.primaryColor,
+            width: 200,
+            onPressed: onPressedYes,
+            title: 'Yes',
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          NovaOneButton(
+            color: Palette.secondaryColor,
+            width: 200,
+            onPressed: onPressedNo,
+            title: 'No',
+          ),
+        ];
+        break;
+      case DeviceScreenType.Tablet:
+        children = [
+          NovaOneButton(
+            color: Palette.primaryColor,
+            width: 250,
+            onPressed: onPressedYes,
+            title: 'Yes',
+          ),
+          const SizedBox(
+            width: 60,
+          ),
+          NovaOneButton(
+            color: Palette.secondaryColor,
+            width: 250,
+            onPressed: onPressedNo,
+            title: 'No',
+          ),
+        ];
+        break;
+      case DeviceScreenType.Desktop:
+        children = [
+          NovaOneButton(
+            color: Palette.primaryColor,
+            width: 250,
+            onPressed: onPressedYes,
+            title: 'Yes',
+          ),
+          const SizedBox(
+            width: 60,
+          ),
+          NovaOneButton(
+            color: Palette.secondaryColor,
+            width: 250,
+            onPressed: onPressedNo,
+            title: 'No',
+          ),
+        ];
+        break;
+    }
 
-    desktopChildren = [
-      NovaOneButton(
-        color: Palette.primaryColor,
-        width: 250,
-        onPressed: onPressedYes,
-        title: 'Yes',
-      ),
-      const SizedBox(
-        width: 60,
-      ),
-      NovaOneButton(
-        color: Palette.secondaryColor,
-        width: 250,
-        onPressed: onPressedNo,
-        title: 'No',
-      ),
-    ];
+    return children;
   }
 
   @override
   Widget build(BuildContext context) {
+    DeviceScreenType deviceScreenType =
+        getDeviceScreenType(mediaQueryData: MediaQuery.of(context));
+
     return ScreenTypeLayout(
       mobile: OrientationLayout(
         portrait: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: mobileChildren,
+          children: _getChildren(deviceScreenType: deviceScreenType),
         ),
         landscape: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: mobileChildren,
+          children: _getChildren(deviceScreenType: deviceScreenType),
         ),
       ),
       tablet: MaxWidthContainer(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: tabletChildren,
+          children: _getChildren(deviceScreenType: deviceScreenType),
         ),
       ),
       desktop: MaxWidthContainer(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: desktopChildren,
+          children: _getChildren(deviceScreenType: deviceScreenType),
         ),
       ),
     );

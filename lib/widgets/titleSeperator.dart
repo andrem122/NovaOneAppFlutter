@@ -4,12 +4,14 @@ class TitleSeperator extends StatelessWidget {
   final String title;
   final String subtitle;
   final bool showSubtitle;
+  final bool centerTitle;
 
   const TitleSeperator(
       {Key key,
       @required this.title,
       @required this.subtitle,
-      this.showSubtitle = false})
+      this.showSubtitle = false,
+      this.centerTitle = false})
       : super(key: key);
 
   @override
@@ -21,6 +23,9 @@ class TitleSeperator extends StatelessWidget {
           Expanded(
             child: Text(
               title,
+              textAlign: showSubtitle == false && centerTitle == true
+                  ? TextAlign.center
+                  : null,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
