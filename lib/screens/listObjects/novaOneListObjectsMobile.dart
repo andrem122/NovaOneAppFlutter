@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:novaone/constants.dart';
 import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
+import 'package:novaone/pageRoutes/pageRoute.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/widgets.dart';
@@ -19,16 +21,15 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (BuildContext context) {
-              return InputLayout(
-                description:
-                    'Add the name of the person you have an appointment with.',
-                inputWidgetType: InputWidgetType.TextInput,
-                hintText: 'Full Name',
-                title: 'Full Name',
-              );
-            }));
+            Navigator.of(context).push(SlideUpRoute(
+                page: InputLayout(
+              description:
+                  'Add the name of the person you have an appointment with.',
+              inputWidgetType: InputWidgetType.TextInput,
+              hintText: 'Full Name',
+              title: 'Full Name',
+              backIcon: Icons.close,
+            )));
           },
           child: Icon(Icons.add),
           backgroundColor: Palette.primaryColor,

@@ -5,6 +5,7 @@ import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/leadDetail/leadDetailLayout.dart';
+import 'package:novaone/widgets/widgets.dart';
 import '../constants.dart';
 
 class RecentLeads extends StatelessWidget {
@@ -50,7 +51,7 @@ class RecentLeads extends StatelessWidget {
               ];
               final List<NovaOneDetailTableItemData> tableItems = [
                 NovaOneDetailTableItemData(
-                  updateWidget: UpdateWidgetType.TextField,
+                  inputWidget: InputWidgetType.TextInput,
                   title: lead.name,
                   subtitle: 'Name',
                   iconData: Icons.person,
@@ -61,7 +62,7 @@ class RecentLeads extends StatelessWidget {
                   updateFieldHintText: 'Name',
                 ),
                 NovaOneDetailTableItemData(
-                  updateWidget: UpdateWidgetType.CalendarField,
+                  inputWidget: InputWidgetType.CalendarInput,
                   title: lead.sentEmailDate,
                   subtitle: 'Email Sent',
                   iconData: Icons.send,
@@ -72,7 +73,7 @@ class RecentLeads extends StatelessWidget {
                       'Update the date the email was sent to the lead.',
                 ),
                 NovaOneDetailTableItemData(
-                  updateWidget: UpdateWidgetType.CalendarField,
+                  inputWidget: InputWidgetType.CalendarInput,
                   title: lead.sentTextDate,
                   subtitle: 'Text Sent',
                   iconData: Icons.textsms_rounded,
@@ -83,7 +84,7 @@ class RecentLeads extends StatelessWidget {
                       'Update the date the text message was sent to the lead.',
                 ),
                 NovaOneDetailTableItemData(
-                  updateWidget: UpdateWidgetType.TextField,
+                  inputWidget: InputWidgetType.TextInput,
                   title: lead.phoneNumber,
                   subtitle: 'Phone Number',
                   iconData: Icons.phone,
@@ -94,7 +95,7 @@ class RecentLeads extends StatelessWidget {
                   updateFieldHintText: 'Phone Number',
                 ),
                 NovaOneDetailTableItemData(
-                  updateWidget: UpdateWidgetType.TextField,
+                  inputWidget: InputWidgetType.EmailInput,
                   title: lead.email,
                   subtitle: 'Email',
                   iconData: Icons.email,
@@ -105,7 +106,7 @@ class RecentLeads extends StatelessWidget {
                   updateFieldHintText: 'Email',
                 ),
                 NovaOneDetailTableItemData(
-                  updateWidget: UpdateWidgetType.BinaryField,
+                  inputWidget: InputWidgetType.BinaryInput,
                   title: lead.madeAppointment ? 'Yes' : 'No',
                   subtitle: 'Made Appointment',
                   iconData: Icons.calendar_today_rounded,
@@ -115,7 +116,7 @@ class RecentLeads extends StatelessWidget {
                   updateDescription: 'Has the lead made an appointment?',
                 ),
                 NovaOneDetailTableItemData(
-                  updateWidget: UpdateWidgetType.TextField,
+                  inputWidget: InputWidgetType.TextInput,
                   title: lead.companyName,
                   subtitle: 'Company Name',
                   iconData: Icons.business,

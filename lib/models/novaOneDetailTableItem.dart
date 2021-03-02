@@ -12,13 +12,13 @@ class NovaOneDetailTableItemData extends NovaOneTableItemData {
   final Color iconColor;
   final TextInputType keyboardType;
   final String updateFieldHintText;
-  final UpdateWidgetType updateWidget;
+  final InputWidgetType inputWidget;
   final List<PopupMenuEntry> popupMenuOptions;
 
   const NovaOneDetailTableItemData(
       {@required this.title,
       @required this.updateTitle,
-      @required this.updateWidget,
+      @required this.inputWidget,
       this.keyboardType = TextInputType.text,
       this.updateFieldHintText = 'Update Value',
       @required this.updateDescription,
@@ -32,5 +32,6 @@ class NovaOneDetailTableItemData extends NovaOneTableItemData {
         assert(popupMenuOptions != null),
         assert(subtitle != null),
         assert(iconData != null),
+        assert(inputWidget != null),
         super(title: title, subtitle: subtitle);
 }

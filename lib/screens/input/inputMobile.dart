@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:novaone/constants.dart';
 import 'package:novaone/enums/enums.dart';
 import 'package:novaone/widgets/widgets.dart';
 
@@ -7,13 +8,15 @@ class InputMobilePortrait extends StatelessWidget {
   final String description;
   final String hintText;
   final InputWidgetType inputWidgetType;
+  final IconData backIcon;
 
   const InputMobilePortrait(
       {Key key,
       @required this.title,
       @required this.description,
       @required this.hintText,
-      @required this.inputWidgetType})
+      @required this.inputWidgetType,
+      this.backIcon = Icons.arrow_back_sharp})
       : assert(title != null),
         assert(description != null),
         assert(hintText != null),
@@ -42,8 +45,9 @@ class InputMobilePortrait extends StatelessWidget {
                                 vertical: 10, horizontal: 10),
                             onPressed: () => Navigator.of(context).pop(),
                             icon: Icon(
-                              Icons.arrow_back_sharp,
+                              backIcon,
                               color: Colors.white,
+                              size: backButtonSize,
                             ),
                           ),
                           Expanded(

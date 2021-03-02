@@ -8,6 +8,7 @@ class InputLayout extends StatelessWidget {
   final String description;
   final String hintText;
   final InputWidgetType inputWidgetType;
+  final IconData backIcon;
 
   const InputLayout({
     Key key,
@@ -15,6 +16,7 @@ class InputLayout extends StatelessWidget {
     @required this.description,
     @required this.hintText,
     @required this.inputWidgetType,
+    this.backIcon = Icons.arrow_back_sharp,
   })  : assert(title != null),
         assert(description != null),
         assert(hintText != null),
@@ -29,6 +31,7 @@ class InputLayout extends StatelessWidget {
         description: description,
         title: title,
         hintText: hintText,
+        backIcon: backIcon,
       ),
     ));
   }

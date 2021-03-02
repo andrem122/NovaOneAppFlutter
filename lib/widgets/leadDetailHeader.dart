@@ -29,6 +29,7 @@ class LeadDetailHeader extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back_sharp,
               color: Colors.white,
+              size: backButtonSize,
             ),
           ),
           containerDecimalHeight: 0.25,

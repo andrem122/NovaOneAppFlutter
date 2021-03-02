@@ -3,6 +3,7 @@ import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/screens.dart';
+import 'package:novaone/widgets/widgets.dart';
 import '../constants.dart';
 
 class NovaOneTable extends StatefulWidget {
@@ -56,11 +57,11 @@ class _NovaOneTableState extends State<NovaOneTable> {
                   onPopupMenuItemSelected: (leadDetailMenuOptions) {
                     if (leadDetailMenuOptions == LeadDetailMenuOptions.Edit) {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => EditScreenLayout(
-                                updateWidget: tableItem.updateWidget,
-                                title: tableItem.updateTitle,
+                          builder: (_) => InputLayout(
                                 description: tableItem.updateDescription,
+                                title: tableItem.updateTitle,
                                 hintText: tableItem.updateFieldHintText,
+                                inputWidgetType: tableItem.inputWidget,
                               )));
                     } else {
                       print('Copying text from cell');
