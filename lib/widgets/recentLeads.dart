@@ -5,7 +5,6 @@ import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/leadDetail/leadDetailLayout.dart';
-import 'package:novaone/widgets/widgets.dart';
 import '../constants.dart';
 
 class RecentLeads extends StatelessWidget {
