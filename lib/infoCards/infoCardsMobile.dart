@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/screens.dart';
+import 'package:novaone/testData.dart';
 import 'package:novaone/widgets/circleButton.dart';
 
 import '../constants.dart';
@@ -18,7 +19,11 @@ class InfoCardsMobile extends StatelessWidget {
           onTap: () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (BuildContext context) {
             return NovaOneListObjectsLayout(
-              tableItems: [],
+              tableItems: allLeads,
+              addListObjectDescription: 'Add the name of the lead.',
+              title: 'All Leads',
+              heroTag: 'add_lead',
+              showBackButton: true,
             );
           })),
           number: 100000,
@@ -28,7 +33,14 @@ class InfoCardsMobile extends StatelessWidget {
         ),
         _InfoCardMobile(
           onAdd: () => print('Go to add appointments screen'),
-          onTap: () => print('Go to appointments screen'),
+          onTap: () => NovaOneListObjectsLayout(
+            tableItems: allAppointments,
+            addListObjectDescription:
+                'Add the name of the person you have an appointment with.',
+            title: 'All Appointments',
+            heroTag: 'add_appointment',
+            showBackButton: true,
+          ),
           iconData: Icons.perm_contact_calendar,
           number: 200,
           title: 'Appointments',

@@ -10,9 +10,22 @@ import 'package:novaone/widgets/widgets.dart';
 
 class NovaOneListObjectsMobilePortrait extends StatelessWidget {
   final List<NovaOneListTableItemData> tableItems;
+  final String title;
+  final String addListObjectDescription;
+  final String heroTag;
+  final bool showBackButton;
 
-  const NovaOneListObjectsMobilePortrait({Key key, this.tableItems})
+  const NovaOneListObjectsMobilePortrait(
+      {Key key,
+      this.tableItems,
+      @required this.title,
+      @required this.addListObjectDescription,
+      @required this.heroTag,
+      this.showBackButton = false})
       : assert(tableItems != null),
+        assert(title != null),
+        assert(addListObjectDescription != null),
+        assert(heroTag != null),
         super(key: key);
 
   @override
@@ -20,11 +33,11 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         floatingActionButton: FloatingActionButton(
+          heroTag: heroTag,
           onPressed: () {
             Navigator.of(context).push(SlideUpRoute(
                 page: InputLayout(
-              description:
-                  'Add the name of the person you have an appointment with.',
+              description: addListObjectDescription,
               inputWidgetType: InputWidgetType.TextInput,
               hintText: 'Full Name',
               title: 'Full Name',
@@ -34,7 +47,7 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
           child: Icon(Icons.add),
           backgroundColor: Palette.primaryColor,
         ),
-        body: Column(children: [
+        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
             height: size.width > 320 ? size.height * 0.25 : size.height * 0.26,
             child: Stack(
@@ -44,13 +57,31 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
                   child: SafeArea(
                       child: Center(
                           child: Text(
-                    'Appointments',
+                    title,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ))),
                 ),
+                showBackButton
+                    ? Positioned(
+                        top: 0,
+                        left: 0,
+                        child: SafeArea(
+                          child: IconButton(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                            onPressed: () => Navigator.of(context).pop(),
+                            icon: Icon(
+                              Icons.arrow_back_sharp,
+                              color: Colors.white,
+                              size: backButtonSize,
+                            ),
+                          ),
+                        ),
+                      )
+                    : SizedBox.shrink(),
                 Positioned(
                   bottom: 0,
                   left: 0,

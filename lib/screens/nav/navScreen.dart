@@ -14,8 +14,17 @@ class _NavScreenState extends State<NavScreen> {
     HomeScreenLayout(),
     NovaOneListObjectsLayout(
       tableItems: allAppointments,
+      addListObjectDescription:
+          'Add the name of the person you have an appointment with.',
+      title: 'All Appointments',
+      heroTag: 'add_appointment',
     ),
-    Scaffold(),
+    NovaOneListObjectsLayout(
+      tableItems: allLeads,
+      addListObjectDescription: 'Add the name of the lead.',
+      title: 'All Leads',
+      heroTag: 'add_lead',
+    ),
     Scaffold(),
     Scaffold(),
   ];
