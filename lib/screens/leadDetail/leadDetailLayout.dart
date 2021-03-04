@@ -16,13 +16,10 @@ class LeadDetailLayout extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ScreenTypeLayout(
+    return ScreenTypeLayout(
         mobile: OrientationLayout(
-          portrait: LeadDetailMobilePortrait(
-              lead: lead, leadColor: leadColor, tableItems: detailTableItems),
-        ),
-      ),
-    );
+      portrait: LeadDetailMobilePortrait(
+          lead: lead, leadColor: leadColor, tableItems: detailTableItems),
+    ));
   }
 }

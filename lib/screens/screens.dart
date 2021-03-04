@@ -6,3 +6,5 @@ export 'listObjects/novaOneListObjectsLayout.dart';
 export 'listObjects/novaOneListObjectsMobile.dart';
 export 'input/inputLayout.dart';
 export 'input/inputMobile.dart';
+export 'settings/settingsMobile.dart';
+export 'settings/settingsLayout.dart';

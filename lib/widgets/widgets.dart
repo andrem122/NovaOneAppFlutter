@@ -15,3 +15,4 @@ export 'maxWidthContainer.dart';
 export 'novaOneTextInput.dart';
 export 'novaOneBinaryInput.dart';
 export 'inputWidget.dart';
+export 'novaOneAppBar.dart';

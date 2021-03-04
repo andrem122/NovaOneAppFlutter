@@ -5,7 +5,6 @@ import 'package:novaone/palette.dart';
 import 'package:novaone/screens/screens.dart';
 import '../constants.dart';
 
-// Test
 class NovaOneTable extends StatefulWidget {
   final List<NovaOneTableItemData> tableItems;
   final NovaOneTableTypes tableType;

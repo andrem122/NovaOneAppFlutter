@@ -6,3 +6,6 @@ const double maxButtonWidth = 600;
 const double minButtonWidth = 88;
 const double minButtonHeight = 50;
 const double backButtonSize = 30;
+
+// Settings page
+const double spaceBetweenSettingsItems = 25;

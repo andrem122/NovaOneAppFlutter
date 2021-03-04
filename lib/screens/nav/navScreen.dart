@@ -25,7 +25,9 @@ class _NavScreenState extends State<NavScreen> {
       title: 'All Leads',
       heroTag: 'add_lead',
     ),
-    Scaffold(),
+    SettingsLayout(
+      user: currentUser,
+    ),
     Scaffold(),
   ];
 

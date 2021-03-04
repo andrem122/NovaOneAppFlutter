@@ -6,4 +6,6 @@ enum ListTableItemMenuOptions {
   Text,
   Email,
   View,
+  Edit,
+  Copy,
 }

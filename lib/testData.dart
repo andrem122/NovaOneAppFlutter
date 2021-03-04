@@ -175,6 +175,18 @@ final List<PopupMenuEntry> listPopupMenuOptions = [
   ),
 ];
 
+// List of pop up menu options for settings
+final List<PopupMenuEntry> settingsPopupMenuOptions = [
+  PopupMenuItem(
+    value: ListTableItemMenuOptions.Edit,
+    child: Text('Edit'),
+  ),
+  PopupMenuItem(
+    value: ListTableItemMenuOptions.Copy,
+    child: Text('Copy'),
+  ),
+];
+
 final List<NovaOneListTableItemData> allAppointments = [
   NovaOneListTableItemData(
       popupMenuOptions: listPopupMenuOptions,
