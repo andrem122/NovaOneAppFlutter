@@ -7,6 +7,7 @@ class RoundedContainer extends StatelessWidget {
   final double width;
   final BoxConstraints constraints;
   final List<BoxShadow> boxShadow;
+  final EdgeInsets padding;
 
   const RoundedContainer({
     Key key,
@@ -15,12 +16,13 @@ class RoundedContainer extends StatelessWidget {
     this.width = double.infinity,
     this.constraints = const BoxConstraints(),
     this.boxShadow,
+    this.padding,
   })  : assert(child != null),
         super(key: key);
   @override
   Widget build(BuildContext context) {
     final Widget containerWithHeight = Container(
-      padding: const EdgeInsets.all(10),
+      padding: padding != null ? padding : EdgeInsets.all(defaultPadding),
       constraints: constraints,
       height: height,
       width: width,
@@ -32,7 +34,7 @@ class RoundedContainer extends StatelessWidget {
     );
 
     final Widget containerWithoutHeight = Container(
-      padding: const EdgeInsets.all(10),
+      padding: padding != null ? padding : EdgeInsets.all(defaultPadding),
       width: width,
       constraints: constraints,
       decoration: BoxDecoration(
