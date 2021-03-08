@@ -25,15 +25,18 @@ dependencies:
     sdk: flutter
   charts_flutter: ^0.9.0
   cupertino_icons: ^1.0.0
-  device_preview: ^0.5.5
+  device_preview: 0.6.2-beta
   equatable: ^1.2.5
-  intl: ^0.16.1
+  intl: ^0.17.0
   provider: ^4.3.3
   table_calendar: ^2.3.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+   intl: ^0.17.0-nullsafety.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
