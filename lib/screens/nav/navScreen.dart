@@ -6,10 +6,10 @@ import '../../testData.dart';
 
 class NavScreen extends StatefulWidget {
   @override
-  _NavScreenState createState() => _NavScreenState();
+  NavScreenState createState() => NavScreenState();
 }
 
-class _NavScreenState extends State<NavScreen> {
+class NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [
     HomeScreenLayout(),
     NovaOneListObjectsLayout(
@@ -28,7 +28,12 @@ class _NavScreenState extends State<NavScreen> {
     SettingsLayout(
       user: currentUser,
     ),
-    Scaffold(),
+    NovaOneListObjectsLayout(
+      tableItems: allLeads,
+      addListObjectDescription: 'Add the name of the company.',
+      title: 'All Companies',
+      heroTag: 'add_company',
+    ),
   ];
 
   final List<IconData> _icons = const [
@@ -39,7 +44,7 @@ class _NavScreenState extends State<NavScreen> {
     Icons.business,
   ];
 
-  int _selectedIndex = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +53,14 @@ class _NavScreenState extends State<NavScreen> {
       child: Scaffold(
         body: IndexedStack(
           children: _screens,
-          index: _selectedIndex,
+          index: selectedIndex,
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: CustomTabBar(
             icons: _icons,
-            selectedIndex: _selectedIndex,
-            onTap: (index) => setState(() => _selectedIndex = index),
+            selectedIndex: selectedIndex,
+            onTap: (index) => setState(() => selectedIndex = index),
           ),
         ),
       ),
