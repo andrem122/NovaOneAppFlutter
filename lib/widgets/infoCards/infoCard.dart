@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:novaone/infoCards/infoCards.dart';
+import 'package:novaone/widgets/infoCards/infoCards.dart';
 import 'package:novaone/responsive/screenTypeLayout.dart';
 
 class InfoCards extends StatelessWidget {

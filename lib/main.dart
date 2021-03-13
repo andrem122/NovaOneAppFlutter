@@ -11,7 +11,7 @@ void main() {
     providers: [
       RepositoryProvider(
         create: (context) => NavScreen(),
-      )
+      ),
     ],
     child: DevicePreview(
         enabled: !kReleaseMode, builder: (BuildContext context) => App()),
@@ -35,7 +35,7 @@ class App extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey[200],
         primaryColor: Palette.primaryColor,
       ),
-      home: context.read<NavScreen>(),
+      home: LoginScreenLayout(),
     );
   }
 }

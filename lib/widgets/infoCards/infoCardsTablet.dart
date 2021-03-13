@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:novaone/constants.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/widgets/circleButton.dart';
-
-import '../constants.dart';
 
 class InfoCardsTablet extends StatelessWidget {
   @override

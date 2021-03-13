@@ -1,4 +1,6 @@
-class User {
+import 'package:equatable/equatable.dart';
+
+class User extends Equatable {
   final int id;
   final int userId;
   final String password;
@@ -34,4 +36,22 @@ class User {
       this.wantsEmailNotifications,
       this.phoneNumber,
       this.customerType});
+
+  @override
+  List<Object> get props => [
+        id,
+        userId,
+        password,
+        lastLogin,
+        username,
+        firstName,
+        lastName,
+        email,
+        dateJoined,
+        isPaying,
+        wantsSms,
+        wantsEmailNotifications,
+        phoneNumber,
+        customerType
+      ];
 }

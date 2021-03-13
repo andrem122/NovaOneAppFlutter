@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:novaone/models/models.dart';
 import 'package:novaone/widgets/simpleBarChart.dart';
 import 'package:novaone/widgets/titleSeperator.dart';
 import 'package:novaone/widgets/widgets.dart';
@@ -6,13 +7,18 @@ import 'package:novaone/widgets/widgets.dart';
 import '../../testData.dart';
 
 class HomeMobilePortrait extends StatelessWidget {
+  final User user;
+
+  const HomeMobilePortrait({Key key, @required this.user})
+      : assert(user != null),
+        super(key: key);
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
           child: GreetingContainer(
-            user: currentUser,
+            user: user,
             containerDecimalHeight: 0.30,
           ),
         ),
@@ -114,13 +120,18 @@ class HomeMobilePortrait extends StatelessWidget {
 }
 
 class HomeMobileLandscape extends StatelessWidget {
+  final User user;
+
+  const HomeMobileLandscape({Key key, @required this.user})
+      : assert(user != null),
+        super(key: key);
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
           child: GreetingContainer(
-            user: currentUser,
+            user: user,
             containerDecimalHeight: 0.60,
           ),
         ),

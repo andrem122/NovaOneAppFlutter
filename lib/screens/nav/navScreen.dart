@@ -11,7 +11,10 @@ class NavScreen extends StatefulWidget {
 
 class NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [
-    HomeScreenLayout(),
+    HomeScreenLayout(
+      password: 'test',
+      username: 'test',
+    ),
     NovaOneListObjectsLayout(
       tableItems: allAppointments,
       addListObjectDescription:
