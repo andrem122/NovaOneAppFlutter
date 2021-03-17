@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novaone/palette.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/login/bloc/login_bloc.dart';
 import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/widgets.dart';
+import 'package:novaone/extensions/extensions.dart';
 
-class LoginScreenLayout extends StatelessWidget {
-  const LoginScreenLayout({
-    Key key,
-  }) : super(key: key);
+/// Consumes the Bloc
+class LoginScreenLayout extends StatefulWidget {
+  @override
+  _LoginScreenLayoutState createState() => _LoginScreenLayoutState();
+}
 
+class _LoginScreenLayoutState extends State<LoginScreenLayout> {
   @override
   Widget build(BuildContext context) {
-    final loginBloc = LoginBloc();
     return BlocProvider(
-      create: (BuildContext context) => loginBloc,
-      child: BlocConsumer<LoginBloc, LoginState>(
-        listener: (state, context) => print(''),
-        builder: (context, state) {
-          if (state is LoginLoaded) {
-            return _buildLoaded(context: context);
-          }
-          //return _buildError(context: context);
-          return _buildLoaded(context: context);
-        },
+      create: (BuildContext context) => LoginBloc()..add(LoginStart()),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: BlocConsumer<LoginBloc, LoginState>(
+          listener: (state, context) => print(''),
+          builder: (context, state) {
+            if (state is LoginLoaded) {
+              return _buildLoaded(context: context);
+            }
+            if (state is LoginError) {
+              Scaffold.of(context).showErrorSnackBar(
+                  error: 'Incorrect user name or password. Please try again.');
+            }
+            return _buildError(context: context);
+          },
+        ),
       ),
     );
   }

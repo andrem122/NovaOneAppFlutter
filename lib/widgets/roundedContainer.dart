@@ -8,6 +8,7 @@ class RoundedContainer extends StatelessWidget {
   final BoxConstraints constraints;
   final List<BoxShadow> boxShadow;
   final EdgeInsets padding;
+  final Border border;
 
   const RoundedContainer({
     Key key,
@@ -17,6 +18,7 @@ class RoundedContainer extends StatelessWidget {
     this.constraints = const BoxConstraints(),
     this.boxShadow,
     this.padding,
+    this.border,
   })  : assert(child != null),
         super(key: key);
   @override
@@ -29,6 +31,7 @@ class RoundedContainer extends StatelessWidget {
       decoration: BoxDecoration(
           boxShadow: boxShadow,
           color: Colors.white,
+          border: border,
           borderRadius: BorderRadius.circular(containerBorderRadius)),
       child: child,
     );
@@ -38,6 +41,7 @@ class RoundedContainer extends StatelessWidget {
       width: width,
       constraints: constraints,
       decoration: BoxDecoration(
+          border: border,
           color: Colors.white,
           borderRadius: BorderRadius.circular(containerBorderRadius)),
       child: child,
