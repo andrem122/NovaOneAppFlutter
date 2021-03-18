@@ -9,4 +9,6 @@ export 'input/inputMobile.dart';
 export 'settings/settingsMobile.dart';
 export 'settings/settingsLayout.dart';
 export 'login/loginMobile.dart';
+export 'login/loginTablet.dart';
+export 'login/loginDesktop.dart';
 export 'login/loginLayout.dart';

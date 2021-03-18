@@ -9,3 +9,8 @@ const double backButtonSize = 30;
 
 // Settings page
 const double spaceBetweenSettingsItems = 25;
+
+/// Paths
+// Images
+final String imagesPath = 'assets/images/';
+final String logoImage = 'novaOneLogo.png';

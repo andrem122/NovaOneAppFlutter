@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:novaone/constants.dart';
 import 'package:novaone/widgets/widgets.dart';
 
-class LoginMobilePortrait extends StatelessWidget {
+class LoginTabletPortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,6 +27,14 @@ class LoginMobilePortrait extends StatelessWidget {
                   color: Colors.grey[400],
                   fontWeight: FontWeight.bold,
                   fontSize: 24),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Image(
+              image: AssetImage(imagesPath + logoImage),
+              width: 160,
+              height: 160,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.10,
@@ -73,7 +81,7 @@ class LoginMobilePortrait extends StatelessWidget {
   }
 }
 
-class LoginMobileLandscape extends StatelessWidget {
+class LoginTabletLandscape extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

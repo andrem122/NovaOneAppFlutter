@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:novaone/palette.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/login/bloc/login_bloc.dart';
 import 'package:novaone/screens/screens.dart';
@@ -51,6 +50,8 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
         portrait: LoginMobilePortrait(),
         landscape: LoginMobileLandscape(),
       ),
+      tablet: LoginTabletPortrait(),
+      desktop: LoginDesktopPortrait(),
     );
   }
 

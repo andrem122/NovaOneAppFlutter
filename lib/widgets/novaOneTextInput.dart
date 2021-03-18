@@ -10,6 +10,8 @@ class NovaOneTextInput extends StatelessWidget {
   final TextAlign textAlign;
   final Border border;
   final String labelText;
+  final BoxConstraints constraints;
+  final double scaleTextSize;
 
   const NovaOneTextInput(
       {Key key,
@@ -19,7 +21,9 @@ class NovaOneTextInput extends StatelessWidget {
       this.autoFocus = false,
       this.border,
       this.textAlign = TextAlign.center,
-      this.labelText})
+      this.labelText,
+      this.scaleTextSize = 1,
+      this.constraints = const BoxConstraints(maxWidth: maxContainerWidth)})
       : assert(hintText != null),
         super(key: key);
 
@@ -33,20 +37,23 @@ class NovaOneTextInput extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, bottom: 10),
                 child: Text(
                   labelText,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2
-                      .copyWith(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15 * scaleTextSize),
                 ),
               )
             : SizedBox.shrink(),
         RoundedContainer(
             border: border,
-            constraints: BoxConstraints(maxWidth: maxContainerWidth),
+            constraints: constraints,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             width: double.infinity,
             child: TextField(
               autofocus: autoFocus,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2
+                  .copyWith(fontSize: 17 * scaleTextSize),
               textInputAction: textInputAction,
               keyboardType: keyboardType,
               textAlign: textAlign,

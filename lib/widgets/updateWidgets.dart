@@ -67,7 +67,8 @@ class BinaryUpdateWidget extends StatelessWidget {
   final List<Widget> mobileChildren = [
     NovaOneButton(
       color: Palette.primaryColor,
-      width: 200,
+      constraints: const BoxConstraints(
+          minWidth: minButtonWidth, minHeight: minButtonHeight, maxWidth: 200),
       onPressed: () => print('Update local store and database'),
       title: 'Yes',
     ),
@@ -76,7 +77,8 @@ class BinaryUpdateWidget extends StatelessWidget {
     ),
     NovaOneButton(
       color: Palette.secondaryColor,
-      width: 200,
+      constraints: const BoxConstraints(
+          minWidth: minButtonWidth, minHeight: minButtonHeight, maxWidth: 200),
       onPressed: () => print('Update local store and database'),
       title: 'No',
     ),
@@ -85,7 +87,8 @@ class BinaryUpdateWidget extends StatelessWidget {
   final List<Widget> tabletChildren = [
     NovaOneButton(
       color: Palette.primaryColor,
-      width: 250,
+      constraints: const BoxConstraints(
+          minWidth: minButtonWidth, minHeight: minButtonHeight, maxWidth: 250),
       onPressed: () => print('Update local store and database'),
       title: 'Yes',
     ),
@@ -94,7 +97,8 @@ class BinaryUpdateWidget extends StatelessWidget {
     ),
     NovaOneButton(
       color: Palette.secondaryColor,
-      width: 250,
+      constraints: const BoxConstraints(
+          minWidth: minButtonWidth, minHeight: minButtonHeight, maxWidth: 250),
       onPressed: () => print('Update local store and database'),
       title: 'No',
     ),
@@ -103,7 +107,8 @@ class BinaryUpdateWidget extends StatelessWidget {
   final List<Widget> desktopChildren = [
     NovaOneButton(
       color: Palette.primaryColor,
-      width: 250,
+      constraints: const BoxConstraints(
+          minWidth: minButtonWidth, minHeight: minButtonHeight, maxWidth: 250),
       onPressed: () => print('Update local store and database'),
       title: 'Yes',
     ),
@@ -112,7 +117,8 @@ class BinaryUpdateWidget extends StatelessWidget {
     ),
     NovaOneButton(
       color: Palette.secondaryColor,
-      width: 250,
+      constraints: const BoxConstraints(
+          minWidth: minButtonWidth, minHeight: minButtonHeight, maxWidth: 250),
       onPressed: () => print('Update local store and database'),
       title: 'No',
     ),

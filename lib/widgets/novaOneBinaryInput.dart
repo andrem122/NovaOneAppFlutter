@@ -4,6 +4,7 @@ import 'package:novaone/palette.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/widgets/widgets.dart';
 import 'package:novaone/utils/utils.dart';
+import 'package:novaone/constants.dart';
 
 class NovaOneBinaryInput extends StatelessWidget {
   final Function() onPressedYes;
@@ -23,7 +24,10 @@ class NovaOneBinaryInput extends StatelessWidget {
         children = [
           NovaOneButton(
             color: Palette.primaryColor,
-            width: 200,
+            constraints: const BoxConstraints(
+                minWidth: minButtonWidth,
+                minHeight: minButtonHeight,
+                maxWidth: 200),
             onPressed: onPressedYes,
             title: 'Yes',
           ),
@@ -32,7 +36,10 @@ class NovaOneBinaryInput extends StatelessWidget {
           ),
           NovaOneButton(
             color: Palette.secondaryColor,
-            width: 200,
+            constraints: const BoxConstraints(
+                minWidth: minButtonWidth,
+                minHeight: minButtonHeight,
+                maxWidth: 200),
             onPressed: onPressedNo,
             title: 'No',
           ),
@@ -42,7 +49,10 @@ class NovaOneBinaryInput extends StatelessWidget {
         children = [
           NovaOneButton(
             color: Palette.primaryColor,
-            width: 250,
+            constraints: const BoxConstraints(
+                minWidth: minButtonWidth,
+                minHeight: minButtonHeight,
+                maxWidth: 250),
             onPressed: onPressedYes,
             title: 'Yes',
           ),
@@ -51,7 +61,10 @@ class NovaOneBinaryInput extends StatelessWidget {
           ),
           NovaOneButton(
             color: Palette.secondaryColor,
-            width: 250,
+            constraints: const BoxConstraints(
+                minWidth: minButtonWidth,
+                minHeight: minButtonHeight,
+                maxWidth: 250),
             onPressed: onPressedNo,
             title: 'No',
           ),
@@ -61,7 +74,10 @@ class NovaOneBinaryInput extends StatelessWidget {
         children = [
           NovaOneButton(
             color: Palette.primaryColor,
-            width: 250,
+            constraints: const BoxConstraints(
+                minWidth: minButtonWidth,
+                minHeight: minButtonHeight,
+                maxWidth: 250),
             onPressed: onPressedYes,
             title: 'Yes',
           ),
@@ -70,7 +86,10 @@ class NovaOneBinaryInput extends StatelessWidget {
           ),
           NovaOneButton(
             color: Palette.secondaryColor,
-            width: 250,
+            constraints: const BoxConstraints(
+                minWidth: minButtonWidth,
+                minHeight: minButtonHeight,
+                maxWidth: 250),
             onPressed: onPressedNo,
             title: 'No',
           ),

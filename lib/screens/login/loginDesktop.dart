@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:novaone/constants.dart';
 import 'package:novaone/widgets/widgets.dart';
 
-class LoginMobilePortrait extends StatelessWidget {
+class LoginDesktopPortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,7 +14,7 @@ class LoginMobilePortrait extends StatelessWidget {
             Text(
               'Welcome',
               style: Theme.of(context).textTheme.headline1.copyWith(
-                  fontSize: 32,
+                  fontSize: 45,
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
@@ -26,12 +26,22 @@ class LoginMobilePortrait extends StatelessWidget {
               style: Theme.of(context).textTheme.headline3.copyWith(
                   color: Colors.grey[400],
                   fontWeight: FontWeight.bold,
-                  fontSize: 24),
+                  fontSize: 32),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Image(
+              image: AssetImage(imagesPath + logoImage),
+              width: 160,
+              height: 160,
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.10,
+              height: 60,
             ),
             NovaOneTextInput(
+              scaleTextSize: 1.4,
+              constraints: BoxConstraints(maxWidth: maxContainerWidth + 200),
               border: Border.all(color: Colors.grey[300], width: 2),
               keyboardType: TextInputType.emailAddress,
               autoFocus: true,
@@ -43,6 +53,8 @@ class LoginMobilePortrait extends StatelessWidget {
               height: 15,
             ),
             NovaOneTextInput(
+              scaleTextSize: 1.4,
+              constraints: BoxConstraints(maxWidth: maxContainerWidth + 200),
               border: Border.all(color: Colors.grey[300], width: 2),
               keyboardType: TextInputType.emailAddress,
               hintText: 'Your Password',
@@ -57,12 +69,17 @@ class LoginMobilePortrait extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyText2
-                  .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                  .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 40,
             ),
             NovaOneButton(
+              scaleTextSize: 1.4,
+              constraints: const BoxConstraints(
+                  minWidth: minButtonWidth,
+                  minHeight: minButtonHeight,
+                  maxWidth: maxButtonWidth + 200),
               onPressed: () => print('Login'),
               title: 'Login',
             ),
@@ -73,7 +90,7 @@ class LoginMobilePortrait extends StatelessWidget {
   }
 }
 
-class LoginMobileLandscape extends StatelessWidget {
+class LoginDesktopLandscape extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

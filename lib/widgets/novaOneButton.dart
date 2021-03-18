@@ -6,16 +6,21 @@ class NovaOneButton extends StatelessWidget {
   final Function() onPressed;
   final String title;
   final EdgeInsets margin;
-  final double width;
   final Color color;
+  final double scaleTextSize;
+  final BoxConstraints constraints;
 
   const NovaOneButton(
       {Key key,
       @required this.onPressed,
       this.title = 'Submit',
       this.margin,
-      this.width = 600,
-      this.color})
+      this.color,
+      this.constraints = const BoxConstraints(
+          minWidth: minButtonWidth,
+          minHeight: minButtonHeight,
+          maxWidth: maxButtonWidth),
+      this.scaleTextSize = 1})
       : assert(onPressed != null),
         super(key: key);
   @override
@@ -34,15 +39,12 @@ class NovaOneButton extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(80.0)),
           ),
           child: Container(
-            width: width,
-            constraints: const BoxConstraints(
-                minWidth: minButtonWidth,
-                minHeight: minButtonHeight,
-                maxWidth: maxButtonWidth), // min sizes for Material buttons
+            constraints: constraints, // min sizes for Material buttons
             alignment: Alignment.center,
             child: Text(
               title,
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style:
+                  TextStyle(color: Colors.white, fontSize: 17 * scaleTextSize),
               textAlign: TextAlign.center,
             ),
           ),
