@@ -14,3 +14,5 @@ const double spaceBetweenSettingsItems = 25;
 // Images
 final String imagesPath = 'assets/images/';
 final String logoImage = 'novaOneLogo.png';
+
+// API Authentication

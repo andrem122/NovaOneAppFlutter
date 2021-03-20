@@ -19,7 +19,7 @@ class LeadDetailHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      overflow: Overflow.visible,
+      clipBehavior: Clip.none,
       children: [
         GradientHeader(
           alignment: Alignment.topLeft,
@@ -39,7 +39,7 @@ class LeadDetailHeader extends StatelessWidget {
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Stack(
-              overflow: Overflow.visible,
+              clipBehavior: Clip.none,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 0.80,

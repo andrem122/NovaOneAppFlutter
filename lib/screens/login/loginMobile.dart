@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novaone/constants.dart';
+import 'package:novaone/screens/login/bloc/login_bloc.dart';
 import 'package:novaone/widgets/widgets.dart';
 
 class LoginMobilePortrait extends StatelessWidget {
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,6 +36,7 @@ class LoginMobilePortrait extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.10,
             ),
             NovaOneTextInput(
+              controller: emailController,
               border: Border.all(color: Colors.grey[300], width: 2),
               keyboardType: TextInputType.emailAddress,
               autoFocus: true,
@@ -43,6 +48,7 @@ class LoginMobilePortrait extends StatelessWidget {
               height: 15,
             ),
             NovaOneTextInput(
+              controller: passwordController,
               border: Border.all(color: Colors.grey[300], width: 2),
               keyboardType: TextInputType.emailAddress,
               hintText: 'Your Password',
@@ -63,7 +69,10 @@ class LoginMobilePortrait extends StatelessWidget {
               height: 40,
             ),
             NovaOneButton(
-              onPressed: () => print('Login'),
+              onPressed: () => BlocProvider.of<LoginBloc>(context).add(
+                  LoginButtonTapped(
+                      email: emailController.text,
+                      password: passwordController.text)),
               title: 'Login',
             ),
           ],

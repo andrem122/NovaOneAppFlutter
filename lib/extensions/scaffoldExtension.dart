@@ -20,7 +20,7 @@ extension ScaffoldStateExtension on ScaffoldState {
             .copyWith(color: Colors.white, fontSize: 17);
     backgroundColor = backgroundColor ?? Palette.primaryColor;
 
-    return showSnackBar(SnackBar(
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(message),
       backgroundColor: backgroundColor,
       duration: duration,

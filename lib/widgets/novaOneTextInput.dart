@@ -12,6 +12,7 @@ class NovaOneTextInput extends StatelessWidget {
   final String labelText;
   final BoxConstraints constraints;
   final double scaleTextSize;
+  final TextEditingController controller;
 
   const NovaOneTextInput(
       {Key key,
@@ -23,7 +24,8 @@ class NovaOneTextInput extends StatelessWidget {
       this.textAlign = TextAlign.center,
       this.labelText,
       this.scaleTextSize = 1,
-      this.constraints = const BoxConstraints(maxWidth: maxContainerWidth)})
+      this.constraints = const BoxConstraints(maxWidth: maxContainerWidth),
+      this.controller})
       : assert(hintText != null),
         super(key: key);
 
@@ -49,6 +51,7 @@ class NovaOneTextInput extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             width: double.infinity,
             child: TextField(
+              controller: controller,
               autofocus: autoFocus,
               style: Theme.of(context)
                   .textTheme
