@@ -23,13 +23,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  build_runner: ^1.12.2
   charts_flutter: ^0.9.0
-  cupertino_icons: ^1.0.0
+  cupertino_icons: ^1.0.2
   device_preview: ^0.7.1
   equatable: ^2.0.0
   flutter_bloc: ^7.0.0
-  flutter_secure_storage: ^3.3.1+1
+  flutter_secure_storage: ^4.1.0
   intl: ^0.16.0
+  json_serializable: ^4.1.0
   provider: ^5.0.0
   table_calendar: ^2.3.3
 
@@ -38,7 +40,7 @@ dev_dependencies:
     sdk: flutter
 
 dependency_overrides:
- intl: ^0.17.0-nullsafety.2
+  intl: ^0.17.0-nullsafety.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
