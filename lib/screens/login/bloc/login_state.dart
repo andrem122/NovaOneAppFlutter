@@ -24,5 +24,12 @@ class LoginError extends LoginState {
   List<Object> get props => super.props + [];
 }
 
-// The user has logged in
-class LoginUser extends LoginState {}
+// The user has been successfully logged in
+class LoginUser extends LoginState {
+  final User user;
+
+  @override
+  List<Object> get props => super.props + [user];
+
+  const LoginUser({@required this.user}) : assert(user != null);
+}

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 class User extends Equatable {
   final int id;
@@ -22,20 +23,34 @@ class User extends Equatable {
   }
 
   User(
-      {this.id,
-      this.userId,
-      this.password,
-      this.lastLogin,
-      this.username,
-      this.firstName,
-      this.lastName,
-      this.email,
-      this.dateJoined,
-      this.isPaying,
-      this.wantsSms,
-      this.wantsEmailNotifications,
-      this.phoneNumber,
-      this.customerType});
+      {@required this.id,
+      @required this.userId,
+      @required this.password,
+      @required this.lastLogin,
+      @required this.username,
+      @required this.firstName,
+      @required this.lastName,
+      @required this.email,
+      @required this.dateJoined,
+      @required this.isPaying,
+      @required this.wantsSms,
+      @required this.wantsEmailNotifications,
+      @required this.phoneNumber,
+      @required this.customerType})
+      : assert(id != null),
+        assert(userId != null),
+        assert(password != null),
+        assert(lastLogin != null),
+        assert(username != null),
+        assert(firstName != null),
+        assert(lastName != null),
+        assert(email != null),
+        assert(dateJoined != null),
+        assert(isPaying != null),
+        assert(wantsSms != null),
+        assert(wantsEmailNotifications != null),
+        assert(phoneNumber != null),
+        assert(customerType != null);
 
   @override
   List<Object> get props => [
@@ -54,4 +69,20 @@ class User extends Equatable {
         phoneNumber,
         customerType
       ];
+  factory User.fromJson({@required Map<String, dynamic> json}) => User(
+        id: json['id'],
+        userId: json['userId'],
+        password: json['password'],
+        lastLogin: json['lastLogin'],
+        username: json['username'],
+        firstName: json['firstName'],
+        lastName: json['lastName'],
+        email: json['email'],
+        dateJoined: json['dateJoined'],
+        isPaying: json['isPaying'],
+        wantsSms: json['wantsSms'],
+        wantsEmailNotifications: json['wantsEmailNotifications'],
+        phoneNumber: json['phoneNumber'],
+        customerType: json['customerType'],
+      );
 }

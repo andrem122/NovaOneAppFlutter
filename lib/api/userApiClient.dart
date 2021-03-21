@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:novaone/api/api.dart';
@@ -13,7 +15,11 @@ class UserApiClient extends BaseApiClient {
   Future<User> getUser(
       {@required String email, @required String password}) async {
     Map<String, String> parameters = {'email': email, 'password': password};
-    final response = postToNovaOneApi(
-        uri: NovaOneUrl.novaOneApiUrlLogin, parameters: parameters);
+    final response = await postToNovaOneApi(
+        uri: NovaOneUrl.novaOneApiUrlLogin,
+        parameters: parameters,
+        errorMessage: 'Could not fetch user data');
+    final Map<String, dynamic> json = jsonDecode(response.body);
+    return User.fromJson(json: json);
   }
 }

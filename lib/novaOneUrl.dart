@@ -8,12 +8,12 @@ class NovaOneUrl {
 
   static const novaOneApiAuthority = 'graystonerealtyfl.com';
   static const novaOneApiBasePath = '/NovaOne';
-  static const novaOneApiPathLogin = '/NovaOne/login.php';
+  static const novaOneApiPathLogin = novaOneApiBasePath + '/login.php';
 
   static Uri get novaOneApiUrl =>
       Uri.https(novaOneApiAuthority, novaOneApiBasePath);
   static Uri get novaOneApiUrlLogin =>
-      Uri.https(novaOneApiAuthority, novaOneApiBasePath);
+      Uri.https(novaOneApiAuthority, novaOneApiPathLogin);
 
   static Map<String, String> apiHeaders = {
     'Referer': NovaOneUrl.novaOneWebsiteUrl.toString(),

@@ -27,10 +27,11 @@ class ApiMessageFailureHandler {
   static throwMessage(
       {@required String fallback, @required http.Response response}) {
     try {
+      print(response.body);
       final json = jsonDecode(response.body) as Map<String, dynamic>;
       throw ApiMessageException.fromJson(json);
     } on Exception {
-      throw fallback;
+      throw 'Error: ' + fallback;
     }
   }
 }

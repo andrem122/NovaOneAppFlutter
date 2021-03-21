@@ -29,6 +29,14 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
               Scaffold.of(context).showErrorSnackBar(
                   error: 'Incorrect user name or password. Please try again.');
             }
+
+            if (state is LoginLoading) {
+              return _buildLoading(context: context);
+            }
+
+            if (state is LoginUser) {
+              print('USER SUCCESSFULLY RETRIEVED: ${state.user.fullName}');
+            }
             return _buildError(context: context);
           },
         ),

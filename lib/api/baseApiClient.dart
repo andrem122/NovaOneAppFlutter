@@ -24,8 +24,11 @@ class BaseApiClient {
       String errorMessage = 'Unsuccessful request!'}) async {
     // Add the base parameters to the additional parameters
     parameters.addAll(baseParameters);
-    final Response response = await client.post(uri,
-        headers: NovaOneUrl.apiHeaders, body: parameters);
+
+    // Convert to query string
+    final String query = Uri(queryParameters: parameters).query;
+    final Response response =
+        await client.post(uri, headers: NovaOneUrl.apiHeaders, body: query);
 
     // Handle errors
     if (response.statusCode != 200) {
