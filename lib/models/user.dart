@@ -69,20 +69,23 @@ class User extends Equatable {
         phoneNumber,
         customerType
       ];
-  factory User.fromJson({@required Map<String, dynamic> json}) => User(
-        id: json['id'],
-        userId: json['userId'],
-        password: json['password'],
-        lastLogin: json['lastLogin'],
-        username: json['username'],
-        firstName: json['firstName'],
-        lastName: json['lastName'],
-        email: json['email'],
-        dateJoined: json['dateJoined'],
-        isPaying: json['isPaying'],
-        wantsSms: json['wantsSms'],
-        wantsEmailNotifications: json['wantsEmailNotifications'],
-        phoneNumber: json['phoneNumber'],
-        customerType: json['customerType'],
-      );
+  factory User.fromJson({@required Map<String, dynamic> json}) {
+    assert(json != null);
+    return User(
+      id: json['id'],
+      userId: json['userId'],
+      password: json['password'],
+      lastLogin: json['lastLogin'],
+      username: json['username'],
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      email: json['email'],
+      dateJoined: json['dateJoined'],
+      isPaying: json['isPaying'],
+      wantsSms: json['wantsSms'],
+      wantsEmailNotifications: json['wantsEmailNotifications'],
+      phoneNumber: json['phoneNumber'],
+      customerType: json['customerType'],
+    );
+  }
 }

@@ -15,7 +15,8 @@ class ApiMessageException {
 
   const ApiMessageException({@required this.reason, @required this.error});
 
-  factory ApiMessageException.fromJson(Map<String, dynamic> json) {
+  factory ApiMessageException.fromJson({@required Map<String, dynamic> json}) {
+    assert(json != null);
     return ApiMessageException(
       error: json['error'],
       reason: json['reason'],
@@ -24,14 +25,17 @@ class ApiMessageException {
 }
 
 class ApiMessageFailureHandler {
-  static throwMessage(
+  /// Returns the error message from the API request if it fails
+  ///
+  /// Takes in a [fallback] message if the error response cannot be parsed as json
+  static ApiMessageException getErrorMessage(
       {@required String fallback, @required http.Response response}) {
     try {
-      print(response.body);
       final json = jsonDecode(response.body) as Map<String, dynamic>;
-      throw ApiMessageException.fromJson(json);
+      return ApiMessageException.fromJson(json: json);
     } on Exception {
-      throw 'Error: ' + fallback;
+      // Unable to parse json error response so use the fallback response
+      return ApiMessageException(reason: fallback, error: 0);
     }
   }
 }

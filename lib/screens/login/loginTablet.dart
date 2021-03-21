@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novaone/constants.dart';
 import 'package:novaone/screens/login/bloc/login_bloc.dart';
 import 'package:novaone/widgets/widgets.dart';
+import 'package:novaone/extensions/extensions.dart';
 
 class LoginTabletPortrait extends StatefulWidget {
   static GlobalKey<FormState> _loginScreenFormKey = GlobalKey<FormState>();
@@ -62,6 +63,9 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
                   });
                 },
                 controller: emailController,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (email) =>
+                    email.isValidEmail() ? null : 'Please enter your email',
                 border: Border.all(color: Colors.grey[300], width: 2),
                 keyboardType: TextInputType.emailAddress,
                 hintText: 'Your Email',
@@ -77,10 +81,14 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
                     password = value;
                   });
                 },
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (password) =>
+                    password.isEmpty ? 'Please enter your password' : null,
                 controller: passwordController,
                 border: Border.all(color: Colors.grey[300], width: 2),
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.visiblePassword,
                 hintText: 'Your Password',
+                obscureText: true,
                 labelText: 'Password',
                 textAlign: TextAlign.left,
               ),

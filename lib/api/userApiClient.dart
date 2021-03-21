@@ -12,14 +12,22 @@ class UserApiClient extends BaseApiClient {
   UserApiClient({@required this.client}) : super(client: client);
 
   /// Gets the user object from the API by sending a [email] and [password]
-  Future<User> getUser(
+  /// to the NovOne Api
+  ///
+  /// Returns an [ApiMessageException] object if the request fails
+  /// and a [User] object if the request was successful
+  Future<dynamic> getUser(
       {@required String email, @required String password}) async {
     Map<String, String> parameters = {'email': email, 'password': password};
     final response = await postToNovaOneApi(
         uri: NovaOneUrl.novaOneApiUrlLogin,
         parameters: parameters,
         errorMessage: 'Could not fetch user data');
-    final Map<String, dynamic> json = jsonDecode(response.body);
-    return User.fromJson(json: json);
+    if (response.runtimeType == Response) {
+      final Map<String, dynamic> json = jsonDecode(response.body);
+      return User.fromJson(json: json);
+    }
+
+    return response;
   }
 }

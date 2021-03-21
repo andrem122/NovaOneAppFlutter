@@ -26,8 +26,12 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
               return _buildLoaded(context: context);
             }
             if (state is LoginError) {
-              Scaffold.of(context).showErrorSnackBar(
-                  error: 'Incorrect user name or password. Please try again.');
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                // Scaffold message can only be called once the build has completed so
+                // we need to wrap our error message with the addPostFrameCallback method
+                Scaffold.of(context)
+                    .showErrorSnackBar(error: state.error.reason);
+              });
             }
 
             if (state is LoginLoading) {
@@ -35,9 +39,9 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
             }
 
             if (state is LoginUser) {
-              print('USER SUCCESSFULLY RETRIEVED: ${state.user.fullName}');
+              // Navigate the user to the home screen
             }
-            return _buildError(context: context);
+            return _buildLoaded(context: context);
           },
         ),
       ),

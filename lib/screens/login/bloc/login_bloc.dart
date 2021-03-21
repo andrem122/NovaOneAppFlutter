@@ -26,10 +26,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       // Get the user data from the API
       final Client client = Client();
       final UserApiClient userApiClient = UserApiClient(client: client);
-      final User user = await userApiClient.getUser(
+
+      final response = await userApiClient.getUser(
           email: event.email, password: event.password);
 
-      yield LoginUser(user: user);
+      if (response.runtimeType == User) {
+        yield LoginUser(user: response);
+      } else {
+        yield LoginError(error: response);
+      }
     }
   }
 }

@@ -14,21 +14,27 @@ class NovaOneTextInput extends StatelessWidget {
   final double scaleTextSize;
   final TextEditingController controller;
   final Function(String) onChanged;
+  final String Function(String) validator;
+  final AutovalidateMode autovalidateMode;
+  final bool obscureText;
 
-  const NovaOneTextInput(
-      {Key key,
-      @required this.hintText,
-      this.keyboardType = TextInputType.text,
-      this.textInputAction = TextInputAction.done,
-      this.autoFocus = false,
-      this.border,
-      this.textAlign = TextAlign.center,
-      this.labelText,
-      this.scaleTextSize = 1,
-      this.constraints = const BoxConstraints(maxWidth: maxContainerWidth),
-      this.controller,
-      this.onChanged})
-      : assert(hintText != null),
+  const NovaOneTextInput({
+    Key key,
+    @required this.hintText,
+    this.keyboardType = TextInputType.text,
+    this.textInputAction = TextInputAction.done,
+    this.autoFocus = false,
+    this.border,
+    this.textAlign = TextAlign.center,
+    this.labelText,
+    this.scaleTextSize = 1,
+    this.constraints = const BoxConstraints(maxWidth: maxContainerWidth),
+    this.controller,
+    this.onChanged,
+    this.validator,
+    this.autovalidateMode = AutovalidateMode.disabled,
+    this.obscureText = false,
+  })  : assert(hintText != null),
         super(key: key);
 
   @override
@@ -52,7 +58,10 @@ class NovaOneTextInput extends StatelessWidget {
             constraints: constraints,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             width: double.infinity,
-            child: TextField(
+            child: TextFormField(
+              obscureText: obscureText,
+              autovalidateMode: autovalidateMode,
+              validator: validator,
               onChanged: onChanged,
               controller: controller,
               autofocus: autoFocus,

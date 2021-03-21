@@ -20,8 +20,12 @@ class LoginLoaded extends LoginState {
 
 // The login screen had an error
 class LoginError extends LoginState {
+  final ApiMessageException error;
+
+  LoginError({@required this.error}) : assert(error != null);
+
   @override
-  List<Object> get props => super.props + [];
+  List<Object> get props => super.props + [error];
 }
 
 // The user has been successfully logged in

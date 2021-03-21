@@ -14,9 +14,4 @@ class NovaOneUrl {
       Uri.https(novaOneApiAuthority, novaOneApiBasePath);
   static Uri get novaOneApiUrlLogin =>
       Uri.https(novaOneApiAuthority, novaOneApiPathLogin);
-
-  static Map<String, String> apiHeaders = {
-    'Referer': NovaOneUrl.novaOneWebsiteUrl.toString(),
-    'Content-Type': 'application/x-www-form-urlencoded',
-  };
 }
