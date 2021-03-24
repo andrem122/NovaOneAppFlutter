@@ -10,6 +10,7 @@ class NovaOneTextInput extends StatelessWidget {
   final TextAlign textAlign;
   final Border border;
   final String labelText;
+  final FocusNode focusNode;
   final BoxConstraints constraints;
   final double scaleTextSize;
   final TextEditingController controller;
@@ -34,6 +35,7 @@ class NovaOneTextInput extends StatelessWidget {
     this.validator,
     this.autovalidateMode = AutovalidateMode.disabled,
     this.obscureText = false,
+    this.focusNode,
   })  : assert(hintText != null),
         super(key: key);
 
@@ -59,6 +61,7 @@ class NovaOneTextInput extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             width: double.infinity,
             child: TextFormField(
+              focusNode: focusNode,
               obscureText: obscureText,
               autovalidateMode: autovalidateMode,
               validator: validator,

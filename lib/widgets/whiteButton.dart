@@ -8,10 +8,13 @@ class WhiteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: () => 'Help',
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      color: Colors.white,
+      style: ElevatedButton.styleFrom(
+          primary: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
       child: Text(
         buttonText,
         style: TextStyle(
@@ -19,7 +22,6 @@ class WhiteButton extends StatelessWidget {
             fontSize: 15,
             fontWeight: FontWeight.bold),
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
     );
   }
 }

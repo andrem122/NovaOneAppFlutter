@@ -27,11 +27,12 @@ class NovaOneButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: onPressed,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
-        padding: const EdgeInsets.all(0.0),
+        style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(80))),
         child: Ink(
           decoration: BoxDecoration(
             gradient: color == null ? Palette.greetingContainerGradient : null,

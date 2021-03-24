@@ -13,10 +13,30 @@ class LoginTabletPortrait extends StatefulWidget {
 }
 
 class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
+  FocusNode _focusNode = new FocusNode();
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
   String email;
   String password;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(_focusNodeListener);
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_focusNodeListener);
+  }
+
+  Future<Null> _focusNodeListener() async {
+    if (_focusNode.hasFocus) {
+      print('TextField got the focus');
+    } else {
+      print('TextField lost the focus');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +77,7 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
                 height: MediaQuery.of(context).size.height * 0.10,
               ),
               NovaOneTextInput(
+                focusNode: _focusNode,
                 onChanged: (value) {
                   setState(() {
                     email = value;

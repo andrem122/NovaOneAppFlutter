@@ -18,6 +18,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
     return BlocProvider(
       create: (BuildContext context) => LoginBloc()..add(LoginStart()),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: BlocConsumer<LoginBloc, LoginState>(
           listener: (state, context) => print(''),
