@@ -13,29 +13,21 @@ class LoginTabletPortrait extends StatefulWidget {
 }
 
 class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
-  FocusNode _focusNode = new FocusNode();
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
+  FocusNode _focusNodeEmail = new FocusNode();
+  FocusNode _focusNodePassWord = new FocusNode();
   String email;
   String password;
 
   @override
   void initState() {
     super.initState();
-    _focusNode.addListener(_focusNodeListener);
   }
 
   @override
   void dispose() {
-    _focusNode.removeListener(_focusNodeListener);
-  }
-
-  Future<Null> _focusNodeListener() async {
-    if (_focusNode.hasFocus) {
-      print('TextField got the focus');
-    } else {
-      print('TextField lost the focus');
-    }
+    super.dispose();
   }
 
   @override
@@ -76,42 +68,49 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.10,
               ),
-              NovaOneTextInput(
-                focusNode: _focusNode,
-                onChanged: (value) {
-                  setState(() {
-                    email = value;
-                  });
-                },
-                controller: emailController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (email) =>
-                    email.isValidEmail() ? null : 'Please enter your email',
-                border: Border.all(color: Colors.grey[300], width: 2),
-                keyboardType: TextInputType.emailAddress,
-                hintText: 'Your Email',
-                labelText: 'Email Address',
-                textAlign: TextAlign.left,
+              EnsureVisibleWhenFocused(
+                focusNode: _focusNodeEmail,
+                child: NovaOneTextInput(
+                  focusNode: _focusNodeEmail,
+                  onChanged: (value) {
+                    setState(() {
+                      email = value;
+                    });
+                  },
+                  controller: emailController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (email) =>
+                      email.isValidEmail() ? null : 'Please enter your email',
+                  border: Border.all(color: Colors.grey[300], width: 2),
+                  keyboardType: TextInputType.emailAddress,
+                  hintText: 'Your Email',
+                  labelText: 'Email Address',
+                  textAlign: TextAlign.left,
+                ),
               ),
               const SizedBox(
                 height: 15,
               ),
-              NovaOneTextInput(
-                onChanged: (value) {
-                  setState(() {
-                    password = value;
-                  });
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (password) =>
-                    password.isEmpty ? 'Please enter your password' : null,
-                controller: passwordController,
-                border: Border.all(color: Colors.grey[300], width: 2),
-                keyboardType: TextInputType.visiblePassword,
-                hintText: 'Your Password',
-                obscureText: true,
-                labelText: 'Password',
-                textAlign: TextAlign.left,
+              EnsureVisibleWhenFocused(
+                focusNode: _focusNodePassWord,
+                child: NovaOneTextInput(
+                  focusNode: _focusNodePassWord,
+                  onChanged: (value) {
+                    setState(() {
+                      password = value;
+                    });
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (password) =>
+                      password.isEmpty ? 'Please enter your password' : null,
+                  controller: passwordController,
+                  border: Border.all(color: Colors.grey[300], width: 2),
+                  keyboardType: TextInputType.visiblePassword,
+                  hintText: 'Your Password',
+                  obscureText: true,
+                  labelText: 'Password',
+                  textAlign: TextAlign.left,
+                ),
               ),
               const SizedBox(
                 height: 10,

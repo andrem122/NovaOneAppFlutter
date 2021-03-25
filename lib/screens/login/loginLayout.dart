@@ -40,7 +40,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
             }
 
             if (state is LoginUser) {
-              // Navigate the user to the home screen
+              // TODO:Navigate the user to the home screen
             }
             return _buildLoaded(context: context);
           },
