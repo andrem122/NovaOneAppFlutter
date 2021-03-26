@@ -15,12 +15,8 @@ class HomeLoading extends HomeState {
 
 // Home page loaded state
 class HomeLoaded extends HomeState {
-  final User user;
-
-  const HomeLoaded(this.user);
-
   @override
-  List<Object> get props => super.props + [this.user];
+  List<Object> get props => super.props + [];
 }
 
 // Home page error state

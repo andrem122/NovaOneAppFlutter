@@ -16,21 +16,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Stream<HomeState> mapEventToState(
     HomeEvent event,
   ) async* {
-    if (event is HomeLogin) {
-      // Dispatch the loading state first
-      yield HomeLoading();
-
-      // Fetch user data from API
-      final User user = await _fetchUserFromFakeApi(
-          username: event.username, password: event.password);
-
+    if (event is HomeStart) {
       // Once user data is fetched, dispatch the HomeLoaded state
-      yield HomeLoaded(user);
+      yield HomeLoaded();
     }
   }
-}
-
-Future<User> _fetchUserFromFakeApi(
-    {@required String username, @required String password}) {
-  return Future.delayed(Duration(seconds: 2), () => currentUser);
 }
