@@ -4,6 +4,7 @@ import 'package:novaone/widgets/widgets.dart';
 
 class NovaOneTextInput extends StatelessWidget {
   final String hintText;
+  final String initialValue;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final bool autoFocus;
@@ -16,6 +17,7 @@ class NovaOneTextInput extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onChanged;
   final String Function(String) validator;
+  final Function(String) onFieldSubmitted;
   final AutovalidateMode autovalidateMode;
   final bool obscureText;
 
@@ -36,6 +38,8 @@ class NovaOneTextInput extends StatelessWidget {
     this.autovalidateMode = AutovalidateMode.disabled,
     this.obscureText = false,
     this.focusNode,
+    this.onFieldSubmitted,
+    this.initialValue,
   })  : assert(hintText != null),
         super(key: key);
 
@@ -61,6 +65,8 @@ class NovaOneTextInput extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             width: double.infinity,
             child: TextFormField(
+              initialValue: initialValue,
+              onFieldSubmitted: onFieldSubmitted,
               focusNode: focusNode,
               obscureText: obscureText,
               autovalidateMode: autovalidateMode,

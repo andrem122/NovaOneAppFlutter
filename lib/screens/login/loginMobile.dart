@@ -13,21 +13,19 @@ class LoginMobilePortrait extends StatefulWidget {
 }
 
 class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
-  FocusNode _focusNodeEmail = new FocusNode();
-  FocusNode _focusNodePassWord = new FocusNode();
+  final FocusNode _focusNodeEmail = new FocusNode();
+  final FocusNode _focusNodePassWord = new FocusNode();
+
   String email;
   String password;
+  TextEditingController emailController;
+  TextEditingController passwordController;
 
   @override
   void initState() {
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
+    emailController = new TextEditingController(text: email);
+    passwordController = new TextEditingController(text: password);
   }
 
   @override
@@ -66,6 +64,7 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
               EnsureVisibleWhenFocused(
                 focusNode: _focusNodeEmail,
                 child: NovaOneTextInput(
+                  textInputAction: TextInputAction.next,
                   focusNode: _focusNodeEmail,
                   onChanged: (value) {
                     setState(() {
@@ -89,6 +88,7 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
               EnsureVisibleWhenFocused(
                 focusNode: _focusNodePassWord,
                 child: NovaOneTextInput(
+                  onFieldSubmitted: (_) => _login(),
                   focusNode: _focusNodePassWord,
                   onChanged: (value) {
                     setState(() {
@@ -121,10 +121,7 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
                 height: 40,
               ),
               NovaOneButton(
-                onPressed: () => BlocProvider.of<LoginBloc>(context).add(
-                    LoginButtonTapped(
-                        email: emailController.text,
-                        password: passwordController.text)),
+                onPressed: () => _login(),
                 title: 'Login',
               ),
             ],
@@ -132,6 +129,14 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
         ),
       ),
     );
+  }
+
+  /// Allows us to login by adding a LoginButtonTapped event
+  ///
+  /// Takes in an [email] and [password] to pass to the LoginButtonTapped event
+  _login() {
+    BlocProvider.of<LoginBloc>(context).add(LoginButtonTapped(
+        email: emailController.text, password: passwordController.text));
   }
 }
 

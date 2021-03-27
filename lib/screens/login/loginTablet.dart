@@ -21,16 +21,6 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
   String password;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(defaultPadding),

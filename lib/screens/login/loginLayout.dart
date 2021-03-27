@@ -74,8 +74,4 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
       desktop: LoginDesktopPortrait(),
     );
   }
-
-  Widget _buildError({@required BuildContext context}) {
-    return ErrorDisplay();
-  }
 }
