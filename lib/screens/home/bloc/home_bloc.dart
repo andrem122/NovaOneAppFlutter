@@ -5,12 +5,16 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/testData.dart';
+import 'package:novaone/utils/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeLoading());
+  HomeBloc({@required this.futurePrefs}) : super(HomeLoading());
+
+  final Future<SharedPreferences> futurePrefs;
 
   @override
   Stream<HomeState> mapEventToState(

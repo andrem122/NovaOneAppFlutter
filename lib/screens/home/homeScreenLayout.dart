@@ -4,13 +4,15 @@ import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/home/bloc/home_bloc.dart';
 import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreenLayout extends StatelessWidget {
   const HomeScreenLayout({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final homeBloc = HomeBloc();
+    final homeBloc =
+        HomeBloc(futurePrefs: context.read<Future<SharedPreferences>>());
     return BlocProvider(
       create: (BuildContext context) => homeBloc..add(HomeStart()),
       child: BlocConsumer<HomeBloc, HomeState>(

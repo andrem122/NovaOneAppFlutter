@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/login/bloc/login_bloc.dart';
 import 'package:novaone/screens/screens.dart';
-import 'package:novaone/widgets/widgets.dart';
 import 'package:novaone/extensions/extensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Consumes the Bloc
 class LoginScreenLayout extends StatefulWidget {
@@ -17,7 +17,10 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => LoginBloc()..add(LoginStart()),
+      create: (BuildContext context) => LoginBloc(
+          futurePrefs: context.read<Future<SharedPreferences>>(),
+          context: context)
+        ..add(LoginStart()),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,

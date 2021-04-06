@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:novaone/authentication/userStore.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/screens.dart';
 import 'localizations.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MultiRepositoryProvider(
     providers: [
       RepositoryProvider(
-        create: (context) => NavScreen(),
+        create: (BuildContext context) => NavScreen(),
       ),
+      RepositoryProvider(
+          create: (BuildContext context) => SharedPreferences.getInstance()),
+      RepositoryProvider(
+          create: (BuildContext context) =>
+              UserStore(storage: FlutterSecureStorage())),
     ],
     child: DevicePreview(
         enabled: !kReleaseMode, builder: (BuildContext context) => App()),
