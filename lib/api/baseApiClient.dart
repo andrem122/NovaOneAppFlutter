@@ -26,7 +26,7 @@ class BaseApiClient {
   /// Takes in some extra [parameters] to add to the [baseParameters]
   /// Also requries a [uri] to make a request to
   /// An optional [errorMessage] can be provided for when the request fails
-  Future<dynamic> postToNovaOneApi(
+  Future<Response> postToNovaOneApi(
       {@required Uri uri,
       @required Map<String, dynamic> parameters,
       String errorMessage = 'Unsuccessful request!'}) async {
@@ -40,7 +40,7 @@ class BaseApiClient {
 
     // Handle errors
     if (response.statusCode != 200) {
-      return ApiMessageFailureHandler.getErrorMessage(
+      ApiMessageFailureHandler.throwErrorMessage(
           fallback: errorMessage, response: response);
     }
 

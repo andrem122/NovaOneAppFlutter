@@ -3,9 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:novaone/models/models.dart';
-import 'package:novaone/testData.dart';
-import 'package:novaone/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'home_event.dart';

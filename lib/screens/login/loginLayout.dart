@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novaone/api/api.dart';
+import 'package:novaone/auth/auth.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/login/bloc/login_bloc.dart';
 import 'package:novaone/screens/screens.dart';
@@ -19,7 +21,9 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
     return BlocProvider(
       create: (BuildContext context) => LoginBloc(
           futurePrefs: context.read<Future<SharedPreferences>>(),
-          context: context)
+          context: context,
+          userApiClient: context.read<UserApiClient>(),
+          userStore: context.read<UserStore>())
         ..add(LoginStart()),
       child: Scaffold(
         resizeToAvoidBottomInset: false,

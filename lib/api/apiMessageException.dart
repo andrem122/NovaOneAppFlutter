@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 /// The [reason] indicates why the request failed with an [error] code
 
 @JsonSerializable()
-class ApiMessageException {
+class ApiMessageException implements Exception {
   final String reason;
   final int error;
 
@@ -25,17 +25,20 @@ class ApiMessageException {
 }
 
 class ApiMessageFailureHandler {
-  /// Returns the error message from the API request if it fails
+  /// Throws the error message from the API request if it fails
   ///
   /// Takes in a [fallback] message if the error response cannot be parsed as json
-  static ApiMessageException getErrorMessage(
+  static ApiMessageException throwErrorMessage(
       {@required String fallback, @required http.Response response}) {
+    ApiMessageException exception;
     try {
       final json = jsonDecode(response.body) as Map<String, dynamic>;
-      return ApiMessageException.fromJson(json: json);
+      exception = ApiMessageException.fromJson(json: json);
     } on Exception {
       // Unable to parse json error response so use the fallback response
-      return ApiMessageException(reason: fallback, error: 0);
+      exception = ApiMessageException(reason: fallback, error: 0);
     }
+
+    throw exception;
   }
 }
