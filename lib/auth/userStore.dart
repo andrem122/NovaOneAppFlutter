@@ -21,17 +21,17 @@ class UserStore extends Equatable {
 
   /// Encrypts and store the user password on the device
   ///
-  /// Takes in the [password] and [username] to store
+  /// Takes in the [password] and [email] to store
   Future<void> storeCredentials(
-      {@required String password, @required String username}) async {
+      {@required String password, @required String email}) async {
     assert(password != null);
-    assert(username != null);
+    assert(email != null);
     await storage.write(key: UserKeys.instance.userPassword, value: password);
-    await storage.write(key: UserKeys.instance.userUserName, value: username);
+    await storage.write(key: UserKeys.instance.userUserName, value: email);
   }
 
   /// Gets and decrypts the user's username stored in the device
-  Future<String> getUsername() async {
+  Future<String> getEmail() async {
     final String username =
         await storage.read(key: UserKeys.instance.userUserName);
     if (username == null) {
@@ -60,6 +60,12 @@ class UserStore extends Equatable {
         await storage.read(key: UserKeys.instance.userUserName);
 
     return password != null && username != null;
+  }
+
+  /// Deletes the item in secure storage
+  Future<void> delete({@required String key}) async {
+    assert(key != null);
+    await storage.delete(key: key);
   }
 
   @override

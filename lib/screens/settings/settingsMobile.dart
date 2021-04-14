@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novaone/constants.dart';
 import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/palette.dart';
+import 'package:novaone/screens/settings/bloc/settings_bloc.dart';
 import 'package:novaone/testData.dart';
 import 'package:novaone/widgets/widgets.dart';
 
@@ -52,7 +54,8 @@ class SettingsMobilePortrait extends StatelessWidget {
         title: 'Sign Out',
         subtitle: 'Sign out of your account',
         trailingWidget: Icon(Icons.arrow_forward_ios_sharp),
-        onTap: () {},
+        onTap: () =>
+            BlocProvider.of<SettingsBloc>(context).add(SettingsSignOutTapped()),
         isLastItem: true,
       ),
     ];

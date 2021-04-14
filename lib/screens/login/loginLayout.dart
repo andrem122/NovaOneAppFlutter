@@ -34,6 +34,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
             if (state is LoginLoaded) {
               return _buildLoaded(context: context);
             }
+
             if (state is LoginError) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 // Scaffold message can only be called once the build has completed so

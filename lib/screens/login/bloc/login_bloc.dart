@@ -42,20 +42,22 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     /// If the user is logged in, then grab user object and direct them to the home page
     if (event is LoginStart && userIsLoggedIn && hasCredentials) {
       try {
-        final String username = await userStore.getUsername();
+        final String email = await userStore.getEmail();
         final String password = await userStore.getPassword();
 
+        // Get the user object from the API
         final user =
-            await userApiClient.getUser(username: username, password: password);
+            await userApiClient.getUser(email: email, password: password);
         yield LoginUser(user: user);
       } catch (error) {
-        print('LoginStart: $error');
+        final String errorMessage =
+            error is ApiMessageException ? error.reason : error.toString();
+        final ApiMessageException errorObject = error is ApiMessageException
+            ? error
+            : ApiMessageException(reason: error.toString(), error: 0);
+        print('LoginStart Error: $errorMessage');
+        yield LoginError(error: errorObject);
       }
-    }
-
-    // User is logged in and is starting the app again
-    if (event is LoginStart && userIsLoggedIn == true) {
-      // Auto login the user with the saved password and username
     }
 
     if (event is LoginButtonTapped) {
@@ -63,7 +65,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       try {
         final user = await userApiClient.getUser(
-            username: event.email, password: event.password);
+            email: event.email, password: event.password);
 
         // User has been logged in so keep track of login status
         // password, and username/email to
@@ -71,12 +73,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final SharedPreferences prefs = await futurePrefs;
         prefs.setBool(UserKeys.instance.userLoggedIn, true);
         userStore.storeCredentials(
-            password: event.email, username: event.password);
+            password: event.password, email: event.email);
 
         yield LoginUser(user: user);
       } catch (error) {
-        print('LoginButtonTapped error: $error');
-        yield LoginError(error: error);
+        if (error is ApiMessageException) {
+          final String errorMessage =
+              error is ApiMessageException ? error.reason : error.toString();
+          final ApiMessageException errorObject = error is ApiMessageException
+              ? error
+              : ApiMessageException(reason: error.toString(), error: 0);
+          print('LoginButtonTapped Error: $errorMessage');
+          yield LoginError(error: errorObject);
+        }
       }
     }
   }
