@@ -6,27 +6,28 @@ import 'package:novaone/widgets/widgets.dart';
 import 'package:novaone/extensions/extensions.dart';
 
 class LoginMobilePortrait extends StatefulWidget {
-  static GlobalKey<FormState> _loginScreenFormKey = GlobalKey<FormState>();
-
   @override
   _LoginMobilePortraitState createState() => _LoginMobilePortraitState();
 }
 
 class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
-  final FocusNode _focusNodeEmail = new FocusNode();
-  final FocusNode _focusNodePassWord = new FocusNode();
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+  FocusNode _focusNodeEmail = new FocusNode();
+  FocusNode _focusNodePassWord = new FocusNode();
 
+  // The user's email
   String email;
-  String password;
-  TextEditingController emailController;
-  TextEditingController passwordController;
 
-  @override
-  void initState() {
-    super.initState();
-    emailController = new TextEditingController(text: email);
-    passwordController = new TextEditingController(text: password);
-  }
+  // The user's password
+  String password;
+
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
+  //
+  // Note: This is a `GlobalKey<FormState>`,
+  // not a GlobalKey<MyCustomFormState>.
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
       padding: const EdgeInsets.all(defaultPadding),
       child: Center(
         child: Form(
-          key: LoginMobilePortrait._loginScreenFormKey,
+          key: _formKey,
           child: Column(
             children: <Widget>[
               const SizedBox(height: 40),
@@ -58,13 +59,9 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
               const SizedBox(
                 height: 40,
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.10,
-              ),
               EnsureVisibleWhenFocused(
                 focusNode: _focusNodeEmail,
                 child: NovaOneTextInput(
-                  textInputAction: TextInputAction.next,
                   focusNode: _focusNodeEmail,
                   onChanged: (value) {
                     setState(() {
@@ -73,8 +70,9 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
                   },
                   controller: emailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (email) =>
-                      email.isValidEmail() ? null : 'Please enter your email',
+                  validator: (email) => email.isValidEmail() && email != null
+                      ? null
+                      : 'Please enter a valid email',
                   border: Border.all(color: Colors.grey[300], width: 2),
                   keyboardType: TextInputType.emailAddress,
                   hintText: 'Your Email',
@@ -88,7 +86,6 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
               EnsureVisibleWhenFocused(
                 focusNode: _focusNodePassWord,
                 child: NovaOneTextInput(
-                  onFieldSubmitted: (_) => _login(),
                   focusNode: _focusNodePassWord,
                   onChanged: (value) {
                     setState(() {
@@ -121,7 +118,14 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
                 height: 40,
               ),
               NovaOneButton(
-                onPressed: () => _login(),
+                onPressed: () {
+                  // First check if fields are empty before submitting request to API
+                  if (_formKey.currentState.validate()) {
+                    BlocProvider.of<LoginBloc>(context).add(LoginButtonTapped(
+                        email: emailController.text,
+                        password: passwordController.text));
+                  }
+                },
                 title: 'Login',
               ),
             ],
@@ -129,14 +133,6 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
         ),
       ),
     );
-  }
-
-  /// Allows us to login by adding a LoginButtonTapped event
-  ///
-  /// Takes in an [email] and [password] to pass to the LoginButtonTapped event
-  _login() {
-    BlocProvider.of<LoginBloc>(context).add(LoginButtonTapped(
-        email: emailController.text, password: passwordController.text));
   }
 }
 

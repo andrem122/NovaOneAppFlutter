@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novaone/api/api.dart';
 import 'package:novaone/auth/auth.dart';
+import 'package:novaone/constants.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/login/bloc/login_bloc.dart';
 import 'package:novaone/screens/screens.dart';
@@ -106,7 +107,9 @@ class NovaOneLoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[300],
+      decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(containerBorderRadius)),
       width: 100.0,
       height: 100.0,
       child: Padding(

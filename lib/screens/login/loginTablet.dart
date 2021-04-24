@@ -6,8 +6,6 @@ import 'package:novaone/widgets/widgets.dart';
 import 'package:novaone/extensions/extensions.dart';
 
 class LoginTabletPortrait extends StatefulWidget {
-  static GlobalKey<FormState> _loginScreenFormKey = GlobalKey<FormState>();
-
   @override
   _LoginTabletPortraitState createState() => _LoginTabletPortraitState();
 }
@@ -17,8 +15,19 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
   final TextEditingController passwordController = new TextEditingController();
   FocusNode _focusNodeEmail = new FocusNode();
   FocusNode _focusNodePassWord = new FocusNode();
+
+  // The user's email
   String email;
+
+  // The user's password
   String password;
+
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
+  //
+  // Note: This is a `GlobalKey<FormState>`,
+  // not a GlobalKey<MyCustomFormState>.
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +35,7 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
       padding: const EdgeInsets.all(defaultPadding),
       child: Center(
         child: Form(
-          key: LoginTabletPortrait._loginScreenFormKey,
+          key: _formKey,
           child: Column(
             children: <Widget>[
               const SizedBox(height: 40),
@@ -69,8 +78,9 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
                   },
                   controller: emailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (email) =>
-                      email.isValidEmail() ? null : 'Please enter your email',
+                  validator: (email) => email.isValidEmail() && email != null
+                      ? null
+                      : 'Please enter a valid email',
                   border: Border.all(color: Colors.grey[300], width: 2),
                   keyboardType: TextInputType.emailAddress,
                   hintText: 'Your Email',
@@ -116,10 +126,14 @@ class _LoginTabletPortraitState extends State<LoginTabletPortrait> {
                 height: 40,
               ),
               NovaOneButton(
-                onPressed: () => BlocProvider.of<LoginBloc>(context).add(
-                    LoginButtonTapped(
+                onPressed: () {
+                  // First check if fields are empty before submitting request to API
+                  if (_formKey.currentState.validate()) {
+                    BlocProvider.of<LoginBloc>(context).add(LoginButtonTapped(
                         email: emailController.text,
-                        password: passwordController.text)),
+                        password: passwordController.text));
+                  }
+                },
                 title: 'Login',
               ),
             ],
