@@ -16,6 +16,7 @@ class LoginScreenLayout extends StatefulWidget {
 }
 
 class _LoginScreenLayoutState extends State<LoginScreenLayout> {
+  bool _load = false;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -29,7 +30,11 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: BlocConsumer<LoginBloc, LoginState>(
-          listener: (state, context) => print(''),
+          listener: (state, context) {
+            setState(() {
+              _load = false;
+            });
+          },
           builder: (context, state) {
             if (state is LoginLoaded) {
               return _buildLoaded(context: context);
@@ -45,7 +50,11 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
             }
 
             if (state is LoginLoading) {
-              return _buildLoading(context: context);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                setState(() {
+                  _load = true;
+                });
+              });
             }
 
             if (state is LoginUser) {
@@ -64,22 +73,62 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
     );
   }
 
-  Widget _buildLoading({@required BuildContext context}) {
-    assert(context != null);
-    return Center(
-      child: CircularProgressIndicator(),
-    );
-  }
-
   Widget _buildLoaded({@required BuildContext context}) {
     assert(context != null);
-    return ScreenTypeLayout(
-      mobile: OrientationLayout(
-        portrait: LoginMobilePortrait(),
-        landscape: LoginMobileLandscape(),
-      ),
-      tablet: LoginTabletPortrait(),
-      desktop: LoginDesktopPortrait(),
+    Widget loadingIndicator = _load
+        ? NovaOneLoadingIndicator(
+            title: 'Logging In',
+          )
+        : SizedBox.shrink();
+    return Stack(
+      children: <Widget>[
+        ScreenTypeLayout(
+          mobile: OrientationLayout(
+            portrait: LoginMobilePortrait(),
+            landscape: LoginMobileLandscape(),
+          ),
+          tablet: LoginTabletPortrait(),
+          desktop: LoginDesktopPortrait(),
+        ),
+        new Align(
+          child: loadingIndicator,
+          alignment: FractionalOffset.center,
+        ),
+      ],
+    );
+  }
+}
+
+class NovaOneLoadingIndicator extends StatelessWidget {
+  final String title;
+
+  const NovaOneLoadingIndicator({Key key, this.title}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey[300],
+      width: 100.0,
+      height: 100.0,
+      child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                title ?? '',
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ))),
     );
   }
 }
