@@ -1,122 +1,116 @@
 {
   "images" : [
     {
-      "size" : "20x20",
+      "filename" : "novaOneAppIconBlue-40px.png",
       "idiom" : "iphone",
-      "filename" : "Icon-App-20x20@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "20x20"
     },
     {
-      "size" : "20x20",
+      "filename" : "novaOneAppIconBlue-60px.png",
       "idiom" : "iphone",
-      "filename" : "Icon-App-20x20@3x.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "size" : "20x20"
     },
     {
-      "size" : "29x29",
+      "filename" : "novaOneAppIconBlue-58px.png",
       "idiom" : "iphone",
-      "filename" : "Icon-App-29x29@1x.png",
-      "scale" : "1x"
+      "scale" : "2x",
+      "size" : "29x29"
     },
     {
-      "size" : "29x29",
+      "filename" : "novaOneAppIconBlue-87px.png",
       "idiom" : "iphone",
-      "filename" : "Icon-App-29x29@2x.png",
-      "scale" : "2x"
+      "scale" : "3x",
+      "size" : "29x29"
     },
     {
-      "size" : "29x29",
+      "filename" : "novaOneAppIconBlue-80px.png",
       "idiom" : "iphone",
-      "filename" : "Icon-App-29x29@3x.png",
-      "scale" : "3x"
+      "scale" : "2x",
+      "size" : "40x40"
     },
     {
-      "size" : "40x40",
+      "filename" : "novaOneAppIconBlue-120px.png",
       "idiom" : "iphone",
-      "filename" : "Icon-App-40x40@2x.png",
-      "scale" : "2x"
+      "scale" : "3x",
+      "size" : "40x40"
     },
     {
-      "size" : "40x40",
+      "filename" : "novaOneAppIconBlue-120px-1.png",
       "idiom" : "iphone",
-      "filename" : "Icon-App-40x40@3x.png",
-      "scale" : "3x"
+      "scale" : "2x",
+      "size" : "60x60"
     },
     {
-      "size" : "60x60",
+      "filename" : "novaOneAppIconBlue-180px.png",
       "idiom" : "iphone",
-      "filename" : "Icon-App-60x60@2x.png",
-      "scale" : "2x"
+      "scale" : "3x",
+      "size" : "60x60"
     },
     {
-      "size" : "60x60",
-      "idiom" : "iphone",
-      "filename" : "Icon-App-60x60@3x.png",
-      "scale" : "3x"
-    },
-    {
-      "size" : "20x20",
+      "filename" : "novaOneAppIconBlue-20px.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-20x20@1x.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "20x20"
     },
     {
-      "size" : "20x20",
+      "filename" : "novaOneAppIconBlue-40px-1.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-20x20@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "20x20"
     },
     {
-      "size" : "29x29",
+      "filename" : "novaOneAppIconBlue-29px.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-29x29@1x.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "29x29"
     },
     {
-      "size" : "29x29",
+      "filename" : "novaOneAppIconBlue-58px-1.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-29x29@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "29x29"
     },
     {
-      "size" : "40x40",
+      "filename" : "novaOneAppIconBlue-40px-2.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-40x40@1x.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "40x40"
     },
     {
-      "size" : "40x40",
+      "filename" : "novaOneAppIconBlue-80px-1.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-40x40@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "40x40"
     },
     {
-      "size" : "76x76",
+      "filename" : "novaOneAppIconBlue-76px.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-76x76@1x.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "76x76"
     },
     {
-      "size" : "76x76",
+      "filename" : "novaOneAppIconBlue-152px.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-76x76@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "76x76"
     },
     {
-      "size" : "83.5x83.5",
+      "filename" : "novaOneAppIconBlue-167px.png",
       "idiom" : "ipad",
-      "filename" : "Icon-App-83.5x83.5@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "83.5x83.5"
     },
     {
-      "size" : "1024x1024",
+      "filename" : "novaOneAppIconBlue-1024px.png",
       "idiom" : "ios-marketing",
-      "filename" : "Icon-App-1024x1024@1x.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "1024x1024"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

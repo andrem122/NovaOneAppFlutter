@@ -18,3 +18,4 @@ export 'inputWidget.dart';
 export 'novaOneAppBar.dart';
 export 'errorDisplay.dart';
 export 'ensureVisibleWhenFocused.dart';
+export 'novaOneLoadingIndicator.dart';

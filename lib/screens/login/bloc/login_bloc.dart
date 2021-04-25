@@ -70,7 +70,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // User has been logged in so keep track of login status
         // password, and username/email to
         // allow the user to not have to login again
-        final SharedPreferences prefs = await futurePrefs;
         prefs.setBool(UserKeys.instance.userLoggedIn, true);
         userStore.storeCredentials(
             password: event.password, email: event.email);

@@ -3,11 +3,11 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novaone/api/api.dart';
 import 'package:novaone/auth/auth.dart';
-import 'package:novaone/constants.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/login/bloc/login_bloc.dart';
 import 'package:novaone/screens/screens.dart';
 import 'package:novaone/extensions/extensions.dart';
+import 'package:novaone/widgets/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Consumes the Bloc
@@ -96,42 +96,6 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
           alignment: FractionalOffset.center,
         ),
       ],
-    );
-  }
-}
-
-class NovaOneLoadingIndicator extends StatelessWidget {
-  final String title;
-
-  const NovaOneLoadingIndicator({Key key, this.title}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(containerBorderRadius)),
-      width: 100.0,
-      height: 100.0,
-      child: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                title ?? '',
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText2
-                    .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ))),
     );
   }
 }
