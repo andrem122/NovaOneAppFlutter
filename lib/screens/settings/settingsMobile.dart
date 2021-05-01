@@ -4,6 +4,7 @@ import 'package:novaone/constants.dart';
 import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/palette.dart';
+import 'package:novaone/screens/input/inputLayout.dart';
 import 'package:novaone/screens/settings/bloc/settings_bloc.dart';
 import 'package:novaone/testData.dart';
 import 'package:novaone/widgets/widgets.dart';
@@ -15,27 +16,39 @@ class SettingsMobilePortrait extends StatelessWidget {
       : assert(user != null),
         super(key: key);
 
+  Widget _createPopUpMenuOptions(
+      {@required BuildContext context, @required InputLayout editScreen}) {
+    return PopupMenuButton(
+      itemBuilder: (context) {
+        return settingsPopupMenuOptions;
+      },
+      icon: Icon(Icons.more_vert),
+      onSelected: (listTableItemMenuOptions) {
+        if (listTableItemMenuOptions == ListTableItemMenuOptions.Edit) {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (BuildContext context) => editScreen));
+        } else if (listTableItemMenuOptions == ListTableItemMenuOptions.Copy) {
+          // TODO: Action for copying text
+          print('Copy Settings Item Text');
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    // The table items for the account section
     final List<Widget> accountChildren = [
       _SettingsTableItem(
         title: user.fullName,
         subtitle: 'Full Name',
-        trailingWidget: PopupMenuButton(
-          itemBuilder: (context) {
-            return settingsPopupMenuOptions;
-          },
-          icon: Icon(Icons.more_vert),
-          onSelected: (listTableItemMenuOptions) {
-            if (listTableItemMenuOptions == ListTableItemMenuOptions.Edit) {
-              // TODO: Action for editing
-              print('Edit Settings Item');
-            } else if (listTableItemMenuOptions ==
-                ListTableItemMenuOptions.Copy) {
-              // TODO: Action for copying text
-              print('Copy Settings Item Text');
-            }
-          },
+        trailingWidget: _createPopUpMenuOptions(
+          context: context,
+          editScreen: InputLayout(
+              title: 'Edit Full Name',
+              description: 'Type in your new full name.',
+              hintText: 'Type in your name.',
+              inputWidgetType: InputWidgetType.TextInput),
         ),
         onTap: () {},
       ),
@@ -56,6 +69,22 @@ class SettingsMobilePortrait extends StatelessWidget {
         trailingWidget: Icon(Icons.arrow_forward_ios_sharp),
         onTap: () =>
             BlocProvider.of<SettingsBloc>(context).add(SettingsSignOutTapped()),
+        isLastItem: true,
+      ),
+    ];
+
+    // The table items for the contact section
+    final List<Widget> contactChildren = [
+      _SettingsTableItem(
+        onTap: () {},
+        subtitle: user.phoneNumber,
+        title: 'Phone Number',
+        isFirstItem: true,
+      ),
+      _SettingsTableItem(
+        onTap: () {},
+        subtitle: user.email,
+        title: 'Email',
         isLastItem: true,
       ),
     ];
@@ -82,7 +111,7 @@ class SettingsMobilePortrait extends StatelessWidget {
                     padding: const EdgeInsets.all(defaultPadding),
                     child: _SettingsTableSection(
                       sectionTitle: 'Contact',
-                      children: accountChildren,
+                      children: contactChildren,
                     ),
                   ),
                   Padding(
@@ -102,6 +131,10 @@ class SettingsMobilePortrait extends StatelessWidget {
   }
 }
 
+/// A section of the settings table
+///
+/// Takes in a required [sectionTitle] for each section
+/// and some [children] to fill up the section of the table
 class _SettingsTableSection extends StatelessWidget {
   const _SettingsTableSection({
     Key key,

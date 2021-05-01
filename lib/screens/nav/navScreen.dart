@@ -7,11 +7,7 @@ import 'package:novaone/widgets/widgets.dart';
 import '../../testData.dart';
 
 class NavScreen extends StatefulWidget {
-  final User user;
-
-  const NavScreen({Key key, @required this.user})
-      : assert(user != null),
-        super(key: key);
+  const NavScreen({Key key}) : super(key: key);
   @override
   NavScreenState createState() => NavScreenState();
 }
@@ -42,7 +38,7 @@ class NavScreenState extends State<NavScreen> {
         heroTag: 'add_lead',
       ),
       SettingsLayout(
-        user: currentUser,
+        user: context.read<User>(),
       ),
       NovaOneListObjectsLayout(
         tableItems: allLeads,
@@ -63,24 +59,19 @@ class NavScreenState extends State<NavScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider(create: (context) => widget.user),
-      ],
-      child: DefaultTabController(
-        length: _icons.length,
-        child: Scaffold(
-          body: IndexedStack(
-            children: _screens,
-            index: selectedIndex,
-          ),
-          bottomNavigationBar: Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: CustomTabBar(
-              icons: _icons,
-              selectedIndex: selectedIndex,
-              onTap: (index) => setState(() => selectedIndex = index),
-            ),
+    return DefaultTabController(
+      length: _icons.length,
+      child: Scaffold(
+        body: IndexedStack(
+          children: _screens,
+          index: selectedIndex,
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: CustomTabBar(
+            icons: _icons,
+            selectedIndex: selectedIndex,
+            onTap: (index) => setState(() => selectedIndex = index),
           ),
         ),
       ),

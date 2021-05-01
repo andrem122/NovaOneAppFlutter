@@ -15,9 +15,6 @@ void main() {
   runApp(MultiRepositoryProvider(
     providers: [
       RepositoryProvider(
-        create: (BuildContext context) => NavScreen(),
-      ),
-      RepositoryProvider(
           create: (BuildContext context) => SharedPreferences.getInstance()),
       RepositoryProvider(
           create: (BuildContext context) =>
@@ -25,8 +22,8 @@ void main() {
       RepositoryProvider(
           create: (BuildContext context) => UserApiClient(client: Client()))
     ],
-    child: DevicePreview(
-        enabled: !kReleaseMode, builder: (BuildContext context) => App()),
+    child:
+        DevicePreview(enabled: false, builder: (BuildContext context) => App()),
   ));
 }
 

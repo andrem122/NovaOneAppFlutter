@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
+import 'package:novaone/palette.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/screens.dart';
 
@@ -24,14 +26,29 @@ class NovaOneListObjectsLayout extends StatelessWidget {
         super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: OrientationLayout(
-        portrait: NovaOneListObjectsMobilePortrait(
-          tableItems: tableItems,
-          title: title,
-          addListObjectDescription: addListObjectDescription,
-          heroTag: heroTag,
-          showBackButton: showBackButton,
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        heroTag: heroTag,
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => InputLayout(
+                    description: addListObjectDescription,
+                    inputWidgetType: InputWidgetType.TextInput,
+                    hintText: 'Full Name',
+                    title: 'Full Name',
+                    backIcon: Icons.close,
+                  )));
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Palette.primaryColor,
+      ),
+      body: ScreenTypeLayout(
+        mobile: OrientationLayout(
+          portrait: NovaOneListObjectsMobilePortrait(
+            tableItems: tableItems,
+            title: title,
+            showBackButton: showBackButton,
+          ),
         ),
       ),
     );

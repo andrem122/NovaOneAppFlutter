@@ -18,6 +18,7 @@ class LoginScreenLayout extends StatefulWidget {
 
 class _LoginScreenLayoutState extends State<LoginScreenLayout> {
   bool _load = false;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -28,20 +29,35 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
           userStore: context.read<UserStore>())
         ..add(LoginStart()),
       child: Scaffold(
+        key: _scaffoldKey,
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: BlocConsumer<LoginBloc, LoginState>(
-          listener: (state, context) {
+          listener: (BuildContext context, LoginState state) {
             setState(() {
               _load = false;
             });
-          },
-          builder: (context, state) {
-            if (state is LoginLoaded) {
-              return _buildLoaded(context: context);
+
+            if (state is LoginUser) {
+              print('STATE IS LoginUser');
+
+              /// Navigate the user to the navigation screen
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => RepositoryProvider(
+                      create: (BuildContext context) => state.user,
+                      child: NavScreen())));
             }
 
+            if (state is LoginLoading) {
+              print('STATE IS LoginLoading');
+              setState(() {
+                _load = true;
+              });
+            }
+          },
+          builder: (BuildContext context, LoginState state) {
             if (state is LoginError) {
+              print('STATE IS LoginError');
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 // Scaffold message can only be called once the build has completed so
                 // we need to wrap our error message with the addPostFrameCallback method
@@ -50,23 +66,10 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
               });
             }
 
-            if (state is LoginLoading) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                setState(() {
-                  _load = true;
-                });
-              });
+            if (state is LoginLoaded) {
+              return _buildLoaded(context: context);
             }
 
-            if (state is LoginUser) {
-              /// Navigate the user to the navigation screen
-              SchedulerBinding.instance.addPostFrameCallback((_) {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => NavScreen(
-                          user: state.user,
-                        )));
-              });
-            }
             return _buildLoaded(context: context);
           },
         ),

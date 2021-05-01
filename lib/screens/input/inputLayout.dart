@@ -20,19 +20,23 @@ class InputLayout extends StatelessWidget {
   })  : assert(title != null),
         assert(description != null),
         assert(hintText != null),
+        assert(inputWidgetType != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-        mobile: OrientationLayout(
-      portrait: InputMobilePortrait(
-        inputWidgetType: inputWidgetType,
-        description: description,
-        title: title,
-        hintText: hintText,
-        backIcon: backIcon,
-      ),
-    ));
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: ScreenTypeLayout(
+          mobile: OrientationLayout(
+        portrait: InputMobilePortrait(
+          inputWidgetType: inputWidgetType,
+          description: description,
+          title: title,
+          hintText: hintText,
+          backIcon: backIcon,
+        ),
+      )),
+    );
   }
 }
