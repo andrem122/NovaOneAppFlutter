@@ -2,14 +2,13 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc({@required this.futurePrefs}) : super(HomeLoading());
+  HomeBloc({required this.futurePrefs}) : super(HomeLoading());
 
   final Future<SharedPreferences> futurePrefs;
 

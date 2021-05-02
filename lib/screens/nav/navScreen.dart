@@ -7,14 +7,14 @@ import 'package:novaone/widgets/widgets.dart';
 import '../../testData.dart';
 
 class NavScreen extends StatefulWidget {
-  const NavScreen({Key key}) : super(key: key);
+  const NavScreen({Key? key}) : super(key: key);
   @override
   NavScreenState createState() => NavScreenState();
 }
 
 class NavScreenState extends State<NavScreen> {
-  List<Widget> _screens;
-  List<IconData> _icons;
+  late List<Widget> _screens;
+  List<IconData>? _icons;
   int selectedIndex = 0;
 
   @override
@@ -60,7 +60,7 @@ class NavScreenState extends State<NavScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: _icons.length,
+      length: _icons!.length,
       child: Scaffold(
         body: IndexedStack(
           children: _screens,

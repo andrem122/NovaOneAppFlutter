@@ -4,7 +4,7 @@ import 'package:novaone/palette.dart';
 class WhiteButton extends StatelessWidget {
   final String buttonText;
 
-  const WhiteButton({Key key, @required this.buttonText}) : super(key: key);
+  const WhiteButton({Key? key, required this.buttonText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

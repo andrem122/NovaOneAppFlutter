@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:novaone/constants.dart';
 import 'package:novaone/enums/enums.dart';
 import 'package:novaone/models/models.dart';
-import 'package:novaone/pageRoutes/pageRoute.dart';
 import 'package:novaone/palette.dart';
-import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/widgets.dart';
 
 class NovaOneListObjectsMobilePortrait extends StatelessWidget {
@@ -15,13 +13,11 @@ class NovaOneListObjectsMobilePortrait extends StatelessWidget {
   final bool showBackButton;
 
   const NovaOneListObjectsMobilePortrait(
-      {Key key,
-      this.tableItems,
-      @required this.title,
+      {Key? key,
+      required this.tableItems,
+      required this.title,
       this.showBackButton = false})
-      : assert(tableItems != null),
-        assert(title != null),
-        super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

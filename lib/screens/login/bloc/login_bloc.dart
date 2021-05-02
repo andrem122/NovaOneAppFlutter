@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:novaone/api/api.dart';
 import 'package:novaone/auth/auth.dart';
 import 'package:novaone/models/models.dart';
@@ -14,15 +13,11 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(
-      {@required this.futurePrefs,
-      @required this.context,
-      @required this.userApiClient,
-      @required this.userStore})
-      : assert(futurePrefs != null),
-        assert(userStore != null),
-        assert(context != null),
-        assert(userApiClient != null),
-        super(LoginLoaded());
+      {required this.futurePrefs,
+      required this.context,
+      required this.userApiClient,
+      required this.userStore})
+      : super(LoginLoaded());
 
   final Future<SharedPreferences> futurePrefs;
   final UserStore userStore;
@@ -50,7 +45,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             await userApiClient.getUser(email: email, password: password);
         yield LoginUser(user: user);
       } catch (error) {
-        final String errorMessage =
+        final String? errorMessage =
             error is ApiMessageException ? error.reason : error.toString();
         final ApiMessageException errorObject = error is ApiMessageException
             ? error
@@ -77,7 +72,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         yield LoginUser(user: user);
       } catch (error) {
         if (error is ApiMessageException) {
-          final String errorMessage =
+          final String? errorMessage =
               error is ApiMessageException ? error.reason : error.toString();
           final ApiMessageException errorObject = error is ApiMessageException
               ? error

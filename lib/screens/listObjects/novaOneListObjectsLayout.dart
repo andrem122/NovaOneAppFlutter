@@ -13,17 +13,13 @@ class NovaOneListObjectsLayout extends StatelessWidget {
   final bool showBackButton;
 
   const NovaOneListObjectsLayout(
-      {Key key,
-      @required this.tableItems,
-      @required this.title,
-      @required this.addListObjectDescription,
-      this.heroTag,
+      {Key? key,
+      required this.tableItems,
+      required this.title,
+      required this.addListObjectDescription,
+      required this.heroTag,
       this.showBackButton = false})
-      : assert(tableItems != null),
-        assert(title != null),
-        assert(addListObjectDescription != null),
-        assert(heroTag != null),
-        super(key: key);
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

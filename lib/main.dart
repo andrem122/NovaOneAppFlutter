@@ -7,7 +7,7 @@ import 'package:novaone/auth/auth.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/screens.dart';
 import 'localizations.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart';
 
@@ -32,6 +32,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       title: NovaOneLocalizations.appName,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,

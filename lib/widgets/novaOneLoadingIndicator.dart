@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:novaone/constants.dart';
 
 class NovaOneLoadingIndicator extends StatelessWidget {
-  final String title;
+  final String? title;
 
-  const NovaOneLoadingIndicator({Key key, this.title}) : super(key: key);
+  const NovaOneLoadingIndicator({Key? key, this.title}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +28,7 @@ class NovaOneLoadingIndicator extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .bodyText2!
                     .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
               ),
             ],

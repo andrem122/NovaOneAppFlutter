@@ -7,7 +7,7 @@ import 'package:novaone/widgets/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreenLayout extends StatelessWidget {
-  const HomeScreenLayout({Key key}) : super(key: key);
+  const HomeScreenLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +30,13 @@ class HomeScreenLayout extends StatelessWidget {
     );
   }
 
-  Widget _buildLoading({@required BuildContext context}) {
-    assert(context != null);
+  Widget _buildLoading({required BuildContext context}) {
     return Center(
       child: CircularProgressIndicator(),
     );
   }
 
-  Widget _buildLoaded({@required BuildContext context}) {
-    assert(context != null);
+  Widget _buildLoaded({required BuildContext context}) {
     return ScreenTypeLayout(
       mobile: OrientationLayout(
         portrait: HomeMobilePortrait(),
@@ -47,7 +45,7 @@ class HomeScreenLayout extends StatelessWidget {
     );
   }
 
-  Widget _buildError({@required BuildContext context}) {
+  Widget _buildError({required BuildContext context}) {
     return ErrorDisplay();
   }
 }

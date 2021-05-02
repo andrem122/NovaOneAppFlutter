@@ -7,7 +7,7 @@ import 'package:novaone/widgets/widgets.dart';
 
 class GreetingContainer extends StatelessWidget {
   const GreetingContainer(
-      {Key key, @required this.user, @required this.containerDecimalHeight})
+      {Key? key, required this.user, required this.containerDecimalHeight})
       : super(key: key);
 
   final User user;

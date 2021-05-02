@@ -1,6 +1,5 @@
 import 'package:novaone/api/api.dart';
 import 'package:novaone/apiCredentials.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:novaone/novaOneUrl.dart';
 
@@ -19,7 +18,7 @@ class BaseApiClient {
     'Content-Type': 'application/x-www-form-urlencoded',
   };
 
-  BaseApiClient({@required this.client}) : assert(client != null);
+  BaseApiClient({required this.client});
 
   /// Makes a post request with some base parameters to the NovaOneApi
   ///
@@ -27,8 +26,8 @@ class BaseApiClient {
   /// Also requries a [uri] to make a request to
   /// An optional [errorMessage] can be provided for when the request fails
   Future<Response> postToNovaOneApi(
-      {@required Uri uri,
-      @required Map<String, dynamic> parameters,
+      {required Uri uri,
+      required Map<String, dynamic> parameters,
       String errorMessage = 'Unsuccessful request!'}) async {
     // Add the base parameters to the additional parameters
     parameters.addAll(baseParameters);

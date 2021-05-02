@@ -57,17 +57,17 @@ class _InfoCardMobile extends StatelessWidget {
   final double marginBottom;
   final Function() onAdd;
   final Function() onTap;
-  final Color iconColor;
+  final Color? iconColor;
 
   const _InfoCardMobile(
-      {Key key,
-      @required this.title,
-      @required this.iconData,
-      @required this.number,
+      {Key? key,
+      required this.title,
+      required this.iconData,
+      required this.number,
       this.marginBottom = 0,
-      @required this.onAdd,
+      required this.onAdd,
       this.iconColor,
-      @required this.onTap})
+      required this.onTap})
       : super(key: key);
 
   @override

@@ -11,16 +11,13 @@ class InputMobilePortrait extends StatelessWidget {
   final IconData backIcon;
 
   const InputMobilePortrait(
-      {Key key,
-      @required this.title,
-      @required this.description,
-      @required this.hintText,
-      @required this.inputWidgetType,
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.hintText,
+      required this.inputWidgetType,
       this.backIcon = Icons.arrow_back_sharp})
-      : assert(title != null),
-        assert(description != null),
-        assert(hintText != null),
-        super(key: key);
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     // Show keyboard on widget load

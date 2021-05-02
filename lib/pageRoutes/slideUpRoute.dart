@@ -4,9 +4,8 @@ import 'package:flutter/widgets.dart';
 class SlideUpRoute extends PageRouteBuilder {
   final Widget page;
 
-  SlideUpRoute({@required this.page})
-      : assert(page != null),
-        super(
+  SlideUpRoute({required this.page})
+      : super(
             pageBuilder: (BuildContext context, Animation<double> animation,
                     Animation<double> secondaryAnimation) =>
                 page,

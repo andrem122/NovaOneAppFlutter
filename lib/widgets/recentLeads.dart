@@ -11,8 +11,8 @@ class RecentLeads extends StatelessWidget {
   final List<Lead> leads;
 
   const RecentLeads({
-    Key key,
-    @required this.leads,
+    Key? key,
+    required this.leads,
   }) : super(key: key);
 
   @override
@@ -62,7 +62,7 @@ class RecentLeads extends StatelessWidget {
                 ),
                 NovaOneDetailTableItemData(
                   inputWidget: InputWidgetType.CalendarInput,
-                  title: lead.sentEmailDate,
+                  title: lead.sentEmailDate!,
                   subtitle: 'Email Sent',
                   iconData: Icons.send,
                   iconColor: Palette.appColors[1],
@@ -73,7 +73,7 @@ class RecentLeads extends StatelessWidget {
                 ),
                 NovaOneDetailTableItemData(
                   inputWidget: InputWidgetType.CalendarInput,
-                  title: lead.sentTextDate,
+                  title: lead.sentTextDate!,
                   subtitle: 'Text Sent',
                   iconData: Icons.textsms_rounded,
                   iconColor: Palette.appColors[2],
@@ -84,7 +84,7 @@ class RecentLeads extends StatelessWidget {
                 ),
                 NovaOneDetailTableItemData(
                   inputWidget: InputWidgetType.TextInput,
-                  title: lead.phoneNumber,
+                  title: lead.phoneNumber!,
                   subtitle: 'Phone Number',
                   iconData: Icons.phone,
                   iconColor: Palette.appColors[1],
@@ -95,7 +95,7 @@ class RecentLeads extends StatelessWidget {
                 ),
                 NovaOneDetailTableItemData(
                   inputWidget: InputWidgetType.EmailInput,
-                  title: lead.email,
+                  title: lead.email!,
                   subtitle: 'Email',
                   iconData: Icons.email,
                   iconColor: Palette.appColors[2],
@@ -145,11 +145,11 @@ class _RecentLeadItem extends StatelessWidget {
   final Function() onTap;
 
   const _RecentLeadItem({
-    Key key,
-    @required this.lead,
+    Key? key,
+    required this.lead,
     this.isLastItem = false,
-    @required this.onTap,
-    @required this.leadColor,
+    required this.onTap,
+    required this.leadColor,
     this.isFirstItem = false,
   }) : super(key: key);
 
@@ -182,7 +182,7 @@ class _RecentLeadItem extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               bottom: isLastItem == false
-                  ? BorderSide(width: 2, color: Colors.grey[200])
+                  ? BorderSide(width: 2, color: Colors.grey[200]!)
                   : BorderSide(width: 0, color: Colors.transparent),
             ),
           ),

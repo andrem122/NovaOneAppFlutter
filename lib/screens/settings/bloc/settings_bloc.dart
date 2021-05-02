@@ -13,10 +13,8 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   final Future<SharedPreferences> futurePrefs;
   final BuildContext context;
 
-  SettingsBloc({@required this.futurePrefs, @required this.context})
-      : assert(futurePrefs != null),
-        assert(context != null),
-        super(SettingsInitial());
+  SettingsBloc({required this.futurePrefs, required this.context})
+      : super(SettingsInitial());
 
   @override
   Stream<SettingsState> mapEventToState(

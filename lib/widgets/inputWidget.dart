@@ -6,31 +6,30 @@ import 'package:table_calendar/table_calendar.dart';
 
 /// Returns the input widget based on which [inputWidgetType] is given
 class InputWidget extends StatefulWidget {
-  final String hintText;
+  final String? hintText;
   final InputWidgetType inputWidgeType;
 
-  const InputWidget({Key key, this.hintText, @required this.inputWidgeType})
-      : assert(inputWidgeType != null),
-        super(key: key);
+  const InputWidget({Key? key, this.hintText, required this.inputWidgeType})
+      : super(key: key);
 
   @override
   _InputWidgetState createState() => _InputWidgetState();
 }
 
 class _InputWidgetState extends State<InputWidget> {
-  CalendarController _calendarController;
-  Widget _updateWidget;
+  late Widget _updateWidget;
 
   @override
   void initState() {
     super.initState();
-    _calendarController = CalendarController();
-
+    final now = new DateTime.now();
     switch (widget.inputWidgeType) {
       case InputWidgetType.CalendarInput:
         _updateWidget = RoundedContainer(
           child: TableCalendar(
-            calendarController: _calendarController,
+            firstDay: DateTime(now.year - 2, now.month, now.day),
+            focusedDay: now,
+            lastDay: DateTime(now.year + 5, now.month, now.day),
           ),
           constraints: BoxConstraints(maxWidth: maxContainerWidth),
           width: double.infinity,
@@ -39,13 +38,13 @@ class _InputWidgetState extends State<InputWidget> {
         break;
       case InputWidgetType.TextInput:
         _updateWidget = NovaOneTextInput(
-          hintText: widget.hintText,
+          hintText: widget.hintText!,
           autoFocus: true,
         );
         break;
       case InputWidgetType.EmailInput:
         _updateWidget = NovaOneTextInput(
-          hintText: widget.hintText,
+          hintText: widget.hintText!,
           keyboardType: TextInputType.emailAddress,
           autoFocus: true,
         );
@@ -63,7 +62,6 @@ class _InputWidgetState extends State<InputWidget> {
 
   @override
   void dispose() {
-    _calendarController.dispose();
     super.dispose();
   }
 

@@ -11,13 +11,11 @@ class NovaOneTable extends StatefulWidget {
   final bool scrollable;
 
   NovaOneTable(
-      {Key key,
-      @required this.tableItems,
-      @required this.tableType,
+      {Key? key,
+      required this.tableItems,
+      required this.tableType,
       this.scrollable = false})
-      : assert(tableItems != null),
-        assert(tableType != null),
-        super(key: key);
+      : super(key: key);
 
   @override
   _NovaOneTableState createState() => _NovaOneTableState();
@@ -45,7 +43,7 @@ class _NovaOneTableState extends State<NovaOneTable> {
             switch (widget.tableType) {
               case NovaOneTableTypes.DetailTable:
                 final NovaOneDetailTableItemData tableItem =
-                    widget.tableItems[index];
+                    widget.tableItems[index] as NovaOneDetailTableItemData;
 
                 tableItemWidget = _NovaOneDetailTableItem(
                   detailTableItem: tableItem,
@@ -70,7 +68,7 @@ class _NovaOneTableState extends State<NovaOneTable> {
                 break;
               case NovaOneTableTypes.ListTable:
                 final NovaOneListTableItemData tableItem =
-                    widget.tableItems[index];
+                    widget.tableItems[index] as NovaOneListTableItemData;
 
                 tableItemWidget = _NovaOneListTableItem(
                   isFirstItem: isFirstItem,
@@ -101,18 +99,14 @@ class _NovaOneDetailTableItem extends StatelessWidget {
   final Function() onTap;
 
   const _NovaOneDetailTableItem({
-    Key key,
+    Key? key,
     this.isLastItem = false,
     this.isFirstItem = false,
-    @required this.onTap,
-    @required this.detailTableItem,
-    @required this.popupMenuOptions,
-    @required this.onPopupMenuItemSelected,
-  })  : assert(popupMenuOptions != null),
-        assert(onTap != null),
-        assert(detailTableItem != null),
-        assert(onPopupMenuItemSelected != null),
-        super(key: key);
+    required this.onTap,
+    required this.detailTableItem,
+    required this.popupMenuOptions,
+    required this.onPopupMenuItemSelected,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +137,7 @@ class _NovaOneDetailTableItem extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               bottom: isLastItem == false
-                  ? BorderSide(width: 2, color: Colors.grey[200])
+                  ? BorderSide(width: 2, color: Colors.grey[200]!)
                   : BorderSide(width: 0, color: Colors.transparent),
             ),
           ),
@@ -210,17 +204,14 @@ class _NovaOneListTableItem extends StatelessWidget {
   final Function() onTap;
 
   const _NovaOneListTableItem({
-    Key key,
-    @required this.listTableItem,
+    Key? key,
+    required this.listTableItem,
     this.isLastItem = false,
-    @required this.onTap,
+    required this.onTap,
     this.color = Palette.primaryColor,
     this.isFirstItem = false,
-    @required this.onPopupMenuItemSelected,
-  })  : assert(listTableItem != null),
-        assert(onPopupMenuItemSelected != null),
-        assert(onTap != null),
-        super(key: key);
+    required this.onPopupMenuItemSelected,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -251,7 +242,7 @@ class _NovaOneListTableItem extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               bottom: isLastItem == false
-                  ? BorderSide(width: 2, color: Colors.grey[200])
+                  ? BorderSide(width: 2, color: Colors.grey[200]!)
                   : BorderSide(width: 0, color: Colors.transparent),
             ),
           ),

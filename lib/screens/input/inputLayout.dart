@@ -11,17 +11,13 @@ class InputLayout extends StatelessWidget {
   final IconData backIcon;
 
   const InputLayout({
-    Key key,
-    @required this.title,
-    @required this.description,
-    @required this.hintText,
-    @required this.inputWidgetType,
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.hintText,
+    required this.inputWidgetType,
     this.backIcon = Icons.arrow_back_sharp,
-  })  : assert(title != null),
-        assert(description != null),
-        assert(hintText != null),
-        assert(inputWidgetType != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

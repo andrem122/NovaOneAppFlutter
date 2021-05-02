@@ -1,4 +1,3 @@
-import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
 import 'enums/enums.dart';
@@ -34,15 +33,6 @@ final List<LeadsPerMonth> leadsPerMonthChartData = [
   LeadsPerMonth(date: 'Oct\n20', numberOfleads: 19),
   LeadsPerMonth(date: 'Nov\n20', numberOfleads: 67),
   LeadsPerMonth(date: 'Dec\n20', numberOfleads: 70),
-];
-
-final List<charts.Series<LeadsPerMonth, String>> seriesList = [
-  charts.Series(
-    id: 'Leads',
-    domainFn: (LeadsPerMonth leadsPerMonth, _) => leadsPerMonth.date,
-    measureFn: (LeadsPerMonth leadsPerMonth, _) => leadsPerMonth.numberOfleads,
-    data: leadsPerMonthChartData,
-  ),
 ];
 
 final List<Lead> recentLeads = [

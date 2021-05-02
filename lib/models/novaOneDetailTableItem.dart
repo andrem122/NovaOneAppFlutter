@@ -16,22 +16,15 @@ class NovaOneDetailTableItemData extends NovaOneTableItemData {
   final List<PopupMenuEntry> popupMenuOptions;
 
   const NovaOneDetailTableItemData(
-      {@required this.title,
-      @required this.updateTitle,
-      @required this.inputWidget,
+      {required this.title,
+      required this.updateTitle,
+      required this.inputWidget,
       this.keyboardType = TextInputType.text,
       this.updateFieldHintText = 'Update Value',
-      @required this.updateDescription,
-      @required this.popupMenuOptions,
-      @required this.subtitle,
-      @required this.iconData,
+      required this.updateDescription,
+      required this.popupMenuOptions,
+      required this.subtitle,
+      required this.iconData,
       this.iconColor = Palette.primaryColor})
-      : assert(title != null),
-        assert(updateTitle != null),
-        assert(updateDescription != null),
-        assert(popupMenuOptions != null),
-        assert(subtitle != null),
-        assert(iconData != null),
-        assert(inputWidget != null),
-        super(title: title, subtitle: subtitle);
+      : super(title: title, subtitle: subtitle);
 }

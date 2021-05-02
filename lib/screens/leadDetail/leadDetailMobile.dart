@@ -4,12 +4,12 @@ import 'package:novaone/models/models.dart';
 import 'package:novaone/widgets/widgets.dart';
 
 class LeadDetailMobilePortrait extends StatelessWidget {
-  final Lead lead;
+  final Lead? lead;
   final Color leadColor;
   final List<NovaOneDetailTableItemData> tableItems;
 
   const LeadDetailMobilePortrait(
-      {Key key, this.lead, @required this.leadColor, @required this.tableItems})
+      {Key? key, this.lead, required this.leadColor, required this.tableItems})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

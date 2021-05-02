@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../testData.dart';
 
 class HomeMobilePortrait extends StatelessWidget {
-  const HomeMobilePortrait({Key key}) : super(key: key);
+  const HomeMobilePortrait({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final User user = context.read<User>();
@@ -56,10 +56,7 @@ class HomeMobilePortrait extends StatelessWidget {
               child: SafeArea(
             top: false,
             bottom: false,
-            child: SimpleBarChart(
-              seriesList: seriesList,
-              animate: true,
-            ),
+            child: SimpleBarChart(),
           )),
         ),
         SliverPadding(
@@ -118,7 +115,7 @@ class HomeMobilePortrait extends StatelessWidget {
 }
 
 class HomeMobileLandscape extends StatelessWidget {
-  const HomeMobileLandscape({Key key}) : super(key: key);
+  const HomeMobileLandscape({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final User user = context.read<User>();
@@ -158,10 +155,7 @@ class HomeMobileLandscape extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
           sliver: SliverToBoxAdapter(
               child: SafeArea(
-            child: SimpleBarChart(
-              seriesList: seriesList,
-              animate: true,
-            ),
+            child: SimpleBarChart(),
           )),
         ),
         SliverPadding(

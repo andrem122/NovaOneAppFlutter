@@ -4,26 +4,26 @@ import 'package:novaone/widgets/widgets.dart';
 
 class NovaOneTextInput extends StatelessWidget {
   final String hintText;
-  final String initialValue;
+  final String? initialValue;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final bool autoFocus;
   final TextAlign textAlign;
-  final Border border;
-  final String labelText;
-  final FocusNode focusNode;
+  final Border? border;
+  final String? labelText;
+  final FocusNode? focusNode;
   final BoxConstraints constraints;
   final double scaleTextSize;
-  final TextEditingController controller;
-  final Function(String) onChanged;
-  final String Function(String) validator;
-  final Function(String) onFieldSubmitted;
+  final TextEditingController? controller;
+  final Function(String)? onChanged;
+  final String? Function(String?)? validator;
+  final Function(String)? onFieldSubmitted;
   final AutovalidateMode autovalidateMode;
   final bool obscureText;
 
   const NovaOneTextInput({
-    Key key,
-    @required this.hintText,
+    Key? key,
+    required this.hintText,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
     this.autoFocus = false,
@@ -40,8 +40,7 @@ class NovaOneTextInput extends StatelessWidget {
     this.focusNode,
     this.onFieldSubmitted,
     this.initialValue,
-  })  : assert(hintText != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +51,8 @@ class NovaOneTextInput extends StatelessWidget {
             ? Padding(
                 padding: const EdgeInsets.only(left: 20, bottom: 10),
                 child: Text(
-                  labelText,
-                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  labelText!,
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
                       fontWeight: FontWeight.bold,
                       fontSize: 15 * scaleTextSize),
                 ),
@@ -76,7 +75,7 @@ class NovaOneTextInput extends StatelessWidget {
               autofocus: autoFocus,
               style: Theme.of(context)
                   .textTheme
-                  .bodyText2
+                  .bodyText2!
                   .copyWith(fontSize: 17 * scaleTextSize),
               textInputAction: textInputAction,
               keyboardType: keyboardType,

@@ -9,9 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SettingsLayout extends StatelessWidget {
   final User user;
 
-  const SettingsLayout({Key key, @required this.user})
-      : assert(user != null),
-        super(key: key);
+  const SettingsLayout({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class SettingsLayout extends StatelessWidget {
     );
   }
 
-  Widget _buildLoaded({@required BuildContext context}) {
+  Widget _buildLoaded({required BuildContext context}) {
     return ScreenTypeLayout(
       mobile: OrientationLayout(
         portrait: SettingsMobilePortrait(user: user),

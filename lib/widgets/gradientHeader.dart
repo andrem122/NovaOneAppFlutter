@@ -5,10 +5,10 @@ import 'package:novaone/palette.dart';
 class GradientHeader extends StatelessWidget {
   final double containerDecimalHeight;
   final Widget child;
-  final Alignment alignment;
+  final Alignment? alignment;
 
   const GradientHeader(
-      {Key key,
+      {Key? key,
       this.containerDecimalHeight = 0.30,
       this.child = const SizedBox.shrink(),
       this.alignment})

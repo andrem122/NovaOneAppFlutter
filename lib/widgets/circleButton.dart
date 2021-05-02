@@ -6,9 +6,9 @@ import '../palette.dart';
 
 class CircleButton extends StatelessWidget {
   const CircleButton({
-    Key key,
-    @required this.iconData,
-    @required this.onPressed,
+    Key? key,
+    required this.iconData,
+    required this.onPressed,
     this.iconColor = Palette.primaryColor,
     this.backgroundColor = Colors.white,
   }) : super(key: key);
@@ -29,7 +29,7 @@ class CircleButton extends StatelessWidget {
       child: IconButton(
         icon: Icon(iconData),
         iconSize: 30,
-        onPressed: onPressed,
+        onPressed: onPressed as void Function()?,
         color: iconColor,
       ),
     );

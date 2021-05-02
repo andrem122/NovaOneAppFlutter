@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:novaone/palette.dart';
 
 class CustomTabBar extends StatelessWidget {
-  final List<IconData> icons;
+  final List<IconData>? icons;
   final int selectedIndex;
   final Function(int) onTap;
 
   const CustomTabBar(
-      {Key key,
-      @required this.icons,
-      @required this.selectedIndex,
-      @required this.onTap})
+      {Key? key,
+      required this.icons,
+      required this.selectedIndex,
+      required this.onTap})
       : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class CustomTabBar extends StatelessWidget {
       indicator: BoxDecoration(
           border:
               Border(top: BorderSide(width: 3, color: Palette.primaryColor))),
-      tabs: icons
+      tabs: icons!
           .asMap()
           .map((index, iconData) => MapEntry(
               index,

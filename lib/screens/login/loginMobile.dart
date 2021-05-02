@@ -17,10 +17,10 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
   FocusNode _focusNodePassWord = new FocusNode();
 
   // The user's email
-  String email;
+  String? email;
 
   // The user's password
-  String password;
+  String? password;
 
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
@@ -41,7 +41,7 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
               const SizedBox(height: 40),
               Text(
                 'Welcome',
-                style: Theme.of(context).textTheme.headline1.copyWith(
+                style: Theme.of(context).textTheme.headline1!.copyWith(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
@@ -51,7 +51,7 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
               ),
               Text(
                 'Sign in to continue!',
-                style: Theme.of(context).textTheme.headline3.copyWith(
+                style: Theme.of(context).textTheme.headline3!.copyWith(
                     color: Colors.grey[400],
                     fontWeight: FontWeight.bold,
                     fontSize: 24),
@@ -70,10 +70,16 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
                   },
                   controller: emailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (email) => email.isValidEmail() && email != null
-                      ? null
-                      : 'Please enter a valid email',
-                  border: Border.all(color: Colors.grey[300], width: 2),
+                  validator: (email) {
+                    if (email != null) {
+                      if (email.isValidEmail()) {
+                        return null;
+                      }
+                    }
+
+                    return 'Please enter a valid email';
+                  },
+                  border: Border.all(color: Colors.grey[300]!, width: 2),
                   keyboardType: TextInputType.emailAddress,
                   hintText: 'Your Email',
                   labelText: 'Email Address',
@@ -93,10 +99,16 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
                     });
                   },
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (password) =>
-                      password.isEmpty ? 'Please enter your password' : null,
+                  validator: (password) {
+                    if (password != null) {
+                      return password.isEmpty
+                          ? 'Please enter a password'
+                          : null;
+                    }
+                    return 'Please enter a password';
+                  },
                   controller: passwordController,
-                  border: Border.all(color: Colors.grey[300], width: 2),
+                  border: Border.all(color: Colors.grey[300]!, width: 2),
                   keyboardType: TextInputType.visiblePassword,
                   hintText: 'Your Password',
                   obscureText: true,
@@ -111,7 +123,7 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
                 'Forgot your password?',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .bodyText2!
                     .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
@@ -120,7 +132,7 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait> {
               NovaOneButton(
                 onPressed: () {
                   // First check if fields are empty before submitting request to API
-                  if (_formKey.currentState.validate()) {
+                  if (_formKey.currentState!.validate()) {
                     BlocProvider.of<LoginBloc>(context).add(LoginButtonTapped(
                         email: emailController.text,
                         password: passwordController.text));

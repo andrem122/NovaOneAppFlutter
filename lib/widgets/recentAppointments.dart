@@ -9,8 +9,8 @@ class RecentAppointments extends StatelessWidget {
   final List<Appointment> appointments;
 
   const RecentAppointments({
-    Key key,
-    @required this.appointments,
+    Key? key,
+    required this.appointments,
   }) : super(key: key);
 
   @override
@@ -49,12 +49,12 @@ class _RecentAppointmentItem extends StatelessWidget {
   final Function() onTap;
 
   const _RecentAppointmentItem({
-    Key key,
-    @required this.appointment,
+    Key? key,
+    required this.appointment,
     this.isLastItem = false,
-    @required this.onTap,
+    required this.onTap,
     this.isFirstItem = false,
-    @required this.appointmentColor,
+    required this.appointmentColor,
   }) : super(key: key);
 
   @override
@@ -86,7 +86,7 @@ class _RecentAppointmentItem extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               bottom: isLastItem == false
-                  ? BorderSide(width: 2, color: Colors.grey[200])
+                  ? BorderSide(width: 2, color: Colors.grey[200]!)
                   : BorderSide(width: 0, color: Colors.transparent),
             ),
           ),

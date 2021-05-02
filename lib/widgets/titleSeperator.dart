@@ -7,9 +7,9 @@ class TitleSeperator extends StatelessWidget {
   final bool centerTitle;
 
   const TitleSeperator(
-      {Key key,
-      @required this.title,
-      @required this.subtitle,
+      {Key? key,
+      required this.title,
+      required this.subtitle,
       this.showSubtitle = false,
       this.centerTitle = false})
       : super(key: key);

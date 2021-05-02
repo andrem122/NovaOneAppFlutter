@@ -9,10 +9,10 @@ class LeadDetailLayout extends StatelessWidget {
   final List<NovaOneDetailTableItemData> detailTableItems;
 
   const LeadDetailLayout(
-      {Key key,
-      @required this.lead,
-      @required this.leadColor,
-      @required this.detailTableItems})
+      {Key? key,
+      required this.lead,
+      required this.leadColor,
+      required this.detailTableItems})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

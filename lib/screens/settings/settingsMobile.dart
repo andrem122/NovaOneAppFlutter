@@ -12,18 +12,17 @@ import 'package:novaone/widgets/widgets.dart';
 class SettingsMobilePortrait extends StatelessWidget {
   final User user;
 
-  const SettingsMobilePortrait({Key key, @required this.user})
-      : assert(user != null),
-        super(key: key);
+  const SettingsMobilePortrait({Key? key, required this.user})
+      : super(key: key);
 
   Widget _createPopUpMenuOptions(
-      {@required BuildContext context, @required InputLayout editScreen}) {
+      {required BuildContext context, required InputLayout editScreen}) {
     return PopupMenuButton(
       itemBuilder: (context) {
         return settingsPopupMenuOptions;
       },
       icon: Icon(Icons.more_vert),
-      onSelected: (listTableItemMenuOptions) {
+      onSelected: (dynamic listTableItemMenuOptions) {
         if (listTableItemMenuOptions == ListTableItemMenuOptions.Edit) {
           Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) => editScreen));
@@ -137,12 +136,10 @@ class SettingsMobilePortrait extends StatelessWidget {
 /// and some [children] to fill up the section of the table
 class _SettingsTableSection extends StatelessWidget {
   const _SettingsTableSection({
-    Key key,
-    @required this.sectionTitle,
-    @required this.children,
-  })  : assert(sectionTitle != null),
-        assert(children != null),
-        super(key: key);
+    Key? key,
+    required this.sectionTitle,
+    required this.children,
+  }) : super(key: key);
 
   final List<Widget> children;
   final String sectionTitle;
@@ -162,7 +159,7 @@ class _SettingsTableSection extends StatelessWidget {
                 left: defaultPadding, bottom: defaultPadding),
             child: Text(
               sectionTitle.toUpperCase(),
-              style: Theme.of(context).textTheme.headline3.copyWith(
+              style: Theme.of(context).textTheme.headline3!.copyWith(
                   color: Palette.primaryColor,
                   fontSize: 14,
                   fontWeight: FontWeight.bold),
@@ -181,27 +178,24 @@ class _SettingsTableSection extends StatelessWidget {
 class _SettingsTableItem extends StatelessWidget {
   final String title;
   final String subtitle;
-  final Widget trailingWidget;
+  final Widget? trailingWidget;
   final Function() onTap;
   final bool isLastItem;
   final bool isFirstItem;
 
   const _SettingsTableItem(
-      {Key key,
-      @required this.title,
-      @required this.subtitle,
+      {Key? key,
+      required this.title,
+      required this.subtitle,
       this.trailingWidget,
-      @required this.onTap,
+      required this.onTap,
       this.isLastItem = false,
       this.isFirstItem = false})
-      : assert(title != null),
-        assert(subtitle != null),
-        assert(onTap != null),
-        super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    BorderRadius itemBorderRadius;
+    BorderRadius? itemBorderRadius;
     if (isFirstItem) {
       itemBorderRadius = BorderRadius.only(
           topLeft: Radius.circular(borderRadius),
@@ -228,7 +222,7 @@ class _SettingsTableItem extends StatelessWidget {
                   Text(title,
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText2
+                          .bodyText2!
                           .copyWith(fontSize: 16, fontWeight: FontWeight.w600)),
                   const SizedBox(
                     height: 6,
@@ -240,7 +234,7 @@ class _SettingsTableItem extends StatelessWidget {
                 ],
               ),
             ),
-            trailingWidget != null ? trailingWidget : SizedBox.shrink(),
+            trailingWidget != null ? trailingWidget! : SizedBox.shrink(),
           ],
         ),
       ),

@@ -21,7 +21,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.0"
+    version: "2.1.0"
   async:
     dependency: transitive
     description:
@@ -56,49 +56,49 @@ packages:
       name: build_config
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.7"
+    version: "1.0.0"
   build_daemon:
     dependency: transitive
     description:
       name: build_daemon
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.7"
+    version: "3.0.0"
   build_resolvers:
     dependency: transitive
     description:
       name: build_resolvers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   build_runner:
     dependency: "direct main"
     description:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.12.2"
+    version: "2.0.1"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.12"
+    version: "7.0.0"
   built_collection:
     dependency: transitive
     description:
       name: built_collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.3.2"
+    version: "5.0.0"
   built_value:
     dependency: transitive
     description:
       name: built_value
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.1.0"
+    version: "8.0.5"
   characters:
     dependency: transitive
     description:
@@ -113,20 +113,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  charts_common:
-    dependency: transitive
-    description:
-      name: charts_common
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.0"
-  charts_flutter:
-    dependency: "direct main"
-    description:
-      name: charts_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.0"
   checked_yaml:
     dependency: transitive
     description:
@@ -154,7 +140,7 @@ packages:
       name: code_builder
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.7.0"
+    version: "4.0.0"
   collection:
     dependency: transitive
     description:
@@ -238,7 +224,14 @@ packages:
       name: fixnum
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.10.11"
+    version: "1.0.0"
+  fl_chart:
+    dependency: "direct main"
+    description:
+      name: fl_chart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.36.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -252,7 +245,7 @@ packages:
     source: hosted
     version: "7.0.0"
   flutter_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -307,7 +300,7 @@ packages:
       name: graphs
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "2.0.0"
   http:
     dependency: transitive
     description:
@@ -321,7 +314,7 @@ packages:
       name: http_multi_server
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.0"
+    version: "3.0.1"
   http_parser:
     dependency: transitive
     description:
@@ -342,7 +335,7 @@ packages:
       name: io
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.5"
+    version: "1.0.0"
   js:
     dependency: transitive
     description:
@@ -391,7 +384,7 @@ packages:
       name: mime
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.7"
+    version: "1.0.0"
   nested:
     dependency: transitive
     description:
@@ -525,13 +518,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.5"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -587,14 +573,14 @@ packages:
       name: shelf_web_socket
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.4+1"
+    version: "1.0.1"
   simple_gesture_detector:
     dependency: transitive
     description:
       name: simple_gesture_detector
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.6"
+    version: "0.2.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -648,7 +634,7 @@ packages:
       name: table_calendar
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.3"
+    version: "3.0.0"
   term_glyph:
     dependency: transitive
     description:
@@ -669,7 +655,7 @@ packages:
       name: timing
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.1+3"
+    version: "1.0.0"
   typed_data:
     dependency: transitive
     description:
@@ -697,7 +683,7 @@ packages:
       name: web_socket_channel
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "2.0.0"
   win32:
     dependency: transitive
     description:

@@ -5,7 +5,7 @@ class NovaOneAppBar extends StatelessWidget {
   final String title;
   final double height;
 
-  const NovaOneAppBar({Key key, @required this.title, this.height = 50})
+  const NovaOneAppBar({Key? key, required this.title, this.height = 50})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

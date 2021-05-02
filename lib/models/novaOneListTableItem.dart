@@ -10,14 +10,11 @@ class NovaOneListTableItemData extends NovaOneTableItemData {
   final List<PopupMenuEntry> popupMenuOptions;
 
   NovaOneListTableItemData({
-    @required this.title,
+    required this.title,
     this.color = Palette.primaryColor,
-    @required this.popupMenuOptions,
-    @required this.subtitle,
-  })  : assert(title != null),
-        assert(popupMenuOptions != null),
-        assert(subtitle != null),
-        super(title: title, subtitle: subtitle);
+    required this.popupMenuOptions,
+    required this.subtitle,
+  }) : super(title: title, subtitle: subtitle);
 
   @override
   List<Object> get props => [title, subtitle, color, popupMenuOptions];

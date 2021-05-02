@@ -3,11 +3,11 @@ import 'package:novaone/enums/deviceScreenType.dart';
 import 'package:novaone/responsive/responsiveBuilder.dart';
 
 class ScreenTypeLayout extends StatelessWidget {
-  final Widget mobile;
-  final Widget tablet;
-  final Widget desktop;
+  final Widget? mobile;
+  final Widget? tablet;
+  final Widget? desktop;
 
-  const ScreenTypeLayout({Key key, this.mobile, this.tablet, this.desktop})
+  const ScreenTypeLayout({Key? key, this.mobile, this.tablet, this.desktop})
       : super(key: key);
 
   @override

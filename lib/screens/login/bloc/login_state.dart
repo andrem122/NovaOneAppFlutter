@@ -22,7 +22,7 @@ class LoginLoaded extends LoginState {
 class LoginError extends LoginState {
   final ApiMessageException error;
 
-  LoginError({@required this.error}) : assert(error != null);
+  LoginError({required this.error});
 
   @override
   List<Object> get props => super.props + [error];
@@ -35,5 +35,5 @@ class LoginUser extends LoginState {
   @override
   List<Object> get props => super.props + [user];
 
-  const LoginUser({@required this.user}) : assert(user != null);
+  const LoginUser({required this.user});
 }

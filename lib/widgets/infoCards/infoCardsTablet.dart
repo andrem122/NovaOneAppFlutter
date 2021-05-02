@@ -48,13 +48,13 @@ class _InfoCardTablet extends StatelessWidget {
   final double marginRight;
 
   const _InfoCardTablet(
-      {Key key,
-      @required this.title,
-      @required this.iconData,
-      @required this.number,
+      {Key? key,
+      required this.title,
+      required this.iconData,
+      required this.number,
       this.marginRight = 0,
-      @required this.onTap,
-      @required this.onAdd})
+      required this.onTap,
+      required this.onAdd})
       : super(key: key);
 
   @override

@@ -7,14 +7,14 @@ import '../palette.dart';
 
 class LeadDetailHeader extends StatelessWidget {
   final double containerDecimalHeight;
-  final Lead lead;
+  final Lead? lead;
   final Color leadColor; // The color that was used in the recent leads table
 
   const LeadDetailHeader(
-      {Key key,
-      @required this.containerDecimalHeight,
-      @required this.lead,
-      @required this.leadColor})
+      {Key? key,
+      required this.containerDecimalHeight,
+      required this.lead,
+      required this.leadColor})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class LeadDetailHeader extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                          lead.name,
+                          lead!.name,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Colors.black,
@@ -100,7 +100,7 @@ class LeadDetailHeader extends StatelessWidget {
                       child: Container(
                         child: Center(
                           child: Text(
-                            lead.name[0],
+                            lead!.name[0],
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

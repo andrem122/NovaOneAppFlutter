@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,13 +9,12 @@ import 'package:http/http.dart' as http;
 
 @JsonSerializable()
 class ApiMessageException implements Exception {
-  final String reason;
-  final int error;
+  final String? reason;
+  final int? error;
 
-  const ApiMessageException({@required this.reason, @required this.error});
+  const ApiMessageException({required this.reason, required this.error});
 
-  factory ApiMessageException.fromJson({@required Map<String, dynamic> json}) {
-    assert(json != null);
+  factory ApiMessageException.fromJson({required Map<String, dynamic> json}) {
     return ApiMessageException(
       error: json['error'],
       reason: json['reason'],
@@ -29,7 +27,7 @@ class ApiMessageFailureHandler {
   ///
   /// Takes in a [fallback] message if the error response cannot be parsed as json
   static ApiMessageException throwErrorMessage(
-      {@required String fallback, @required http.Response response}) {
+      {required String fallback, required http.Response response}) {
     ApiMessageException exception;
     try {
       final json = jsonDecode(response.body) as Map<String, dynamic>;

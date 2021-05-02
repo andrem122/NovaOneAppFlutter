@@ -5,7 +5,7 @@ import 'package:novaone/widgets/widgets.dart';
 
 class ErrorDisplay extends StatelessWidget {
   const ErrorDisplay({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -28,7 +28,7 @@ class ErrorDisplay extends StatelessWidget {
             ),
             Text(
               'Uh oh.',
-              style: Theme.of(context).textTheme.headline2.copyWith(
+              style: Theme.of(context).textTheme.headline2!.copyWith(
                     color: Colors.black,
                   ),
             ),

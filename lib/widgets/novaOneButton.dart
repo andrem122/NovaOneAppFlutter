@@ -5,14 +5,14 @@ import 'package:novaone/constants.dart';
 class NovaOneButton extends StatelessWidget {
   final Function() onPressed;
   final String title;
-  final EdgeInsets margin;
-  final Color color;
+  final EdgeInsets? margin;
+  final Color? color;
   final double scaleTextSize;
   final BoxConstraints constraints;
 
   const NovaOneButton(
-      {Key key,
-      @required this.onPressed,
+      {Key? key,
+      required this.onPressed,
       this.title = 'Submit',
       this.margin,
       this.color,
@@ -21,8 +21,7 @@ class NovaOneButton extends StatelessWidget {
           minHeight: minButtonHeight,
           maxWidth: maxButtonWidth),
       this.scaleTextSize = 1})
-      : assert(onPressed != null),
-        super(key: key);
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

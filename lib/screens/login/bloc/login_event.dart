@@ -16,7 +16,5 @@ class LoginButtonTapped extends LoginEvent {
   @override
   List<Object> get props => super.props + [email, password];
 
-  const LoginButtonTapped({@required this.email, @required this.password})
-      : assert(email != null),
-        assert(password != null);
+  const LoginButtonTapped({required this.email, required this.password});
 }

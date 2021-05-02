@@ -3,10 +3,10 @@ import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/utils/utils.dart';
 
 class ResponsiveBuilder extends StatelessWidget {
-  final Widget Function(
-      BuildContext context, SizingInformation sizingInformation) builder;
+  final Widget? Function(
+      BuildContext context, SizingInformation sizingInformation)? builder;
 
-  const ResponsiveBuilder({Key key, this.builder}) : super(key: key);
+  const ResponsiveBuilder({Key? key, this.builder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ResponsiveBuilder extends StatelessWidget {
           localWidgetSize:
               Size(boxConstraints.maxWidth, boxConstraints.maxHeight));
 
-      return builder(context, sizingInformation);
+      return builder!(context, sizingInformation)!;
     });
   }
 }

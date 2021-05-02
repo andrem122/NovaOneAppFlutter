@@ -7,10 +7,10 @@ import 'package:novaone/widgets/widgets.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class UpdateWidget extends StatefulWidget {
-  final String hintText;
+  final String? hintText;
   final UpdateWidgetType updateWidget;
 
-  const UpdateWidget({Key key, this.hintText, @required this.updateWidget})
+  const UpdateWidget({Key? key, this.hintText, required this.updateWidget})
       : super(key: key);
 
   @override
@@ -18,18 +18,18 @@ class UpdateWidget extends StatefulWidget {
 }
 
 class _UpdateWidgetState extends State<UpdateWidget> {
-  CalendarController _calendarController;
-  Widget _updateWidget;
+  late Widget _updateWidget;
 
   @override
   void initState() {
     super.initState();
-    _calendarController = CalendarController();
-
+    final now = new DateTime.now();
     if (widget.updateWidget == UpdateWidgetType.CalendarField) {
       _updateWidget = RoundedContainer(
         child: TableCalendar(
-          calendarController: _calendarController,
+          firstDay: DateTime(now.year - 2, now.month, now.day),
+          focusedDay: now,
+          lastDay: DateTime(now.year + 5, now.month, now.day),
         ),
         constraints: BoxConstraints(maxWidth: maxContainerWidth),
         width: double.infinity,
@@ -53,7 +53,6 @@ class _UpdateWidgetState extends State<UpdateWidget> {
 
   @override
   void dispose() {
-    _calendarController.dispose();
     super.dispose();
   }
 

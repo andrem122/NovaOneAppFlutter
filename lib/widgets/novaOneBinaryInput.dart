@@ -11,13 +11,11 @@ class NovaOneBinaryInput extends StatelessWidget {
   final Function() onPressedNo;
 
   NovaOneBinaryInput(
-      {Key key, @required this.onPressedYes, @required this.onPressedNo})
-      : assert(onPressedYes != null),
-        assert(onPressedNo != null),
-        super(key: key);
+      {Key? key, required this.onPressedYes, required this.onPressedNo})
+      : super(key: key);
 
   /// Returns the appropriate list of children based on the type of the device
-  List<Widget> _getChildren({@required DeviceScreenType deviceScreenType}) {
+  List<Widget> _getChildren({required DeviceScreenType deviceScreenType}) {
     List<Widget> children = [];
     switch (deviceScreenType) {
       case DeviceScreenType.Mobile:

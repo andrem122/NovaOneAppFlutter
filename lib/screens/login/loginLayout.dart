@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novaone/api/api.dart';
 import 'package:novaone/auth/auth.dart';
@@ -58,11 +57,11 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
           builder: (BuildContext context, LoginState state) {
             if (state is LoginError) {
               print('STATE IS LoginError');
-              WidgetsBinding.instance.addPostFrameCallback((_) {
+              WidgetsBinding.instance!.addPostFrameCallback((_) {
                 // Scaffold message can only be called once the build has completed so
                 // we need to wrap our error message with the addPostFrameCallback method
                 Scaffold.of(context)
-                    .showErrorSnackBar(error: state.error.reason);
+                    .showErrorSnackBar(error: state.error.reason!);
               });
             }
 
@@ -77,8 +76,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
     );
   }
 
-  Widget _buildLoaded({@required BuildContext context}) {
-    assert(context != null);
+  Widget _buildLoaded({required BuildContext context}) {
     Widget loadingIndicator = _load
         ? NovaOneLoadingIndicator(
             title: 'Logging In',

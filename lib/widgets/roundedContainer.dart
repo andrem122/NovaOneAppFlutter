@@ -3,24 +3,23 @@ import 'package:novaone/constants.dart';
 
 class RoundedContainer extends StatelessWidget {
   final Widget child;
-  final double height;
+  final double? height;
   final double width;
   final BoxConstraints constraints;
-  final List<BoxShadow> boxShadow;
-  final EdgeInsets padding;
-  final Border border;
+  final List<BoxShadow>? boxShadow;
+  final EdgeInsets? padding;
+  final Border? border;
 
   const RoundedContainer({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.height,
     this.width = double.infinity,
     this.constraints = const BoxConstraints(),
     this.boxShadow,
     this.padding,
     this.border,
-  })  : assert(child != null),
-        super(key: key);
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final Widget containerWithHeight = Container(
