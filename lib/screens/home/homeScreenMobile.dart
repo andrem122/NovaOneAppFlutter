@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/widgets/simpleBarChart.dart';
@@ -11,6 +12,9 @@ class HomeMobilePortrait extends StatelessWidget {
   const HomeMobilePortrait({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final barChartWidth = 40.0;
+    print('WIDTH: $barChartWidth');
     final User user = context.read<User>();
     return CustomScrollView(
       slivers: <Widget>[
@@ -56,7 +60,85 @@ class HomeMobilePortrait extends StatelessWidget {
               child: SafeArea(
             top: false,
             bottom: false,
-            child: SimpleBarChart(),
+            child: SimpleBarChart(
+              barChartData: BarChartData(
+                  borderData: FlBorderData(show: false),
+                  alignment: BarChartAlignment.center,
+                  barGroups: <BarChartGroupData>[
+                    BarChartGroupData(x: 0, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 5,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 1, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 5,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 2, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 5,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 3, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 5,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 4, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 5,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 5, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 5,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 6, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 5,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 7, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 5,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 8, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 15,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 9, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 4,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 10, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 7,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                    BarChartGroupData(x: 11, barRods: <BarChartRodData>[
+                      BarChartRodData(
+                          y: 7,
+                          borderRadius: BorderRadius.circular(4),
+                          width: barChartWidth)
+                    ]),
+                  ]),
+            ),
           )),
         ),
         SliverPadding(
@@ -155,7 +237,24 @@ class HomeMobileLandscape extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
           sliver: SliverToBoxAdapter(
               child: SafeArea(
-            child: SimpleBarChart(),
+            child: SimpleBarChart(
+              barChartData: BarChartData(
+                  alignment: BarChartAlignment.center,
+                  barGroups: <BarChartGroupData>[
+                    BarChartGroupData(
+                        x: 0,
+                        barRods: <BarChartRodData>[BarChartRodData(y: 5)]),
+                    BarChartGroupData(
+                        x: 1,
+                        barRods: <BarChartRodData>[BarChartRodData(y: 15)]),
+                    BarChartGroupData(
+                        x: 2,
+                        barRods: <BarChartRodData>[BarChartRodData(y: 4)]),
+                    BarChartGroupData(
+                        x: 3,
+                        barRods: <BarChartRodData>[BarChartRodData(y: 7)]),
+                  ]),
+            ),
           )),
         ),
         SliverPadding(
