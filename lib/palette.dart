@@ -26,4 +26,21 @@ class Palette {
       stops: [0, 0.2, 0.5, 0.8] //stops for individual color
       //set the stops number equal to numbers of color
       );
+
+  // The colors used in the gradient
+  static const gradientColors = [
+    primaryColor,
+    purpleColor,
+    indigoColor,
+    Color(0xff53B0DB)
+  ];
+
+  // Where the gradient starts from
+  static const gradientFrom = Offset(0, 1);
+
+  // Where the gradient ends to
+  static const gradientTo = Offset(0, 0);
+
+  // The stops of colors the gradient has
+  static const List<double> gradientColorStops = [0, 0.2, 0.5, 0.8];
 }
