@@ -11,10 +11,45 @@ import '../../testData.dart';
 
 class HomeMobilePortrait extends StatelessWidget {
   const HomeMobilePortrait({Key? key}) : super(key: key);
+
+  /// Builds a BarChartRodData for the BarChartGroupData
+  ///
+  /// The [y] value represents the height of the bar on the y-axis of the graph
+  /// while the width of the bar can be set with [barWidth]
+  BarChartRodData _buildBarRod({required double y, required double barWidth}) {
+    return BarChartRodData(
+        y: y,
+        borderRadius: BorderRadius.circular(4),
+        width: barWidth,
+        gradientFrom: Palette.gradientFrom,
+        gradientTo: Palette.gradientTo,
+        gradientColorStops: Palette.gradientColorStops,
+        colors: Palette.gradientColors);
+  }
+
+  /// Builds a list of BarChartGroupData items for a BarChartData item
+  ///
+  /// The number of x plots on the graph is represented by [groups].
+  /// If, for example, 12 x points are desired on the graph, then [groups]
+  /// would be set to 12. A y value for each group or x point on the graph
+  /// is supplied by [yValues], and a [barWidth] can be set for each bar on the
+  /// bar chart.
+  List<BarChartGroupData> _buildBarChartGroupData(
+      {required int groups,
+      required List<double> yValues,
+      required double barWidth}) {
+    return List.generate(
+        groups,
+        (int index) => BarChartGroupData(x: index, barRods: <BarChartRodData>[
+              _buildBarRod(y: yValues[index], barWidth: barWidth)
+            ]));
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final barChartWidth = (size.width - 200) / 12;
+    final barWidth = (size.width - 200) / 12;
+    final List<double> yValues = [5, 6, 11, 12, 14, 13, 8, 9, 13, 4, 6, 7.6];
     final User user = context.read<User>();
     return CustomScrollView(
       slivers: <Widget>[
@@ -69,7 +104,7 @@ class HomeMobilePortrait extends StatelessWidget {
                         getTextStyles: (double? value) => const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 14),
+                            fontSize: 12),
                         margin: 10,
                         getTitles: (double value) {
                           switch (value.toInt()) {
@@ -105,7 +140,6 @@ class HomeMobilePortrait extends StatelessWidget {
                   axisTitleData: FlAxisTitleData(
                       leftTitle: AxisTitle(
                           titleText: 'Number Of Leads',
-                          reservedSize: 10,
                           showTitle: true,
                           margin: 0),
                       bottomTitle: AxisTitle(
@@ -115,128 +149,8 @@ class HomeMobilePortrait extends StatelessWidget {
                       )),
                   borderData: FlBorderData(show: false),
                   alignment: BarChartAlignment.spaceEvenly,
-                  barGroups: <BarChartGroupData>[
-                    BarChartGroupData(x: 0, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 5,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 1, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 3,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 2, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 10,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 3, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 12,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 4, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 7,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 5, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 8.6,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 6, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 5,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 7, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 5,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 8, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 15,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 9, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 4,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 10, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 7,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                    BarChartGroupData(x: 11, barRods: <BarChartRodData>[
-                      BarChartRodData(
-                          y: 7,
-                          borderRadius: BorderRadius.circular(4),
-                          width: barChartWidth,
-                          gradientFrom: Palette.gradientFrom,
-                          gradientTo: Palette.gradientTo,
-                          gradientColorStops: Palette.gradientColorStops,
-                          colors: Palette.gradientColors)
-                    ]),
-                  ]),
+                  barGroups: _buildBarChartGroupData(
+                      groups: 12, yValues: yValues, barWidth: barWidth)),
             ),
           )),
         ),

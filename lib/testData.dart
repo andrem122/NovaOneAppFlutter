@@ -19,22 +19,6 @@ final User currentUser = User(
     phoneNumber: '555-555-5555',
     customerType: 'PM');
 
-// Sample chart data
-final List<LeadsPerMonth> leadsPerMonthChartData = [
-  LeadsPerMonth(date: 'Jan\n20', numberOfleads: 24),
-  LeadsPerMonth(date: 'Feb\n20', numberOfleads: 42),
-  LeadsPerMonth(date: 'Mar\n20', numberOfleads: 9),
-  LeadsPerMonth(date: 'Apr\n20', numberOfleads: 36),
-  LeadsPerMonth(date: 'May\n20', numberOfleads: 22),
-  LeadsPerMonth(date: 'Jun\n20', numberOfleads: 17),
-  LeadsPerMonth(date: 'Jul\n20', numberOfleads: 48),
-  LeadsPerMonth(date: 'Aug\n20', numberOfleads: 46),
-  LeadsPerMonth(date: 'Sep\n20', numberOfleads: 5),
-  LeadsPerMonth(date: 'Oct\n20', numberOfleads: 19),
-  LeadsPerMonth(date: 'Nov\n20', numberOfleads: 67),
-  LeadsPerMonth(date: 'Dec\n20', numberOfleads: 70),
-];
-
 final List<Lead> recentLeads = [
   Lead(
       id: 1,

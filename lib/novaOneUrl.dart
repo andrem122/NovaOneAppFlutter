@@ -9,9 +9,13 @@ class NovaOneUrl {
   static const novaOneApiAuthority = 'graystonerealtyfl.com';
   static const novaOneApiBasePath = '/NovaOne';
   static const novaOneApiPathLogin = novaOneApiBasePath + '/login.php';
+  static const novaOneApiPathChartMonthlyData =
+      novaOneApiBasePath + '/chartDataMonthly.php';
 
   static Uri get novaOneApiUrl =>
       Uri.https(novaOneApiAuthority, novaOneApiBasePath);
   static Uri get novaOneApiUrlLogin =>
       Uri.https(novaOneApiAuthority, novaOneApiPathLogin);
+  static Uri get novaOneApiChartMonthlyData =>
+      Uri.https(novaOneApiAuthority, novaOneApiPathChartMonthlyData);
 }

@@ -1,10 +1,12 @@
 import 'package:novaone/api/api.dart';
 import 'package:novaone/apiCredentials.dart';
 import 'package:http/http.dart';
+import 'package:novaone/auth/auth.dart';
 import 'package:novaone/novaOneUrl.dart';
 
 class BaseApiClient {
   final Client client;
+  final UserStore userStore;
 
   // The base parameters to send with every request to the NovaOne API
   final Map<String, String> baseParameters = {
@@ -18,7 +20,7 @@ class BaseApiClient {
     'Content-Type': 'application/x-www-form-urlencoded',
   };
 
-  BaseApiClient({required this.client});
+  BaseApiClient({required this.client, required this.userStore});
 
   /// Makes a post request with some base parameters to the NovaOneApi
   ///

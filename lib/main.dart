@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:novaone/api/chartDataApiClient.dart';
 import 'package:novaone/api/userApiClient.dart';
 import 'package:novaone/auth/auth.dart';
 import 'package:novaone/palette.dart';
@@ -20,8 +21,15 @@ void main() {
       RepositoryProvider(
           create: (BuildContext context) =>
               UserStore(storage: FlutterSecureStorage())),
+      RepositoryProvider(create: (BuildContext context) => Client()),
       RepositoryProvider(
-          create: (BuildContext context) => UserApiClient(client: Client()))
+          create: (BuildContext context) => ChartDataApiClient(
+              client: context.read<Client>(),
+              userStore: context.read<UserStore>())),
+      RepositoryProvider(
+          create: (BuildContext context) => UserApiClient(
+              client: context.read<Client>(),
+              userStore: context.read<UserStore>()))
     ],
     child: DevicePreview(
         enabled: !kReleaseMode, builder: (BuildContext context) => App()),

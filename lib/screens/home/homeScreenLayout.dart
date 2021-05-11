@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novaone/api/chartDataApiClient.dart';
 import 'package:novaone/responsive/responsive.dart';
 import 'package:novaone/screens/home/bloc/home_bloc.dart';
 import 'package:novaone/screens/screens.dart';
@@ -11,8 +12,9 @@ class HomeScreenLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeBloc =
-        HomeBloc(futurePrefs: context.read<Future<SharedPreferences>>());
+    final homeBloc = HomeBloc(
+        futurePrefs: context.read<Future<SharedPreferences>>(),
+        chartDataApiClient: context.read<ChartDataApiClient>());
     return BlocProvider(
       create: (BuildContext context) => homeBloc..add(HomeStart()),
       child: BlocConsumer<HomeBloc, HomeState>(
