@@ -59,6 +59,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginLoading();
 
       try {
+        // Get user data from API
         final user = await userApiClient.getUser(
             email: event.email, password: event.password);
 
@@ -66,6 +67,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // password, and username/email to
         // allow the user to not have to login again
         prefs.setBool(UserKeys.instance.userLoggedIn, true);
+        userStore.storeUser(user: user);
         userStore.storeCredentials(
             password: event.password, email: event.email);
 

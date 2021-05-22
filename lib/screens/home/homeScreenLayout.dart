@@ -24,8 +24,9 @@ class HomeScreenLayout extends StatelessWidget {
             return _buildLoading(context: context);
           }
           if (state is HomeLoaded) {
-            return _buildLoaded(context: context);
+            return _buildLoaded(context: context, state: state);
           }
+
           return _buildError(context: context);
         },
       ),
@@ -38,10 +39,13 @@ class HomeScreenLayout extends StatelessWidget {
     );
   }
 
-  Widget _buildLoaded({required BuildContext context}) {
+  Widget _buildLoaded(
+      {required BuildContext context, required HomeLoaded state}) {
     return ScreenTypeLayout(
       mobile: OrientationLayout(
-        portrait: HomeMobilePortrait(),
+        portrait: HomeMobilePortrait(
+          state: state,
+        ),
         landscape: HomeMobileLandscape(),
       ),
     );

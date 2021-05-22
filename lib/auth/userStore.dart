@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:novaone/models/models.dart';
 import 'package:novaone/utils/utils.dart';
 
 /// A class to help us throw errors when items are not found in flutter secure storage
@@ -26,6 +29,25 @@ class UserStore extends Equatable {
       {required String password, required String email}) async {
     await storage.write(key: UserKeys.instance.userPassword, value: password);
     await storage.write(key: UserKeys.instance.userUserName, value: email);
+  }
+
+  /// Stores the user data on the device
+  Future<void> storeUser({required User user}) async {
+    // Convert the user to JSON
+    final String jsonUser = jsonEncode(user);
+
+    // Save to device
+    await storage.write(key: UserKeys.instance.userObject, value: jsonUser);
+  }
+
+  /// Gets the user data on the device
+  Future<User> getUser() async {
+    // Get the user from saved data on the device
+    final String? jsonUser =
+        await storage.read(key: UserKeys.instance.userObject);
+    if (jsonUser == null) return Future.value();
+
+    return User.fromJson(json: jsonDecode(jsonUser));
   }
 
   /// Gets and decrypts the user's username stored in the device

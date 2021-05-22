@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:novaone/models/models.dart';
+import 'package:novaone/screens/home/bloc/home_bloc.dart';
 import 'package:novaone/widgets/simpleBarChart.dart';
 import 'package:novaone/widgets/titleSeperator.dart';
 import 'package:novaone/widgets/widgets.dart';
@@ -10,7 +11,8 @@ import 'package:novaone/palette.dart';
 import '../../testData.dart';
 
 class HomeMobilePortrait extends StatelessWidget {
-  const HomeMobilePortrait({Key? key}) : super(key: key);
+  final HomeLoaded state;
+  const HomeMobilePortrait({Key? key, required this.state}) : super(key: key);
 
   /// Builds a BarChartRodData for the BarChartGroupData
   ///
@@ -49,7 +51,10 @@ class HomeMobilePortrait extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final barWidth = (size.width - 200) / 12;
-    final List<double> yValues = [5, 6, 11, 12, 14, 13, 8, 9, 13, 4, 6, 7.6];
+    final List<double> yValues = state.chartMonthlyData
+        .map((chartData) => chartData.count.toDouble())
+        .toList();
+    print('Y VALUES: $yValues');
     final User user = context.read<User>();
     return CustomScrollView(
       slivers: <Widget>[
@@ -121,7 +126,7 @@ class HomeMobilePortrait extends StatelessWidget {
                             case 5:
                               return 'Jun';
                             case 6:
-                              return 'July';
+                              return 'Jul';
                             case 7:
                               return 'Aug';
                             case 8:

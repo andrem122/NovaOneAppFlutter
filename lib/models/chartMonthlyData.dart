@@ -1,4 +1,4 @@
-class ChartMonthlyData {
+class ChartMonthlyData implements Comparable {
   final String month;
   final String year;
   final int count;
@@ -12,5 +12,14 @@ class ChartMonthlyData {
       year: json['year'],
       count: json['count'],
     );
+  }
+
+  @override
+  int compareTo(other) {
+    if (this.month.codeUnitAt(0) > other.month.codeUnitAt(0)) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
 }

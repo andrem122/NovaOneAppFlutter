@@ -14,18 +14,37 @@ class ChartDataApiClient extends BaseApiClient {
   ///
   /// Returns an [ApiMessageException] object if the request fails
   /// and a [User] object if the request was successful
-  Future<ChartMonthlyData> getMonthyChartData() async {
-    final String email = await userStore.getEmail();
+  Future<List<ChartMonthlyData>> getMonthyChartData() async {
+    // Need to get password seperatley because it is encrypted when
+    // sent as data from the API
     final String password = await userStore.getPassword();
+    final User user = await userStore.getUser();
 
-    Map<String, String> parameters = {'email': email, 'password': password};
+    Map<String, String> parameters = {
+      'email': user.email,
+      'password': password,
+      'customerUserId': '${user.id}',
+    };
 
     final response = await postToNovaOneApi(
         uri: NovaOneUrl.novaOneApiChartMonthlyData,
         parameters: parameters,
         errorMessage: 'Could not fetch chart monthly data');
-    print(response.body);
-    final Map<String, dynamic> json = jsonDecode(response.body);
-    return ChartMonthlyData.fromJson(json: json);
+
+    final List<dynamic> jsonList = jsonDecode(response.body);
+    List<ChartMonthlyData> chartMonthlyData = jsonList
+        .map((chartData) => ChartMonthlyData.fromJson(json: chartData))
+        .toList();
+
+    // Add zeros to the missing months of data if there is not 12 points of data
+    chartMonthlyData.sort();
+    if (chartMonthlyData.length < 12) {
+      chartMonthlyData.forEach((ChartMonthlyData chartData) {
+        print(
+            'Month: ${chartData.month}, Year: ${chartData.year} Count: ${chartData.count}');
+      });
+    }
+
+    return chartMonthlyData;
   }
 }

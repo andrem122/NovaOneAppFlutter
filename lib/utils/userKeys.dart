@@ -6,6 +6,7 @@ class UserKeys {
   static final UserKeys instance = UserKeys._internal();
   UserKeys._internal();
 
+  final String userObject = 'user_object';
   final String userLoggedIn = 'user_login_status';
   final String userPassword = 'user_password';
   final String userUserName = 'user_username';

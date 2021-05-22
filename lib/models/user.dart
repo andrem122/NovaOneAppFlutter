@@ -72,4 +72,24 @@ class User extends Equatable {
       customerType: json['customerType'],
     );
   }
+
+  /// Converts the user object to a JSON map
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'id': id,
+      'userId': userId,
+      'password': password,
+      'lastLogin': lastLogin,
+      'username': username,
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'dateJoined': dateJoined,
+      'isPaying': isPaying,
+      'wantsSms': wantsSms,
+      'wantsEmailNotifications': wantsEmailNotifications,
+      'phoneNumber': phoneNumber,
+      'customerType': customerType,
+    };
+  }
 }

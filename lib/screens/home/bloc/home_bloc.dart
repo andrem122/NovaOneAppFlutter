@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:novaone/api/apiMessageException.dart';
 import 'package:novaone/api/chartDataApiClient.dart';
+import 'package:novaone/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'home_event.dart';
@@ -25,13 +27,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       // Fetch needed data from API
       try {
-        final chartData = await chartDataApiClient.getMonthyChartData();
-        print(chartData);
+        final List<ChartMonthlyData> chartMonthlyData =
+            await chartDataApiClient.getMonthyChartData();
+
+        // Once user data is fetched, dispatch the HomeLoaded state
+        yield HomeLoaded(chartMonthlyData: chartMonthlyData);
       } catch (error, stacktrace) {
+        yield HomeError();
         print(stacktrace);
+        if (error is ApiMessageException) {
+          print('Error on HomeStart: ${error.reason}');
+        } else {
+          print('Error on HomeStart: ${error}');
+        }
       }
-      // Once user data is fetched, dispatch the HomeLoaded state
-      yield HomeLoaded();
     }
   }
 }
