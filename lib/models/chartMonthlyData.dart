@@ -1,7 +1,11 @@
+import 'package:novaone/utils/utils.dart';
+
 class ChartMonthlyData implements Comparable {
   final String month;
   final String year;
   final int count;
+  DateTime get datetime =>
+      DateTimeHelper.instance.toDateTime(year: int.parse(year), month: month);
 
   const ChartMonthlyData(
       {required this.month, required this.year, required this.count});
@@ -16,10 +20,14 @@ class ChartMonthlyData implements Comparable {
 
   @override
   int compareTo(other) {
-    if (this.month.codeUnitAt(0) > other.month.codeUnitAt(0)) {
+    if (this.month.codeUnitAt(0) < other.month.codeUnitAt(0)) {
       return 1;
-    } else {
+    }
+
+    if (this.month.codeUnitAt(0) > other.month.codeUnitAt(0)) {
       return -1;
     }
+
+    return 0;
   }
 }

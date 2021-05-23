@@ -36,15 +36,27 @@ class ChartDataApiClient extends BaseApiClient {
         .map((chartData) => ChartMonthlyData.fromJson(json: chartData))
         .toList();
 
-    // Add zeros to the missing months of data if there is not 12 points of data
-    chartMonthlyData.sort();
-    if (chartMonthlyData.length < 12) {
-      chartMonthlyData.forEach((ChartMonthlyData chartData) {
-        print(
-            'Month: ${chartData.month}, Year: ${chartData.year} Count: ${chartData.count}');
-      });
-    }
+    // Extract the month inetgers of the data into a list
+    List<int> monthIntegers = chartMonthlyData
+        .map((ChartMonthlyData chartData) => chartData.datetime.month)
+        .toList();
 
+    // Add zeros to the missing months of data if there is not 12 points of data
+    if (chartMonthlyData.length < 12) {
+      // Loop through the months of year as integers and see if each month
+      // is included in the data. If not, create a data point for it of zero.
+      for (int month = 1; month < 12; month++) {
+        // If the month is NOT in the data set, add it
+        if (!monthIntegers.contains(month)) {
+          final now = DateTime.now();
+
+          final chartData = ChartMonthlyData(month: month, year: , count: 0);
+          chartMonthlyData.add();
+        }
+      }
+    }
+    // Sort chart data
+    chartMonthlyData.sort((a, b) => a.datetime.compareTo(b.datetime));
     return chartMonthlyData;
   }
 }
