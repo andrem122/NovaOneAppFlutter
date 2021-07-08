@@ -47,6 +47,39 @@ class HomeMobilePortrait extends StatelessWidget {
             ]));
   }
 
+  /// Gets the titles/lables for the x-axis
+  String _getTitles(double value) {
+    final chartData = state.chartMonthlyData;
+    switch (value.toInt()) {
+      case 0:
+        return chartData[0].month;
+      case 1:
+        return chartData[1].month;
+      case 2:
+        return chartData[2].month;
+      case 3:
+        return chartData[3].month;
+      case 4:
+        return chartData[4].month;
+      case 5:
+        return chartData[5].month;
+      case 6:
+        return chartData[6].month;
+      case 7:
+        return chartData[7].month;
+      case 8:
+        return chartData[8].month;
+      case 9:
+        return chartData[9].month;
+      case 10:
+        return chartData[10].month;
+      case 11:
+        return chartData[11].month;
+      default:
+        return '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -54,7 +87,6 @@ class HomeMobilePortrait extends StatelessWidget {
     final List<double> yValues = state.chartMonthlyData
         .map((chartData) => chartData.count.toDouble())
         .toList();
-    print('Y VALUES: $yValues');
     final User user = context.read<User>();
     return CustomScrollView(
       slivers: <Widget>[
@@ -111,36 +143,7 @@ class HomeMobilePortrait extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontSize: 12),
                         margin: 10,
-                        getTitles: (double value) {
-                          switch (value.toInt()) {
-                            case 0:
-                              return 'Jan';
-                            case 1:
-                              return 'Feb';
-                            case 2:
-                              return 'Mar';
-                            case 3:
-                              return 'Apr';
-                            case 4:
-                              return 'May';
-                            case 5:
-                              return 'Jun';
-                            case 6:
-                              return 'Jul';
-                            case 7:
-                              return 'Aug';
-                            case 8:
-                              return 'Sep';
-                            case 9:
-                              return 'Oct';
-                            case 10:
-                              return 'Nov';
-                            case 11:
-                              return 'Dec';
-                            default:
-                              return '';
-                          }
-                        }),
+                        getTitles: _getTitles),
                   ),
                   axisTitleData: FlAxisTitleData(
                       leftTitle: AxisTitle(

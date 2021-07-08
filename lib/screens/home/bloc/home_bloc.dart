@@ -38,7 +38,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         if (error is ApiMessageException) {
           print('Error on HomeStart: ${error.reason}');
         } else {
-          print('Error on HomeStart: ${error}');
+          print('Error on HomeStart: $error');
         }
       }
     }

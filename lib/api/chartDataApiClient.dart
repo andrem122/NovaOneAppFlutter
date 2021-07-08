@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:intl/intl.dart';
 import 'package:novaone/api/api.dart';
 import 'package:novaone/auth/auth.dart';
 import 'package:novaone/models/models.dart';
@@ -36,9 +37,12 @@ class ChartDataApiClient extends BaseApiClient {
         .map((chartData) => ChartMonthlyData.fromJson(json: chartData))
         .toList();
 
-    // Extract the month inetgers of the data into a list
+    // Extract the month and year inetgers of the data into a list
     List<int> monthIntegers = chartMonthlyData
         .map((ChartMonthlyData chartData) => chartData.datetime.month)
+        .toList();
+    List<int> yearIntegers = chartMonthlyData
+        .map((ChartMonthlyData chartData) => chartData.datetime.year)
         .toList();
 
     // Add zeros to the missing months of data if there is not 12 points of data
@@ -49,14 +53,24 @@ class ChartDataApiClient extends BaseApiClient {
         // If the month is NOT in the data set, add it
         if (!monthIntegers.contains(month)) {
           final now = DateTime.now();
+          final monthDateTime = DateTime(now.year, month);
+          final DateFormat formatter = DateFormat(
+              'MMM'); // Gives a format of the three letter version of the month. Ex: Jul
+          final monthString = formatter.format(monthDateTime);
 
-          final chartData = ChartMonthlyData(month: month, year: , count: 0);
-          chartMonthlyData.add();
+          /// TODO: Figure out how to add in 12 months of data with a zero for a month/year if there is no data
+          final chartData = ChartMonthlyData(
+              month: monthString, year: now.year.toString(), count: 0);
+          chartMonthlyData.add(chartData);
         }
       }
     }
     // Sort chart data
     chartMonthlyData.sort((a, b) => a.datetime.compareTo(b.datetime));
+    chartMonthlyData.forEach((element) {
+      print(
+          'MONTH: ${element.month}, YEAR: ${element.year}, COUNT: ${element.count}');
+    });
     return chartMonthlyData;
   }
 }
