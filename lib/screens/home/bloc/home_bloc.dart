@@ -29,6 +29,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       try {
         final List<ChartMonthlyData> chartMonthlyData =
             await chartDataApiClient.getMonthyChartData();
+        chartMonthlyData.forEach((element) {
+          print(
+              'MONTH: ${element.month}, YEAR: ${element.year}, COUNT: ${element.count}');
+        });
 
         // Once user data is fetched, dispatch the HomeLoaded state
         yield HomeLoaded(chartMonthlyData: chartMonthlyData);

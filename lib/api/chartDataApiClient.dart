@@ -33,44 +33,37 @@ class ChartDataApiClient extends BaseApiClient {
         errorMessage: 'Could not fetch chart monthly data');
 
     final List<dynamic> jsonList = jsonDecode(response.body);
-    List<ChartMonthlyData> chartMonthlyData = jsonList
+    print(response.body);
+    final List<ChartMonthlyData> chartMonthlyData = jsonList
         .map((chartData) => ChartMonthlyData.fromJson(json: chartData))
         .toList();
 
-    // Extract the month and year inetgers of the data into a list
-    List<int> monthIntegers = chartMonthlyData
-        .map((ChartMonthlyData chartData) => chartData.datetime.month)
-        .toList();
-    List<int> yearIntegers = chartMonthlyData
-        .map((ChartMonthlyData chartData) => chartData.datetime.year)
-        .toList();
+    final now = DateTime.now();
+    final startDate = DateTime(
+        now.year - 1, now.month, now.day, now.hour, now.minute, now.second);
 
-    // Add zeros to the missing months of data if there is not 12 points of data
-    if (chartMonthlyData.length < 12) {
-      // Loop through the months of year as integers and see if each month
-      // is included in the data. If not, create a data point for it of zero.
-      for (int month = 1; month < 12; month++) {
-        // If the month is NOT in the data set, add it
-        if (!monthIntegers.contains(month)) {
-          final now = DateTime.now();
-          final monthDateTime = DateTime(now.year, month);
-          final DateFormat formatter = DateFormat(
-              'MMM'); // Gives a format of the three letter version of the month. Ex: Jul
-          final monthString = formatter.format(monthDateTime);
+    List<ChartMonthlyData> newChartMonthlyData = [];
+    for (int monthCount = 0; monthCount < 12; monthCount++) {
+      // Add 1 month to the start date on each loop iteration
+      final nextMonth = startDate.month + monthCount + 1;
+      final date = DateTime(startDate.year, nextMonth, startDate.day,
+          startDate.hour, startDate.minute, startDate.second);
+      final String month = DateFormat('MMM').format(date);
+      print(month);
 
-          /// TODO: Figure out how to add in 12 months of data with a zero for a month/year if there is no data
-          final chartData = ChartMonthlyData(
-              month: monthString, year: now.year.toString(), count: 0);
-          chartMonthlyData.add(chartData);
-        }
-      }
+      /// Make the count zero if there is no count for the month
+      final defaultChartData =
+          ChartMonthlyData(month: month, year: date.year.toString(), count: 0);
+
+      /// Try to find the month in the chart data
+      /// If no month data is found, use the chart data above
+      final ChartMonthlyData chartData = chartMonthlyData.firstWhere(
+          (ChartMonthlyData chartData) => chartData.month == month,
+          orElse: () => defaultChartData);
+
+      newChartMonthlyData.add(chartData);
     }
-    // Sort chart data
-    chartMonthlyData.sort((a, b) => a.datetime.compareTo(b.datetime));
-    chartMonthlyData.forEach((element) {
-      print(
-          'MONTH: ${element.month}, YEAR: ${element.year}, COUNT: ${element.count}');
-    });
-    return chartMonthlyData;
+
+    return newChartMonthlyData;
   }
 }
