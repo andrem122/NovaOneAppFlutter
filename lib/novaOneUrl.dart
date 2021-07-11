@@ -12,6 +12,8 @@ class NovaOneUrl {
   static const novaOneApiPathChartMonthlyData =
       novaOneApiBasePath + '/chartDataMonthly.php';
   static const novaOneApiPathLeadsData = novaOneApiBasePath + '/leads.php';
+  static const novaOneApiPathAppointmentsData =
+      novaOneApiBasePath + '/appointments.php';
 
   static Uri get novaOneApiUrl =>
       Uri.https(novaOneApiAuthority, novaOneApiBasePath);
@@ -21,4 +23,6 @@ class NovaOneUrl {
       Uri.https(novaOneApiAuthority, novaOneApiPathChartMonthlyData);
   static Uri get novaOneApiLeadsData =>
       Uri.https(novaOneApiAuthority, novaOneApiPathLeadsData);
+  static Uri get novaOneApiAppointmentsData =>
+      Uri.https(novaOneApiAuthority, novaOneApiPathAppointmentsData);
 }

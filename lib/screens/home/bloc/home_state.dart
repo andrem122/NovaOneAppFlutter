@@ -17,10 +17,12 @@ class HomeLoading extends HomeState {
 class HomeLoaded extends HomeState {
   final List<ChartMonthlyData> chartMonthlyData;
   final List<Lead> recentLeads;
+  final List<Appointment> recentAppointments;
 
   HomeLoaded({
     required this.chartMonthlyData,
     required this.recentLeads,
+    required this.recentAppointments,
   });
 
   @override

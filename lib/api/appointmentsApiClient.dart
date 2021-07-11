@@ -5,15 +5,15 @@ import 'package:novaone/auth/auth.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/novaOneUrl.dart';
 
-class LeadsApiClient extends BaseApiClient {
-  LeadsApiClient({required Client client, required UserStore userStore})
+class AppointmentsApiClient extends BaseApiClient {
+  AppointmentsApiClient({required Client client, required UserStore userStore})
       : super(client: client, userStore: userStore);
 
-  /// Gets the user's most recent leads from the Novaone API
+  /// Gets the user's recent most recent appointments from the Novaone API
   ///
   /// Returns an [ApiMessageException] object if the request fails
-  /// and leads data if the request was successful
-  Future<List<Lead>> getRecentLeads() async {
+  /// and data if the request was successful
+  Future<List<Appointment>> getRecentAppointments() async {
     final User user = await userStore.getUser();
 
     Map<String, String> parameters = {
@@ -23,11 +23,13 @@ class LeadsApiClient extends BaseApiClient {
       'customerUserId': user.id.toString(),
     };
     final response = await postToNovaOneApi(
-        uri: NovaOneUrl.novaOneApiLeadsData,
+        uri: NovaOneUrl.novaOneApiAppointmentsData,
         parameters: parameters,
         errorMessage: 'Could not fetch leads data');
 
     final List<dynamic> json = jsonDecode(response.body);
-    return json.map((leadJson) => Lead.fromJson(json: leadJson)).toList();
+    return json
+        .map((appointmentJson) => Appointment.fromJson(json: appointmentJson))
+        .toList();
   }
 }

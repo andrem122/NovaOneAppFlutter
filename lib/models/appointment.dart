@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 
 class Appointment extends Equatable {
   final int? id;
   final String name;
   final String phoneNumber;
-  final String time;
-  final String? created;
+  final DateTime time;
+  final DateTime? created;
   final String timeZone;
   final bool confirmed;
   final int companyId;
@@ -35,6 +36,31 @@ class Appointment extends Equatable {
       this.address,
       this.city,
       this.zip});
+
+  factory Appointment.fromJson({required Map<String, dynamic> json}) {
+    return Appointment(
+      id: json['id'],
+      name: json['name'],
+      phoneNumber: json['phoneNumber'],
+      time: DateFormat("yyyy-MM-dd HH:mm:ss zzz")
+          .parseUTC(json['time'])
+          .toLocal(),
+      created: DateFormat("yyyy-MM-dd HH:mm:ss zzz")
+          .parseUTC(json['created'])
+          .toLocal(),
+      timeZone: json['timeZone'],
+      confirmed: json['confirmed'],
+      companyId: json['companyId'],
+      unitType: json['unitType'],
+      email: json['email'],
+      dateOfBirth: json['dateOfBirth'],
+      testType: json['testType'],
+      gender: json['gender'],
+      address: json['address'],
+      city: json['city'],
+      zip: json['zip'],
+    );
+  }
 
   @override
   List<Object?> get props => [

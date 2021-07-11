@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:novaone/api/api.dart';
 import 'package:novaone/api/chartDataApiClient.dart';
-import 'package:novaone/api/leadsApiClient.dart';
-import 'package:novaone/api/userApiClient.dart';
 import 'package:novaone/auth/auth.dart';
 import 'package:novaone/palette.dart';
 import 'package:novaone/screens/screens.dart';
@@ -34,7 +33,12 @@ void main() {
         create: (BuildContext context) => LeadsApiClient(
             client: context.read<Client>(),
             userStore: context.read<UserStore>()),
-      )
+      ),
+      RepositoryProvider(
+        create: (BuildContext context) => AppointmentsApiClient(
+            client: context.read<Client>(),
+            userStore: context.read<UserStore>()),
+      ),
     ],
     child:
         DevicePreview(enabled: false, builder: (BuildContext context) => App()),

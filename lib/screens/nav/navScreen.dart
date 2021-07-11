@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novaone/api/api.dart';
 import 'package:novaone/api/chartDataApiClient.dart';
-import 'package:novaone/api/leadsApiClient.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/screens/home/bloc/home_bloc.dart';
 import 'package:novaone/screens/screens.dart';
+import 'package:novaone/screens/settings/bloc/settings_bloc.dart';
 import 'package:novaone/widgets/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -70,8 +71,14 @@ class NavScreenState extends State<NavScreen> {
         create: (BuildContext context) => HomeBloc(
             futurePrefs: context.read<Future<SharedPreferences>>(),
             chartDataApiClient: context.read<ChartDataApiClient>(),
-            leadsApiClient: context.read<LeadsApiClient>())
+            leadsApiClient: context.read<LeadsApiClient>(),
+            appointmentsApiClient: context.read<AppointmentsApiClient>())
           ..add(HomeStart()),
+      ),
+      BlocProvider<SettingsBloc>(
+        create: (BuildContext context) => SettingsBloc(
+            futurePrefs: context.read<Future<SharedPreferences>>(),
+            context: context),
       ),
     ];
   }

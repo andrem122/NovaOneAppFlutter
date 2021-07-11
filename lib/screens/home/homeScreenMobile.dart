@@ -211,7 +211,7 @@ class HomeMobilePortrait extends StatelessWidget {
               top: false,
               bottom: false,
               child: RecentAppointments(
-                appointments: recentAppointments,
+                appointments: state.recentAppointments.take(5).toList(),
               ),
             ),
           ),

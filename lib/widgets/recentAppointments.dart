@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:novaone/models/models.dart';
 import '../constants.dart';
 import '../palette.dart';
@@ -113,7 +114,8 @@ class _RecentAppointmentItem extends StatelessWidget {
                               fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                         Text(
-                          'Dec 25',
+                          DateFormat('MMM dd, yyyy | hh:mm a')
+                              .format(appointment.time),
                           style: TextStyle(color: Colors.grey[500]),
                         ),
                       ],
