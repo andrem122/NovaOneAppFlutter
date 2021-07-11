@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novaone/api/chartDataApiClient.dart';
+import 'package:novaone/api/leadsApiClient.dart';
 import 'package:novaone/models/models.dart';
+import 'package:novaone/screens/home/bloc/home_bloc.dart';
 import 'package:novaone/screens/screens.dart';
 import 'package:novaone/widgets/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../testData.dart';
 
@@ -57,21 +61,39 @@ class NavScreenState extends State<NavScreen> {
     ];
   }
 
+  /// Creates some of the blocs needed throughout the app
+  ///
+  /// Some blocs have to be created in the widget itself
+  List<BlocProvider> _createBlocs() {
+    return <BlocProvider>[
+      BlocProvider<HomeBloc>(
+        create: (BuildContext context) => HomeBloc(
+            futurePrefs: context.read<Future<SharedPreferences>>(),
+            chartDataApiClient: context.read<ChartDataApiClient>(),
+            leadsApiClient: context.read<LeadsApiClient>())
+          ..add(HomeStart()),
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: _icons!.length,
-      child: Scaffold(
-        body: IndexedStack(
-          children: _screens,
-          index: selectedIndex,
-        ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: CustomTabBar(
-            icons: _icons,
-            selectedIndex: selectedIndex,
-            onTap: (index) => setState(() => selectedIndex = index),
+    return MultiBlocProvider(
+      providers: _createBlocs(),
+      child: DefaultTabController(
+        length: _icons!.length,
+        child: Scaffold(
+          body: IndexedStack(
+            children: _screens,
+            index: selectedIndex,
+          ),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: CustomTabBar(
+              icons: _icons,
+              selectedIndex: selectedIndex,
+              onTap: (index) => setState(() => selectedIndex = index),
+            ),
           ),
         ),
       ),

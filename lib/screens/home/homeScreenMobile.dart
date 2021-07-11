@@ -7,7 +7,6 @@ import 'package:novaone/widgets/titleSeperator.dart';
 import 'package:novaone/widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novaone/palette.dart';
-
 import '../../testData.dart';
 
 class HomeMobilePortrait extends StatelessWidget {
@@ -135,6 +134,15 @@ class HomeMobilePortrait extends StatelessWidget {
             child: SimpleBarChart(
               barChartData: BarChartData(
                   titlesData: FlTitlesData(
+                    leftTitles: SideTitles(
+                        showTitles: true,
+                        getTextStyles: (value) => const TextStyle(
+                            color: Palette.textColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                        margin: 20,
+                        reservedSize: 14,
+                        interval: 10),
                     show: true,
                     bottomTitles: SideTitles(
                         showTitles: true,
@@ -146,15 +154,11 @@ class HomeMobilePortrait extends StatelessWidget {
                         getTitles: _getTitles),
                   ),
                   axisTitleData: FlAxisTitleData(
-                      leftTitle: AxisTitle(
-                          titleText: 'Number Of Leads',
-                          showTitle: true,
-                          margin: 0),
                       bottomTitle: AxisTitle(
-                        titleText: 'Leads Per Month',
-                        margin: 0,
-                        showTitle: true,
-                      )),
+                    titleText: 'Leads Per Month',
+                    margin: 0,
+                    showTitle: true,
+                  )),
                   borderData: FlBorderData(show: false),
                   alignment: BarChartAlignment.spaceEvenly,
                   barGroups: _buildBarChartGroupData(
@@ -182,7 +186,7 @@ class HomeMobilePortrait extends StatelessWidget {
               top: false,
               bottom: false,
               child: RecentLeads(
-                leads: recentLeads,
+                leads: state.recentLeads.take(5).toList(),
               ),
             ),
           ),

@@ -10,7 +10,7 @@ class SimpleBarChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RoundedContainer(
-      height: 300,
+      height: 350,
       width: double.infinity,
       child: BarChart(
         barChartData,

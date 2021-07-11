@@ -40,7 +40,7 @@ class ChartDataApiClient extends BaseApiClient {
 
     final now = DateTime.now();
     final startDate = DateTime(
-        now.year - 1, now.month, now.day, now.hour, now.minute, now.second);
+        now.year - 1, now.month - 1, now.day, now.hour, now.minute, now.second);
 
     List<ChartMonthlyData> newChartMonthlyData = [];
     for (int monthCount = 0; monthCount < 12; monthCount++) {
@@ -49,7 +49,6 @@ class ChartDataApiClient extends BaseApiClient {
       final date = DateTime(startDate.year, nextMonth, startDate.day,
           startDate.hour, startDate.minute, startDate.second);
       final String month = DateFormat('MMM').format(date);
-      print(month);
 
       /// Make the count zero if there is no count for the month
       final defaultChartData =
@@ -63,7 +62,6 @@ class ChartDataApiClient extends BaseApiClient {
 
       newChartMonthlyData.add(chartData);
     }
-
     return newChartMonthlyData;
   }
 }

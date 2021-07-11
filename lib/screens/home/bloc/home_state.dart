@@ -16,8 +16,12 @@ class HomeLoading extends HomeState {
 // Home page loaded state
 class HomeLoaded extends HomeState {
   final List<ChartMonthlyData> chartMonthlyData;
+  final List<Lead> recentLeads;
 
-  HomeLoaded({required this.chartMonthlyData});
+  HomeLoaded({
+    required this.chartMonthlyData,
+    required this.recentLeads,
+  });
 
   @override
   List<Object> get props => super.props + [];

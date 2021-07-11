@@ -1,4 +1,6 @@
-class Appointment {
+import 'package:equatable/equatable.dart';
+
+class Appointment extends Equatable {
   final int? id;
   final String name;
   final String phoneNumber;
@@ -33,4 +35,24 @@ class Appointment {
       this.address,
       this.city,
       this.zip});
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        phoneNumber,
+        time,
+        created,
+        timeZone,
+        confirmed,
+        companyId,
+        unitType,
+        email,
+        dateOfBirth,
+        testType,
+        gender,
+        address,
+        city,
+        zip
+      ];
 }
