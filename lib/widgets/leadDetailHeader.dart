@@ -23,15 +23,6 @@ class LeadDetailHeader extends StatelessWidget {
       children: [
         GradientHeader(
           alignment: Alignment.topLeft,
-          child: IconButton(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            onPressed: () => Navigator.of(context).pop(),
-            icon: Icon(
-              Icons.arrow_back_sharp,
-              color: Colors.white,
-              size: backButtonSize,
-            ),
-          ),
           containerDecimalHeight: 0.25,
         ),
         Positioned.fill(

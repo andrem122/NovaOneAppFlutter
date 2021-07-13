@@ -147,7 +147,7 @@ class HomeMobilePortrait extends StatelessWidget {
                     bottomTitles: SideTitles(
                         showTitles: true,
                         getTextStyles: (double? value) => const TextStyle(
-                            color: Colors.black,
+                            color: Palette.textColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 12),
                         margin: 10,

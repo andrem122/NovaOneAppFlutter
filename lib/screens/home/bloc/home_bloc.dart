@@ -29,12 +29,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeEvent event,
   ) async* {
     if (event is HomeStart) {
-      yield* _homeStart();
+      yield* _start();
     }
   }
 
   /// Grabs all data needed to start up the home screen
-  Stream<HomeState> _homeStart() async* {
+  Stream<HomeState> _start() async* {
     // Indicate that the home screen is being loaded
     yield HomeLoading();
 

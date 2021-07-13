@@ -10,7 +10,7 @@ class Palette {
   static const purpleColor = Color(0xff7E53DB);
   static const indigoColor = Color(0xff2B4AD0);
   static const boxShadow = Color(0xff0C9869);
-  static const textColor = Colors.black;
+  static const textColor = Color(0xff444444);
 
   static final List<Color> appColors = [
     primaryColor,

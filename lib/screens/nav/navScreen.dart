@@ -4,6 +4,7 @@ import 'package:novaone/api/api.dart';
 import 'package:novaone/api/chartDataApiClient.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/screens/home/bloc/home_bloc.dart';
+import 'package:novaone/screens/leadDetail/bloc/lead_detail_bloc.dart';
 import 'package:novaone/screens/screens.dart';
 import 'package:novaone/screens/settings/bloc/settings_bloc.dart';
 import 'package:novaone/widgets/widgets.dart';

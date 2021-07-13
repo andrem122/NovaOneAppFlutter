@@ -14,6 +14,10 @@ class LeadDetailMobilePortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Lead Detail'),
+        centerTitle: true,
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
