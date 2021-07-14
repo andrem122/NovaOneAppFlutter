@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 
 class Lead extends Equatable {
   final int? id;
   final String name;
   final String? phoneNumber;
   final String? email;
-  final String dateOfInquiry;
+  final DateTime dateOfInquiry;
   final String? renterBrand;
   final int companyId;
   final String? sentTextDate;
@@ -34,7 +35,9 @@ class Lead extends Equatable {
       name: json['name'],
       phoneNumber: json['phoneNumber'],
       email: json['email'],
-      dateOfInquiry: json['dateOfInquiry'],
+      dateOfInquiry: DateFormat("yyyy-MM-dd HH:mm:ss zzz")
+          .parseUTC(json['dateOfInquiry'])
+          .toLocal(),
       renterBrand: json['renterBrand'],
       companyId: json['companyId'],
       sentTextDate: json['sentTextDate'],

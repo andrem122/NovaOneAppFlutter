@@ -40,7 +40,7 @@ class HomeScreenLayout extends StatelessWidget {
         portrait: HomeMobilePortrait(
           state: state,
         ),
-        landscape: HomeMobileLandscape(),
+        landscape: HomeMobileLandscape(state: state),
       ),
     );
   }

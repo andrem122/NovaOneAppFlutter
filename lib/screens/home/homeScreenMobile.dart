@@ -222,7 +222,8 @@ class HomeMobilePortrait extends StatelessWidget {
 }
 
 class HomeMobileLandscape extends StatelessWidget {
-  const HomeMobileLandscape({Key? key}) : super(key: key);
+  final HomeLoaded state;
+  const HomeMobileLandscape({Key? key, required this.state}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final User user = context.read<User>();
@@ -370,7 +371,7 @@ class HomeMobileLandscape extends StatelessWidget {
               top: false,
               bottom: false,
               child: RecentLeads(
-                leads: recentLeads,
+                leads: state.recentLeads.take(5).toList(),
               ),
             ),
           ),

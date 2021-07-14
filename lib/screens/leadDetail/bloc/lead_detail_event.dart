@@ -7,5 +7,5 @@ abstract class LeadDetailEvent extends Equatable {
   List<Object> get props => [];
 }
 
-/// The lead detail screen's initial state
+/// The lead detail screen's initial event
 class LeadDetailStart extends LeadDetailEvent {}

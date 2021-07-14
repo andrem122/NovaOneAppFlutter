@@ -4,7 +4,7 @@ import 'package:novaone/api/api.dart';
 import 'package:novaone/api/chartDataApiClient.dart';
 import 'package:novaone/models/models.dart';
 import 'package:novaone/screens/home/bloc/home_bloc.dart';
-import 'package:novaone/screens/leadDetail/bloc/lead_detail_bloc.dart';
+import 'package:novaone/screens/nav/bloc/nav_screen_bloc.dart';
 import 'package:novaone/screens/screens.dart';
 import 'package:novaone/screens/settings/bloc/settings_bloc.dart';
 import 'package:novaone/widgets/widgets.dart';
@@ -80,6 +80,12 @@ class NavScreenState extends State<NavScreen> {
         create: (BuildContext context) => SettingsBloc(
             futurePrefs: context.read<Future<SharedPreferences>>(),
             context: context),
+      ),
+      BlocProvider<NavScreenBloc>(
+        create: (BuildContext context) => NavScreenBloc(
+          leadsApiClient: context.read<LeadsApiClient>(),
+          appointmentsApiClient: context.read<AppointmentsApiClient>(),
+        ),
       ),
     ];
   }
